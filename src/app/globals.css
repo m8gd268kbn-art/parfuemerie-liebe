@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+/*
+ * Parfümerie Liebe – Design-System
+ * Welt: „Flakon und Licht“. Porzellanweißer Grund, anthrazitfarbene Tinte,
+ * Flakongrün als einziger UI-Akzent. Farbe entsteht nur aus Flüssigkeiten im Glas
+ * (Duftfamilien-Tönungen), nie als Dekoration.
+ * Dokumentation: /design-system (intern) und DESIGN.md.
+ */
+
+@theme {
+  /* Tailwind-Standardpalette entfernen: nur Markenfarben sind erlaubt. */
+  --color-*: initial;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Gründe */
+  --color-paper: #fafaf7; /* Seitengrund */
+  --color-white: #ffffff; /* Produktflächen, Eingabefelder */
+  --color-porcelain: #f2f1ec; /* ruhige Flächen, Bildplatten */
+  --color-mist: #e9e7e1; /* Skeletons, gedrückte Flächen */
+
+  /* Linien */
+  --color-line: #e3e0d9; /* Haarlinie, dekorativ */
+  --color-line-strong: #8c877e; /* Feldränder, ≥ 3:1 */
+
+  /* Tinte */
+  --color-ink: #1b1e1f; /* Anthrazit */
+  --color-ink-soft: #3e4244; /* Sekundärtext */
+  --color-muted: #67635c; /* Tertiärtext, Platzhalter (≥ 4.5:1 auf paper & porcelain) */
+  --color-inverse: #fafaf7;
+
+  /* Akzent: Flakongrün */
+  --color-accent: #1f3f36;
+  --color-accent-strong: #152d26;
+  --color-accent-soft: #e4ebe7;
+
+  /* Semantik */
+  --color-danger: #9b2c2c;
+  --color-danger-soft: #f6e8e6;
+  --color-warning: #7a5212;
+  --color-warning-soft: #f4ecdc;
+  --color-success: #1f3f36;
+  --color-success-soft: #e4ebe7;
+
+  /* Flüssigkeiten der Duftfamilien – nur für Bildmaterial, Notenschichten, Duftwelten */
+  --color-liquid-floral: #e6c3c6;
+  --color-liquid-woody: #a9805f;
+  --color-liquid-fresh: #bcd7d3;
+  --color-liquid-citrus: #e8cf78;
+  --color-liquid-aromatic: #9fb28b;
+  --color-liquid-amber: #c78a41;
+  --color-liquid-gourmand: #b67b58;
+  --color-liquid-fruity: #dfa0a4;
+  --color-liquid-leather: #6f4d3c;
+  --color-liquid-musk: #d8cec3;
+
+  /* Schriften (Variablen kommen aus next/font im Root-Layout) */
+  --font-display: var(--font-bodoni), "Didot", "Bodoni 72", "Times New Roman", serif;
+  --font-sans: var(--font-mona), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Typo-Skala */
+  --text-display: clamp(2.75rem, 1.55rem + 4.2vw, 5.25rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.022em;
+  --text-h1: clamp(2.25rem, 1.65rem + 2.2vw, 3.5rem);
+  --text-h1--line-height: 1.06;
+  --text-h1--letter-spacing: -0.018em;
+  --text-h2: clamp(1.75rem, 1.4rem + 1.35vw, 2.5rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.012em;
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.22;
+  --text-h3--letter-spacing: -0.006em;
+  --text-h4: 1rem;
+  --text-h4--line-height: 1.4;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.45;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.3;
+  --text-label--letter-spacing: 0.1em;
+  --text-button: 0.8125rem;
+  --text-button--line-height: 1;
+  --text-button--letter-spacing: 0.08em;
+  --text-price: 1rem;
+  --text-price--line-height: 1.3;
+  --text-price-lg: 1.5rem;
+  --text-price-lg--line-height: 1.2;
+
+  /* Radius: Controls & Panels 2px, Medien 0, nur Icon-Buttons/Swatches rund */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-full: 9999px;
+
+  /* Schatten nur für Overlays (Drawer, Dialog, Popover, Toast) */
+  --shadow-overlay: 0 24px 60px -24px rgb(27 30 31 / 0.28), 0 2px 8px rgb(27 30 31 / 0.06);
+  --shadow-popover: 0 12px 32px -12px rgb(27 30 31 / 0.22), 0 1px 3px rgb(27 30 31 / 0.08);
+
+  /* Motion (Emil Kowalski): starke ease-out, kurze Dauern */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-skeleton: skeleton 1.6s ease-in-out infinite;
+
+  @keyframes skeleton {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.55;
+    }
+  }
+}
+
+:root {
+  /* Layout */
+  --container-max: 90rem; /* 1440px */
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem);
+  --section-space: clamp(4rem, 2.6rem + 5vw, 8rem);
+  --header-height: 4.5rem;
+  --header-height-compact: 3.75rem;
+  --service-bar-height: 2rem;
+
+  /* Motion-Dauern */
+  --dur-press: 140ms;
+  --dur-fast: 180ms;
+  --dur-base: 240ms;
+  --dur-drawer: 380ms;
+  --dur-exit: 220ms;
+
+  /* Ebenen */
+  --z-sticky: 40;
+  --z-dropdown: 50;
+  --z-overlay: 60;
+  --z-modal: 70;
+  --z-toast: 80;
+  --z-skip: 90;
+
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    font-variation-settings: "wdth" 100;
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+  }
+
+  input,
+  textarea {
+    caret-color: var(--color-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Dünne, ruhige Scrollbars in Overlays und Listen */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+/* ---------- Typo-Utilities ---------- */
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+/* Etikett: breite Versalien wie ein gravierter Flakon-Aufdruck */
+@utility label {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 112;
+}
+
+@utility numeric {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility section-space {
+  padding-block: var(--section-space);
+}
+
+@utility hairline {
+  border-color: var(--color-line);
+}
+
+@utility press {
+  transition: transform var(--dur-press) var(--ease-out);
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+}
+
+@utility link-underline {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: text-decoration-color var(--dur-fast) ease;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-property: opacity, color, background-color, border-color !important;
+  }
+}
