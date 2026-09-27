@@ -18,7 +18,8 @@ export function Hero({ settings }: { settings: ShopSettings }) {
   return (
     <section aria-labelledby="hero-title" className="container-page">
       <div className="grid grid-cols-1 gap-8 pt-4 pb-4 md:min-h-[calc(100dvh-var(--header-height)-var(--service-bar-height))] md:grid-cols-12 md:items-stretch md:gap-6 md:pb-10">
-        <div className="hero-media relative order-1 aspect-[4/5] overflow-hidden bg-porcelain md:order-2 md:col-span-7 md:aspect-auto md:min-h-[34rem]">
+        {/* Rundbogen wie die Schaufenster des Stammhauses in der Karmarschstraße */}
+        <div className="hero-media relative order-1 aspect-[4/5] overflow-hidden rounded-t-full bg-porcelain md:order-2 md:col-span-7 md:aspect-auto md:min-h-[34rem]">
           <Image
             src={h.heroImageUrl}
             alt={h.heroImageAlt}
@@ -268,16 +269,16 @@ export function StoreTeaser({ settings }: { settings: ShopSettings }) {
   return (
     <section aria-labelledby="store-title" className="container-page section-space">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-6">
-        <div className="md:col-span-7">
+        <div className="md:col-span-5 md:col-start-2">
           {s.imageUrl ? (
-            <div className="relative aspect-[4/3] overflow-hidden bg-porcelain">
-              <Image src={s.imageUrl} alt={s.imageAlt || "Die Parfümerie Liebe in Hannover"} fill sizes="(min-width: 768px) 58vw, 100vw" className="object-cover" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-t-full bg-porcelain">
+              <Image src={s.imageUrl} alt={s.imageAlt || "Die Parfümerie Liebe in Hannover"} fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
             </div>
           ) : (
-            <ImagePlaceholder label="Foto der Parfümerie Liebe in Hannover" className="aspect-[4/3]" />
+            <ImagePlaceholder label="Foto der Parfümerie Liebe in Hannover" className="aspect-[4/5] rounded-t-full" />
           )}
         </div>
-        <div className="flex flex-col justify-center gap-6 md:col-span-5 md:pl-6 lg:pl-12">
+        <div className="flex flex-col justify-center gap-6 md:col-span-5 md:col-start-8">
           <h2 id="store-title" className="font-display text-h1">
             Parfümerie Liebe in {s.city}
           </h2>

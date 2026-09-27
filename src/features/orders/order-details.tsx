@@ -34,7 +34,7 @@ export function StatusTimeline({ status }: { status: OrderView["order"]["status"
     <ol className="grid grid-cols-4 gap-2" aria-label="Bestellfortschritt">
       {FULFILLMENT_STEPS.map((s, i) => (
         <li key={s.status} className="flex flex-col gap-2" aria-current={i === idx ? "step" : undefined}>
-          <span className={cn("h-[3px]", i <= idx ? "bg-accent" : "bg-line")} />
+          <span className={cn("h-[3px]", i <= idx ? "bg-positive" : "bg-line")} />
           <span className={cn("text-caption", i <= idx ? "text-ink" : "text-muted")}>{s.label}</span>
         </li>
       ))}

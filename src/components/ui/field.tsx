@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const control =
   "w-full rounded-sm border border-line-strong bg-white px-4 text-body text-ink placeholder:text-muted " +
   "transition-[border-color,box-shadow] duration-[160ms] ease-out " +
-  "hover:border-ink-soft focus:border-accent focus:outline-none focus:shadow-[0_0_0_3px_var(--color-accent-soft)] " +
+  "hover:border-ink-soft focus:border-ink focus:outline-none focus:shadow-[0_0_0_3px_var(--color-mist)] " +
   "aria-[invalid=true]:border-danger aria-[invalid=true]:focus:shadow-[0_0_0_3px_var(--color-danger-soft)] " +
   "disabled:bg-porcelain disabled:text-muted";
 
@@ -103,7 +103,7 @@ export const Check = forwardRef<HTMLInputElement, CheckProps>(function Check(
           className={cn(
             "peer size-[18px] cursor-pointer appearance-none border border-line-strong bg-white transition-[background-color,border-color] duration-150 ease-out",
             type === "radio" ? "rounded-full" : "rounded-[2px]",
-            "checked:border-accent checked:bg-accent group-hover:border-ink-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+            "checked:border-ink checked:bg-ink group-hover:border-ink-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
           )}
           {...props}
         />

@@ -64,7 +64,7 @@ export function StatusPill({ tone, children }: { tone: "neutral" | "accent" | "w
     <span
       className={cn(
         "inline-flex h-6 items-center rounded-sm px-2 text-[0.75rem] font-medium whitespace-nowrap",
-        tone === "accent" && "bg-accent-soft text-accent",
+        tone === "accent" && "bg-positive-soft text-positive",
         tone === "warning" && "bg-warning-soft text-warning",
         tone === "danger" && "bg-danger-soft text-danger",
         tone === "neutral" && "bg-porcelain text-ink-soft",

@@ -28,19 +28,19 @@ export default async function StorePage() {
       <div className="container-page pt-8">
         <Breadcrumbs items={crumbs} />
         <header className="mt-8 grid grid-cols-1 gap-10 md:mt-10 md:grid-cols-12 md:gap-6">
-          <div className="flex flex-col justify-end gap-5 md:col-span-5">
+          <div className="flex flex-col justify-end gap-5 md:col-span-6">
             <h1 className="font-display text-display">Parfümerie Liebe</h1>
             <p className="text-body-lg text-ink-soft">
               {s.about || `Unsere Parfümerie in ${s.city}. Hier testen Sie Düfte in Ruhe und lassen sich persönlich beraten.`}
             </p>
           </div>
-          <div className="md:col-span-7">
+          <div className="md:col-span-5 md:col-start-8">
             {s.imageUrl ? (
-              <div className="relative aspect-[4/3] overflow-hidden bg-porcelain">
-                <Image src={s.imageUrl} alt={s.imageAlt || `Die Parfümerie Liebe in ${s.city}`} fill priority sizes="(min-width: 768px) 58vw, 100vw" className="object-cover" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-t-full bg-porcelain">
+                <Image src={s.imageUrl} alt={s.imageAlt || `Die Parfümerie Liebe in ${s.city}`} fill priority sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
               </div>
             ) : (
-              <ImagePlaceholder label="Foto der Parfümerie Liebe (außen oder Verkaufsraum)" className="aspect-[4/3]" />
+              <ImagePlaceholder label="Foto der Parfümerie Liebe (außen oder Verkaufsraum)" className="aspect-[4/5] rounded-t-full" />
             )}
           </div>
         </header>

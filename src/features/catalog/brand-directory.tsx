@@ -22,7 +22,7 @@ export function BrandDirectory({ brands }: { brands: BrandDTO[] }) {
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <label className="relative block md:w-72">
             <span className="sr-only">Marke suchen</span>
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Marke suchen" className="h-11 w-full rounded-sm border border-line-strong bg-white px-4 text-small placeholder:text-muted focus:border-accent focus:outline-none" />
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Marke suchen" className="h-11 w-full rounded-sm border border-line-strong bg-white px-4 text-small placeholder:text-muted focus:border-ink focus:outline-none" />
           </label>
           <nav aria-label="Marken nach Anfangsbuchstabe" className="no-scrollbar overflow-x-auto">
             <ul className="flex gap-1">

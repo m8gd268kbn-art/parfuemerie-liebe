@@ -1,18 +1,26 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+/** Seitenverhältnis des Schriftzugs (public/media/brand/liebe-logo.svg, vektorisiert aus der Logo-Datei). */
+const LOGO_RATIO = 1266 / 524;
+
 /**
- * Typografische Wortmarke „Parfümerie Liebe“ (Platzhalter, solange kein Original-Logo vorliegt).
- * Aufbau wie ein graviertes Flakon-Etikett: breite Versalien über dem Namen in Bodoni.
+ * Wortmarke der Parfümerie Liebe: der rote Liebe-Schriftzug, darunter „Parfümerie“ in breiten
+ * Versalien wie auf der Blende über dem Eingang in der Karmarschstraße.
  */
-export function Wordmark({ className, compact }: { className?: string; compact?: boolean }) {
+export function Wordmark({ className, compact, size }: { className?: string; compact?: boolean; size?: "md" | "lg" }) {
+  const height = size === "lg" ? 52 : compact ? 32 : 40;
   return (
-    <span className={cn("inline-flex flex-col items-start leading-none text-ink", className)} aria-hidden="true">
-      <span className="font-sans text-[0.5625rem] font-medium tracking-[0.34em] uppercase [font-variation-settings:'wdth'_125]">
+    <span className={cn("inline-flex flex-col items-center leading-none", className)} aria-hidden="true">
+      {/* eslint-disable-next-line @next/next/no-img-element -- statisches SVG, keine Optimierung nötig */}
+      <img src="/media/brand/liebe-logo.svg" alt="" width={Math.round(height * LOGO_RATIO)} height={height} style={{ height, width: "auto" }} />
+      <span
+        className={cn(
+          "font-sans font-medium tracking-[0.34em] text-ink uppercase [font-variation-settings:'wdth'_125]",
+          size === "lg" ? "mt-2 pl-[0.34em] text-[0.6875rem]" : "mt-1 pl-[0.34em] text-[0.5625rem]",
+        )}
+      >
         Parfümerie
-      </span>
-      <span className={cn("font-display tracking-[-0.01em]", compact ? "mt-0.5 text-[1.5rem]" : "mt-1 text-[1.75rem]")}>
-        Liebe
       </span>
     </span>
   );

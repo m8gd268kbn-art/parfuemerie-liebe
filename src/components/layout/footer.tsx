@@ -24,7 +24,7 @@ export function Footer({ settings }: { settings: ShopSettings }) {
     <footer className="mt-auto border-t border-line bg-porcelain">
       <div className="container-page grid grid-cols-1 gap-14 py-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20 lg:py-24">
         <div className="flex max-w-md flex-col gap-6">
-          <Wordmark />
+          <Wordmark size="lg" />
           <div>
             <h2 className="font-display text-h3">Neues aus der Parfümerie</h2>
             <p className="mt-2 text-small text-ink-soft">Neuheiten, Duftproben-Aktionen und Beratungstermine, höchstens zweimal im Monat.</p>

@@ -104,7 +104,7 @@ Der E2E-Test kauft als Gast (Suche, Filter, Größe, Wunschliste, Warenkorb, Kas
 Offen und bewusst **nicht erfunden** (Details in [PRODUCT.md](PRODUCT.md) und [docs/FORTSCHRITT.md](docs/FORTSCHRITT.md)):
 
 - [ ] Geschäftsdaten prüfen: Anschrift, Telefon, E-Mail, Firmierung, Gründung, Geschichte, Filialen und Social-Media-Links sind aus öffentlichen Quellen vorbelegt (Quellen in PRODUCT.md) und vom Inhaber zu bestätigen. Noch einzutragen: Öffnungszeiten, Anschrift Göttingen, USt-IdNr., Services vor Ort, Anfahrt, Kartenlink.
-- [ ] Markenauftritt der bestehenden Website liebe-hannover.de übernehmen (Logo, Farben, Schriften, Bildsprache): Vorlagen fehlen noch, weil die Seite aus der Build-Umgebung gesperrt war.
+- [ ] Markenauftritt: Logo (aus Rastergrafik vektorisiert) und Foto des Eingangs sind eingebunden. Offizielle Logo-Vektordatei, CI-Farbwerte und höher aufgelöste Fotos mit geklärtem Nutzungsrecht nachreichen (siehe docs/MEDIA.md).
 - [ ] **Rechtstexte** (Impressum, Datenschutzerklärung, AGB, Widerrufsbelehrung mit Muster-Widerrufsformular) professionell erstellen oder prüfen lassen und im Admin einfügen.
 - [ ] Sortiment, Preise und Bestände erfassen; Demo-Produkte löschen; `NEXT_PUBLIC_DEMO_MODE=false`.
 - [ ] Produktbilder mit Nutzungsrecht, Foto der Parfümerie, ggf. Logo (siehe [docs/MEDIA.md](docs/MEDIA.md)).

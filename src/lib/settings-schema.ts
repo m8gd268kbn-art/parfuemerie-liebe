@@ -65,8 +65,11 @@ export const settingsSchema = z.object({
         { day: "Sonntag", hours: "" },
       ]),
       mapUrl: z.string().default(""),
-      imageUrl: z.string().default(""),
-      imageAlt: z.string().default(""),
+      // Vom Auftraggeber bereitgestellt (27.09.2026), Nutzungsrecht siehe docs/MEDIA.md
+      imageUrl: z.string().default("/media/store/eingang-karmarschstrasse.webp"),
+      imageAlt: z
+        .string()
+        .default("Eingang der Parfümerie Liebe in der Karmarschstraße: weiße Fassade mit Rundbogenfenstern, Markise mit dem Liebe-Schriftzug und rote Pflanzkübel"),
       about: z
         .string()
         .default(

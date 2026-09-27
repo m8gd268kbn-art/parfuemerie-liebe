@@ -17,18 +17,18 @@ Grounded candidates (nach Resonanz): 1 Duftstreifen-Ritual an der Theke, 2 Duftp
 
 ## Direction contract
 
-THESIS: Jeder Duft ist ein Flakon im Licht. Die Seite ist ein hell beleuchteter Verkaufstisch aus Porzellan, auf dem nur das Glas Farbe trägt. Verweigert das Creme-und-Gold-Luxus-Template und das laute Badge-Raster großer Beauty-Shops.
+THESIS: Der Shop ist das Haus Liebe in der Karmarschstraße im Netz: weißer Stein, Rundbogen-Schaufenster, der rote Schriftzug. Premium entsteht aus Ruhe, Typografie und dem einen Rot der Marke, nicht aus Gold oder Badge-Rastern.
 
-OWN-WORLD: Porzellanweißer Grund, anthrazitfarbene Tinte, 1px-Haarlinien, Flakongrün als einziger UI-Akzent. Farbe entsteht nur aus Flüssigkeiten im Glas: Duftfamilien-Tönungen in Produktbildern, Notenschichten und Duftwelten. Bodoni Moda wie gravierte Etiketten für Display, Mona Sans für UI und Text, breite Versalien nur für Etikett-Labels. Controls 2px Radius, Medien randlos, Schatten nur auf Overlays.
+OWN-WORLD: Heller Grund (`paper`), Anthrazit für Text und Bedienung, 1px-Haarlinien, Liebe-Rot als einziger Markenakzent (Logo, Primärhandlung, Service-Leiste, Herz, Zähler). Original-Logo (roter Schriftzug) mit „PARFÜMERIE“ in breiten Versalien wie auf der Blende. Rundbogen der Schaufenster nur für Schaufenster-Momente (Startseiten-Stillleben, Fotos des Hauses). Produktfarbe nur aus Flüssigkeiten im Glas. Bodoni Moda für Überschriften, Mona Sans für UI und Text. Controls 2px Radius, Produktbilder randlos, Schatten nur auf Overlays.
 
-STORY: Besucher verstehen in Sekunden: die Parfümerie Liebe aus Hannover, jetzt online bestellbar. Sie finden per Suche, Marke, Duftfamilie oder Note ihren Duft, sehen Größe, Preis dieser Größe, Verfügbarkeit und Lieferzeit, und bestellen ohne Konto.
+STORY: Besucher erkennen in Sekunden die Parfümerie Liebe aus Hannover (seit 1871) am roten Schriftzug und am Rundbogen, finden per Suche, Marke, Duftfamilie oder Note ihren Duft, sehen Größe, Preis dieser Größe, Verfügbarkeit und Lieferzeit und bestellen ohne Konto.
 
-FIRST VIEWPORT: Service-Bar 32px oben. Header 72px einzeilig: Wortmarke links, Navigation mittig, Suche/Filiale/Konto/Wunschliste/Warenkorb rechts. Hero: Studio-Stillleben der Flakons rechts über sieben von zwölf Spalten bis zur Viewport-Unterkante; links Headline in Bodoni über zwei Zeilen, ein Satz Unterzeile, Primärbutton „Düfte entdecken" in Flakongrün und Textlink „Neuheiten".
+FIRST VIEWPORT: Rote Service-Leiste 32px oben. Header 72px einzeilig: Logo links, Navigation mittig, Suche/Filiale/Konto/Wunschliste/Warenkorb rechts. Hero: Stillleben der Flakons im Rundbogen-Schaufenster rechts über sieben von zwölf Spalten bis zur Viewport-Unterkante; links Headline in Bodoni über zwei Zeilen, ein Satz Unterzeile, roter Primärknopf „Düfte entdecken“ und Textlink „Neuheiten“.
 
-FORM: Kandidat 3 von 7 (Flakon und Licht), Seed 86f74b39 (Roll degraded, keine Challenger). Signature interaction: Größenwahl als Flakon-Silhouetten mit Füllstand in der Farbe des Dufts; Duftnoten als Flüssigkeitsschichten Kopf, Herz, Basis.
+FORM: Markenvorgabe des Auftraggebers (Logo-Datei und Fotos des Stammhauses, 27.09.2026) ersetzt die frühere Richtung „Flakon und Licht“ (Kandidat 3, Seed 86f74b39) als Welt; aus ihr bleiben die Signaturen: Größenwahl als Flakon-Silhouetten mit Füllstand in der Farbe des Dufts, Duftnoten als Flüssigkeitsschichten. Neu: Rundbogen-Schaufenster. Kein neuer Concept-Roll, da die Welt durch die Marke gepinnt ist.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
 ## Unresolved decisions
-- Echte Fotos der Parfümerie, Logo und Markenfarben fehlen; Wortmarke typografisch, Fotos als markierte Platzhalter.
+- Logo (Datei) und ein Foto des Eingangs liegen vor; offizielle CI-Werte (Farbcodes, Hausschrift) und hochaufgelöste Fotos fehlen noch. Das Logo-Rot der Datei ist #ff0000, die Bedienfarbe #e30613 ist daraus für Kontrast abgeleitet.
 - Build path: code-led (keine Bildgenerierung verfügbar).

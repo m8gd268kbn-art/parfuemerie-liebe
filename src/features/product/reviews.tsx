@@ -36,7 +36,7 @@ export function Reviews({ productId, productName, reviews, avg }: { productId: s
                 <Stars value={r.rating} />
                 <p className="text-caption text-muted">
                   {r.authorName}, {formatLongDate(r.createdAt)}
-                  {r.verifiedPurchase && <span className="ml-2 text-accent">Verifizierter Kauf</span>}
+                  {r.verifiedPurchase && <span className="ml-2 text-positive">Verifizierter Kauf</span>}
                 </p>
               </div>
               {r.title && <h3 className="mt-3 text-body font-semibold">{r.title}</h3>}

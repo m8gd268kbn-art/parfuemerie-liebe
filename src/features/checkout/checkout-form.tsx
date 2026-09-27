@@ -123,7 +123,7 @@ function StepShell({ index, current, title, summary, onEdit, children }: { index
           <span
             className={cn(
               "numeric inline-flex size-7 items-center justify-center rounded-full border font-sans text-caption font-semibold",
-              done ? "border-accent bg-accent text-white" : active ? "border-ink text-ink" : "border-line-strong text-muted",
+              done ? "border-ink bg-ink text-paper" : active ? "border-ink text-ink" : "border-line-strong text-muted",
             )}
             aria-hidden="true"
           >
@@ -353,7 +353,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
                 {methods.map((m) => (
                   <label key={m.id} className={cn("flex cursor-pointer items-center justify-between gap-4 rounded-sm border bg-white p-4", method?.id === m.id ? "border-ink shadow-[inset_0_0_0_1px_var(--color-ink)]" : "border-line")}>
                     <span className="flex items-center gap-3">
-                      <input type="radio" name="method" checked={method?.id === m.id} onChange={() => setMethodId(m.id)} className="size-4 accent-[var(--color-accent)]" />
+                      <input type="radio" name="method" checked={method?.id === m.id} onChange={() => setMethodId(m.id)} className="size-4 accent-[var(--color-ink)]" />
                       <span>
                         <span className="block text-small font-medium">
                           {m.name}
@@ -387,7 +387,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
               <legend className="sr-only">Zahlungsart</legend>
               {config.payments.map((p) => (
                 <label key={p.id} className={cn("flex cursor-pointer items-center gap-3 rounded-sm border bg-white p-4 text-small", payment === p.id ? "border-ink shadow-[inset_0_0_0_1px_var(--color-ink)]" : "border-line")}>
-                  <input type="radio" name="payment" checked={payment === p.id} onChange={() => setPayment(p.id)} className="size-4 accent-[var(--color-accent)]" />
+                  <input type="radio" name="payment" checked={payment === p.id} onChange={() => setPayment(p.id)} className="size-4 accent-[var(--color-ink)]" />
                   {p.label}
                 </label>
               ))}
@@ -494,7 +494,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
           {cart.samples.selectedIds.length > 0 && (
             <p className="text-caption text-ink-soft">Dazu {cart.samples.selectedIds.length} kostenlose Duftproben.</p>
           )}
-          {cart.coupon?.applied && <p className="text-caption text-accent">Gutschein {cart.coupon.code} angewendet</p>}
+          {cart.coupon?.applied && <p className="text-caption text-positive">Gutschein {cart.coupon.code} angewendet</p>}
           <dl className="numeric flex flex-col gap-2 border-t border-line pt-4 text-small">
             <div className="flex justify-between">
               <dt className="text-ink-soft">Zwischensumme</dt>
@@ -503,7 +503,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
             {totals.discountCents > 0 && (
               <div className="flex justify-between">
                 <dt className="text-ink-soft">Rabatt</dt>
-                <dd className="text-accent">-{formatPrice(totals.discountCents)}</dd>
+                <dd className="text-positive">-{formatPrice(totals.discountCents)}</dd>
               </div>
             )}
             <div className="flex justify-between">

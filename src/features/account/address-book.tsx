@@ -96,7 +96,7 @@ export function AddressBook({ addresses, countries }: { addresses: SavedAddress[
                 {a.postalCode} {a.city}<br />
                 {COUNTRY_NAMES[a.country] ?? a.country}
               </address>
-              {a.isDefaultShipping && <p className="text-caption text-accent">Standard-Lieferadresse</p>}
+              {a.isDefaultShipping && <p className="text-caption text-ink-soft">Standard-Lieferadresse</p>}
               <div className="mt-auto flex gap-4 text-small">
                 <button type="button" onClick={() => setEditing(a.id)} className="link-underline">Bearbeiten</button>
                 <button type="button" onClick={() => start(async () => { const r = await deleteAddressAction(a.id); toast(r.ok ? r.message : r.error); router.refresh(); })} className="text-ink-soft link-underline">Löschen</button>

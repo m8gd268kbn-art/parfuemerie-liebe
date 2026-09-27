@@ -21,7 +21,7 @@ function RatingInput({ name, label, value, onChange, required }: { name: string;
             <input type="radio" name={name} value={n} checked={value === n} onChange={() => onChange(n)} className="peer sr-only" required={required} />
             <span
               className={cn(
-                "numeric inline-flex size-10 items-center justify-center rounded-sm border text-small transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent",
+                "numeric inline-flex size-10 items-center justify-center rounded-sm border text-small transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink",
                 n <= value ? "border-ink bg-ink text-paper" : "border-line-strong hover:border-ink",
               )}
             >
@@ -56,7 +56,7 @@ export function ReviewForm({ productId }: { productId: string }) {
       </p>
     );
   }
-  if (done) return <p className="text-small text-accent" role="status">{done}</p>;
+  if (done) return <p className="text-small text-positive" role="status">{done}</p>;
   if (!open) {
     return (
       <Button variant="secondary" onClick={() => setOpen(true)}>

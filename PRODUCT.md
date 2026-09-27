@@ -46,7 +46,7 @@ Eine persönliche Parfümerie aus Hannover mit echtem Geschäft und Beratung vor
 - Zahlungsarten werden nur angezeigt, wenn sie tatsächlich angebunden und im Admin aktiviert sind.
 - Geschäftsregeln (Versandkosten, Versandfreigrenze, Proben, Service-Bar, Kontaktdaten, Öffnungszeiten) sind im Admin konfigurierbar, nicht hartcodiert.
 - Übernommen aus öffentlichen Quellen (siehe „Quellen der Geschäftsdaten“): Anschrift Stammhaus, Telefon, E-Mail, Firmierung, Gründung 1871, Geschichte, weiteres Haus in Celle, Social-Media-Profile. Vom Inhaber zu bestätigen.
-- **[offen]** Öffnungszeiten (Quellen widersprechen sich), Anschrift und Telefon Göttingen, Team, Fotos des Geschäfts, Logo, Markenfarben und Schriften der bestehenden Website (liebe-hannover.de war aus der Build-Umgebung nicht erreichbar), Sortimentsliste, echte Preise.
+- **[offen]** Öffnungszeiten (Quellen widersprechen sich), Anschrift und Telefon Göttingen, Team, weitere und höher aufgelöste Fotos, offizielle CI-Werte (Farbcodes, Hausschrift, Favicon), Sortimentsliste, echte Preise.
 - **[offen]** Welche Zahlungsarten im Stripe-Konto aktiviert werden.
 - **[offen]** Endgültige Rechtstexte (Impressum, Datenschutz, AGB, Widerruf) — müssen vor Livegang professionell erstellt/geprüft werden.
 
@@ -55,6 +55,7 @@ Eine persönliche Parfümerie aus Hannover mit echtem Geschäft und Beratung vor
 - Name ausschließlich **Parfümerie Liebe** (Hannover). Keine erfundenen Namen oder Varianten (nicht „parfume.de", nicht „Parfum d'Amore", nicht „Parfümerie d'Amore").
 - Anrede: Das Briefing nutzt in Beispieltexten „Sie" („Für Sie") und „du" („Wähle 2 kostenlose Duftproben"). **[offen]** Entscheidung für die Umsetzung: durchgehend **„Sie"**, passend zur persönlichen, hochwertigen Beratung einer Fach-Parfümerie; zentral änderbar in den Texten.
 - Charakter laut Briefing: luxuriös, ruhig, modern, elegant, vertrauenswürdig, editorial, zeitlos, persönlich, boutique-artig. Premium entsteht durch Typografie, Proportionen, Weißraum, Produktpräsentation und Details, nicht durch Gold.
+- Logo und Rot der Marke sind verbindlich: der rote Schriftzug „Liebe“ wird unverändert gezeigt.
 - Kein Rabatt-Shop-Charakter: keine Fake-Countdowns, keine künstliche Knappheit, keine aggressiven Popups.
 
 ## Quellen der Geschäftsdaten
@@ -70,8 +71,8 @@ Stand 27.09.2026, per Websuche ermittelt: Grundlage sind die Zusammenfassungen d
 
 ## Evidence on Hand
 
-- Es gibt eine bestehende Website (liebe-hannover.de). Der Inhaber wünscht, deren Markenauftritt (Logo, Farben, Bildsprache) zu übernehmen; die Seite war aus der Build-Umgebung nicht abrufbar, daher liegen noch keine visuellen Vorlagen vor. Bis dahin gilt die Richtung „Flakon und Licht“ (DESIGN.md).
-- Im Repository sind **keine** Assets der Parfümerie Liebe vorhanden (kein Logo, keine Fotos).
+- Markenauftritt: Der Auftraggeber hat am 27.09.2026 die Logo-Datei (roter Schriftzug „Liebe“) und Fotos des Stammhauses geliefert (weiße Fassade, Rundbogenfenster, Markise mit Schriftzug, rote Akzente). Daraus ist die Richtung „Das Haus Liebe“ entstanden (DESIGN.md). Offizielle CI-Werte (Farbcodes, Hausschrift) liegen nicht vor.
+- Verwendete Brand-Assets: `public/media/brand/liebe-logo.svg` (vektorisiert aus der Logo-Datei), `public/media/store/eingang-karmarschstrasse.webp` (Eingang Karmarschstraße). Herkunft in docs/MEDIA.md.
 - Es gibt keine echten Bewertungen, Kundenzahlen, Auszeichnungen, Pressestimmen oder Partnerschaften. Diese dürfen nicht erfunden werden.
 - Produktdaten für die Entwicklung sind Demo-Daten und als solche gekennzeichnet; Produktbilder sind neutrale, lokal erzeugte Platzhalter.
 

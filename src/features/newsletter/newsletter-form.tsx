@@ -43,7 +43,7 @@ export function NewsletterForm({ source = "footer", tone = "light" }: { source?:
             "h-12 min-w-0 flex-1 rounded-sm border px-4 text-body transition-[border-color,box-shadow] duration-150 focus:outline-none",
             tone === "dark"
               ? "border-white/30 bg-transparent text-paper placeholder:text-white/55 focus:border-paper"
-              : "border-line-strong bg-white text-ink placeholder:text-muted focus:border-accent focus:shadow-[0_0_0_3px_var(--color-accent-soft)]",
+              : "border-line-strong bg-white text-ink placeholder:text-muted focus:border-ink focus:shadow-[0_0_0_3px_var(--color-mist)]",
           )}
         />
         <Button type="submit" variant={tone === "dark" ? "inverse" : "primary"} loading={pending} loadingLabel="Wird angemeldet">

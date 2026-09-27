@@ -71,7 +71,7 @@ export function Finder({ products, initialFor }: { products: ProductCardDTO[]; i
             {results.map((r) => (
               <li key={r.product.id} className="flex flex-col gap-3">
                 <ProductCard product={r.product} headingLevel="h3" />
-                {r.reasons.length > 0 && <p className="text-caption text-accent">{r.reasons.slice(0, 3).join(", ")}</p>}
+                {r.reasons.length > 0 && <p className="text-caption font-medium text-ink-soft">{r.reasons.slice(0, 3).join(", ")}</p>}
               </li>
             ))}
           </ul>

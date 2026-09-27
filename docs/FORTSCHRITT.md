@@ -58,7 +58,12 @@ Hinweis Shell: `pkill -f "next start"` beendet die eigene Shell; stattdessen `pk
 - Neu: `store.foundedYear`, `store.branches` (Admin → Einstellungen → Parfümerie und Kontakt), Abschnitt „Weitere Häuser“ auf /parfuemerie, JSON-LD mit foundingDate/legalName/sameAs.
 - Bug behoben: Markenanzahl war immer 0 (Drizzle rendert `${brands.id}` ohne Join unqualifiziert), dadurch waren /marken, Markenbereich der Startseite und der Filialseite leer. E2E-Test dafür ergänzt.
 
+## Stand 27.09. (Session 3, Nachtrag: Markenauftritt)
+
+- Auftraggeber hat Logo-Datei und zwei Fotos des Stammhauses geliefert. Neue Richtung **„Das Haus Liebe“** (DESIGN.md, Direction contract in `.impeccable/surfaces/src-app-page-tsx.md`): Original-Logo (vektorisiert, `public/media/brand/liebe-logo.svg`, #ff0000), Liebe-Rot #e30613 als Bedienfarbe (Primärknopf, Service-Leiste, Zähler, Herz), Positiv-Grün #1f6040 für Erfolg, Fokus/Auswahl in Anthrazit, Rundbogen-Schaufenster für Startseiten-Stillleben und Fotos des Hauses, Foto des Eingangs als Standardbild der Parfümerie, Favicon aus dem L des Schriftzugs.
+- Detector ohne neue Befunde, Finish-Review in-thread: ship. E2E 3/3, Unit 26/26, Lint 0.
+- Offen beim Auftraggeber: offizielle Logo-Vektordatei und CI-Farbwerte, höher aufgelöstes Foto mit geklärtem Nutzungsrecht, Öffnungszeiten, Adresse Göttingen.
+
 ## Nächster Schritt (hier weitermachen)
 
-**Markenauftritt von liebe-hannover.de übernehmen.** Braucht visuelle Vorlagen: entweder Domain in den Netzwerkeinstellungen der Umgebung freigeben (dann Seite, Impressum, Filialen, Logo direkt lesen) oder Screenshots/Logo-Datei vom Auftraggeber. Danach: Richtung neu bewerten (Impeccable new-work: Erweiterung vs. Ersatz der Welt „Flakon und Licht“), Tokens/Logo/Schriften anpassen, DESIGN.md aktualisieren, Audits wiederholen.
-Sonst technisch nichts offen; Inhalte des Inhabers siehe README „Vor dem Livegang“.
+Technisch nichts offen. Sobald CI-Unterlagen, Fotos oder Öffnungszeiten kommen: Logo/Icon ersetzen, Farbwerte in `src/app/globals.css` und DESIGN.md angleichen, Fotos im Admin hochladen, Öffnungszeiten im Admin eintragen. Inhalte des Inhabers siehe README „Vor dem Livegang“.

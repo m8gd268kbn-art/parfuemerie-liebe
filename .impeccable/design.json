@@ -1,51 +1,96 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-27T17:23:25.424Z",
+  "generatedAt": "2026-09-27T17:58:24.752Z",
   "title": "Design System: Parfümerie Liebe",
   "extensions": {
     "colorMeta": {
-      "flakongruen": {
+      "liebe-rot-logo": {
         "role": "primary",
-        "displayName": "Flakongrün",
-        "canonical": "#1f3f36",
+        "displayName": "Liebe-Rot (Logo)",
+        "canonical": "#ff0000",
         "tonalRamp": [
-          "#16201d",
-          "#192924",
-          "#1b322b",
-          "#1d3a32",
-          "#4c655e",
-          "#849590",
-          "#bcc5c3",
-          "#e9eceb"
+          "#590d0d",
+          "#890909",
+          "#b80505",
+          "#e30202",
+          "#ff3333",
+          "#ff7373",
+          "#ffb3b3",
+          "#ffe6e6"
         ]
       },
-      "flakongruen-tief": {
+      "liebe-rot": {
         "role": "primary",
-        "displayName": "Flakongrün tief",
-        "canonical": "#152d26",
+        "displayName": "Liebe-Rot",
+        "canonical": "#e30613",
         "tonalRamp": [
-          "#131a18",
-          "#14201c",
-          "#142520",
-          "#152a24",
-          "#445751",
-          "#7e8c88",
-          "#b9c0be",
-          "#e8eae9"
+          "#510e12",
+          "#7b0c13",
+          "#a40a13",
+          "#ca0713",
+          "#e93842",
+          "#f0767d",
+          "#f7b4b8",
+          "#fce6e7"
         ]
       },
-      "flakongruen-hauch": {
+      "liebe-rot-tief": {
         "role": "primary",
-        "displayName": "Flakongrün Hauch",
-        "canonical": "#e4ebe7",
+        "displayName": "Liebe-Rot tief",
+        "canonical": "#b8101f",
         "tonalRamp": [
-          "#515352",
-          "#7b7f7d",
-          "#a5aaa7",
-          "#cbd1cd",
-          "#e9efec",
-          "#f0f4f2",
-          "#f7f9f8",
+          "#441116",
+          "#651119",
+          "#86111b",
+          "#a4101d",
+          "#c6404c",
+          "#d87c84",
+          "#eab7bc",
+          "#f8e7e9"
+        ]
+      },
+      "rose": {
+        "role": "primary",
+        "displayName": "Rosé",
+        "canonical": "#fce8e9",
+        "tonalRamp": [
+          "#585253",
+          "#877d7e",
+          "#b6a8a9",
+          "#e0cecf",
+          "#fdeded",
+          "#fdf2f3",
+          "#fef8f8",
+          "#fffdfd"
+        ]
+      },
+      "positiv": {
+        "role": "secondary",
+        "displayName": "Positiv",
+        "canonical": "#1f6040",
+        "tonalRamp": [
+          "#162920",
+          "#193929",
+          "#1b4932",
+          "#1d573a",
+          "#4c8066",
+          "#84a896",
+          "#bccfc6",
+          "#e9efec"
+        ]
+      },
+      "positiv-hauch": {
+        "role": "secondary",
+        "displayName": "Positiv Hauch",
+        "canonical": "#e3eee8",
+        "tonalRamp": [
+          "#515452",
+          "#7b807d",
+          "#a4aca8",
+          "#cad4ce",
+          "#e9f1ed",
+          "#f0f6f2",
+          "#f7faf8",
           "#fcfdfd"
         ]
       },
@@ -414,7 +459,7 @@
       },
       "label": {
         "displayName": "Etikett",
-        "purpose": "Marke, Konzentration, Badges; breite Versalien, nie unter 11 px."
+        "purpose": "PARFÜMERIE, Marke, Konzentration, Badges; breite Versalien, nie unter 11 px (Ausnahme: Logo-Zusatz)."
       },
       "button": {
         "displayName": "Knopf",
@@ -496,12 +541,20 @@
   },
   "components": [
     {
+      "name": "Logo",
+      "kind": "custom",
+      "refersTo": "logo",
+      "description": "Original-Schriftzug in Liebe-Rot, darunter PARFÜMERIE in breiten Versalien.",
+      "html": "<a class=\"ds-logo\" href=\"#\"><img src=\"/media/brand/liebe-logo.svg\" alt=\"\" height=\"40\"><span>Parfümerie</span></a>",
+      "css": ".ds-logo { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; } .ds-logo img { height: 40px; width: auto; } .ds-logo span { font-family: 'Mona Sans', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.34em; padding-left: 0.34em; text-transform: uppercase; color: #1b1e1f; font-variation-settings: 'wdth' 125; } .ds-logo:focus-visible { outline: 2px solid #1b1e1f; outline-offset: 2px; }"
+    },
+    {
       "name": "Primärknopf",
       "kind": "button",
       "refersTo": "button-primary",
       "description": "Eine primäre Handlung pro Bereich, z. B. In den Warenkorb.",
       "html": "<button class=\"ds-btn-primary\">In den Warenkorb</button>",
-      "css": ".ds-btn-primary { font-family: var(--font-mona, 'Mona Sans', sans-serif); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; font-variation-settings: 'wdth' 108; height: 48px; padding: 0 24px; border-radius: 2px; transition: background-color 180ms cubic-bezier(0.23,1,0.32,1), color 180ms cubic-bezier(0.23,1,0.32,1), transform 140ms cubic-bezier(0.23,1,0.32,1); cursor: pointer; background: #1f3f36; color: #fff; border: 0; } .ds-btn-primary:hover { background: #152d26; } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+      "css": ".ds-btn-primary { font-family: var(--font-mona, 'Mona Sans', sans-serif); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; font-variation-settings: 'wdth' 108; height: 48px; padding: 0 24px; border-radius: 2px; transition: background-color 180ms cubic-bezier(0.23,1,0.32,1), color 180ms cubic-bezier(0.23,1,0.32,1), transform 140ms cubic-bezier(0.23,1,0.32,1); cursor: pointer; background: #e30613; color: #fff; border: 0; } .ds-btn-primary:hover { background: #b8101f; } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid #1b1e1f; outline-offset: 2px; }"
     },
     {
       "name": "Sekundärknopf",
@@ -509,7 +562,7 @@
       "refersTo": "button-secondary",
       "description": "Gleichwertige Nebenhandlung mit Tintenrahmen.",
       "html": "<button class=\"ds-btn-secondary\">Zur Wunschliste</button>",
-      "css": ".ds-btn-secondary { font-family: var(--font-mona, 'Mona Sans', sans-serif); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; font-variation-settings: 'wdth' 108; height: 48px; padding: 0 24px; border-radius: 2px; transition: background-color 180ms cubic-bezier(0.23,1,0.32,1), color 180ms cubic-bezier(0.23,1,0.32,1), transform 140ms cubic-bezier(0.23,1,0.32,1); cursor: pointer; background: transparent; color: #1b1e1f; border: 1px solid #1b1e1f; } .ds-btn-secondary:hover { background: #1b1e1f; color: #fafaf7; } .ds-btn-secondary:active { transform: scale(0.97); } .ds-btn-secondary:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+      "css": ".ds-btn-secondary { font-family: var(--font-mona, 'Mona Sans', sans-serif); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; font-variation-settings: 'wdth' 108; height: 48px; padding: 0 24px; border-radius: 2px; transition: background-color 180ms cubic-bezier(0.23,1,0.32,1), color 180ms cubic-bezier(0.23,1,0.32,1), transform 140ms cubic-bezier(0.23,1,0.32,1); cursor: pointer; background: transparent; color: #1b1e1f; border: 1px solid #1b1e1f; } .ds-btn-secondary:hover { background: #1b1e1f; color: #fafaf7; } .ds-btn-secondary:active { transform: scale(0.97); } .ds-btn-secondary:focus-visible { outline: 2px solid #1b1e1f; outline-offset: 2px; }"
     },
     {
       "name": "Eingabefeld",
@@ -517,7 +570,7 @@
       "refersTo": "input",
       "description": "Beschriftung sichtbar über dem Feld, Fehler darunter.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">E-Mail-Adresse</span><input class=\"ds-input\" type=\"email\" placeholder=\"name@beispiel.de\"></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font-family: 'Mona Sans', sans-serif; } .ds-field-label { font-size: 0.875rem; font-weight: 500; color: #1b1e1f; } .ds-input { height: 48px; padding: 0 16px; border: 1px solid #8c877e; border-radius: 2px; background: #fff; color: #1b1e1f; font-size: 1rem; transition: border-color 160ms cubic-bezier(0.23,1,0.32,1), box-shadow 160ms cubic-bezier(0.23,1,0.32,1); caret-color: #1f3f36; } .ds-input::placeholder { color: #67635c; } .ds-input:hover { border-color: #3e4244; } .ds-input:focus { outline: none; border-color: #1f3f36; box-shadow: 0 0 0 3px #e4ebe7; }"
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font-family: 'Mona Sans', sans-serif; } .ds-field-label { font-size: 0.875rem; font-weight: 500; color: #1b1e1f; } .ds-input { height: 48px; padding: 0 16px; border: 1px solid #8c877e; border-radius: 2px; background: #fff; color: #1b1e1f; font-size: 1rem; transition: border-color 160ms cubic-bezier(0.23,1,0.32,1), box-shadow 160ms cubic-bezier(0.23,1,0.32,1); caret-color: #e30613; } .ds-input::placeholder { color: #67635c; } .ds-input:hover { border-color: #3e4244; } .ds-input:focus { outline: none; border-color: #e30613; box-shadow: 0 0 0 3px #e9e7e1; }"
     },
     {
       "name": "Etikett-Badge",
@@ -533,7 +586,7 @@
       "refersTo": "flakon-size-picker",
       "description": "Signature: Füllstand zeigt die Größe, gefüllt in der Farbe des Dufts.",
       "html": "<div class=\"ds-sizes\"><button class=\"ds-size ds-size-on\"><svg width=\"18\" height=\"28\" viewBox=\"0 0 18 28\"><rect x=\"6\" y=\"1\" width=\"6\" height=\"4\" rx=\"1\" fill=\"#1b1e1f\"/><rect x=\"2\" y=\"7\" width=\"14\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#1b1e1f\"/><rect x=\"3\" y=\"15\" width=\"12\" height=\"11\" fill=\"#bcd7d3\"/></svg><span>60 ml</span><small>89,00 €</small></button><button class=\"ds-size\"><svg width=\"18\" height=\"28\" viewBox=\"0 0 18 28\"><rect x=\"6\" y=\"1\" width=\"6\" height=\"4\" rx=\"1\" fill=\"#8c877e\"/><rect x=\"2\" y=\"7\" width=\"14\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#8c877e\"/><rect x=\"3\" y=\"8\" width=\"12\" height=\"18\" fill=\"#bcd7d3\"/></svg><span>200 ml</span><small>169,00 €</small></button></div>",
-      "css": ".ds-sizes { display: flex; gap: 8px; font-family: 'Mona Sans', sans-serif; } .ds-size { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 96px; padding: 12px 8px; background: #fff; border: 1px solid #e3e0d9; border-radius: 2px; color: #1b1e1f; font-size: 0.875rem; cursor: pointer; transition: border-color 150ms cubic-bezier(0.23,1,0.32,1); } .ds-size small { font-size: 0.8125rem; color: #3e4244; } .ds-size:hover { border-color: #8c877e; } .ds-size-on { border-color: #1b1e1f; box-shadow: inset 0 0 0 1px #1b1e1f; } .ds-size:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+      "css": ".ds-sizes { display: flex; gap: 8px; font-family: 'Mona Sans', sans-serif; } .ds-size { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 96px; padding: 12px 8px; background: #fff; border: 1px solid #e3e0d9; border-radius: 2px; color: #1b1e1f; font-size: 0.875rem; cursor: pointer; transition: border-color 150ms cubic-bezier(0.23,1,0.32,1); } .ds-size small { font-size: 0.8125rem; color: #3e4244; } .ds-size:hover { border-color: #8c877e; } .ds-size-on { border-color: #1b1e1f; box-shadow: inset 0 0 0 1px #1b1e1f; } .ds-size:focus-visible { outline: 2px solid #1b1e1f; outline-offset: 2px; }"
     },
     {
       "name": "Hauptnavigation",
@@ -541,34 +594,47 @@
       "refersTo": "header-nav",
       "description": "Einzeilig, Mona Sans, aktiver Punkt fein unterstrichen.",
       "html": "<nav class=\"ds-nav\"><a href=\"#\">Neuheiten</a><a href=\"#\" aria-current=\"page\">Parfum</a><a href=\"#\">Damen</a><a href=\"#\">Herren</a><a href=\"#\">Nischendüfte</a><a href=\"#\">Marken</a></nav>",
-      "css": ".ds-nav { display: flex; gap: 28px; font-family: 'Mona Sans', sans-serif; font-size: 0.9375rem; } .ds-nav a { color: #1b1e1f; text-decoration: none; padding: 8px 0; text-underline-offset: 0.35em; text-decoration-thickness: 1px; } .ds-nav a:hover, .ds-nav a[aria-current='page'] { text-decoration-line: underline; } .ds-nav a:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+      "css": ".ds-nav { display: flex; gap: 28px; font-family: 'Mona Sans', sans-serif; font-size: 0.9375rem; } .ds-nav a { color: #1b1e1f; text-decoration: none; padding: 8px 0; text-underline-offset: 0.35em; text-decoration-thickness: 1px; } .ds-nav a:hover, .ds-nav a[aria-current='page'] { text-decoration-line: underline; } .ds-nav a:focus-visible { outline: 2px solid #1b1e1f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Schaufenster (Rundbogen)",
+      "kind": "custom",
+      "refersTo": "arch-frame",
+      "description": "Rundbogen wie die Schaufenster des Stammhauses; nur Stillleben und Fotos des Hauses.",
+      "html": "<figure class=\"ds-arch\"><div class=\"ds-arch-img\"></div></figure>",
+      "css": ".ds-arch { margin: 0; width: 240px; } .ds-arch-img { aspect-ratio: 4 / 5; border-radius: 9999px 9999px 0 0; overflow: hidden; background: #f2f1ec; }"
     }
   ],
   "narrative": {
-    "northStar": "Flakon und Licht",
-    "overview": "Jeder Duft ist ein Flakon im Licht. Die Oberfläche ist ein hell beleuchteter Verkaufstisch aus Porzellan: porzellanweißer Grund, anthrazitfarbene Tinte, feine Haarlinien und ein einziges Flakongrün für Handlungen. Farbe kommt nur aus der Flüssigkeit im Glas, also aus Produktbildern, den Duftnoten-Schichten und den Duftwelten. Das trennt den Shop vom Creme-und-Gold-Luxus-Template und vom lauten Badge-Raster großer Beauty-Shops.\n\nPremium entsteht durch Typografie, Proportionen, Weißraum und Produktpräsentation. Bodoni Moda setzt Überschriften wie gravierte Etiketten, Mona Sans trägt Oberfläche und Text, breite Versalien bleiben den Etiketten vorbehalten (Marke, Konzentration, Knöpfe). Die Dichte ist ruhig: große Bilder, wenige Elemente pro Blick, Kaufinformationen (Größe, Preis dieser Größe, Verfügbarkeit, Lieferzeit) nie versteckt.\n\nBewegung folgt einer kurzen, starken ease-out-Kurve. Es gibt einen inszenierten Moment (das Aufdecken des Stilllebens auf der Startseite); alles andere ist Rückmeldung auf Handlungen.",
+    "northStar": "Das Haus Liebe",
+    "overview": "Der Shop ist das Haus in der Karmarschstraße im Netz: weißer Stein, hohe Rundbogenfenster, eine weiße Markise mit dem Liebe-Schriftzug, rote Akzente vom Teppich bis zur Tüte. Der rote Schriftzug ist das Erkennungszeichen und bleibt die einzige kräftige Farbe der Oberfläche. Alles andere ist ruhig: ein heller Grund (`paper`), Anthrazit für Text und Bedienung, feine Haarlinien.\n\nPremium entsteht durch Typografie, Proportionen, Weißraum und Produktpräsentation. Bodoni Moda setzt Überschriften, Mona Sans trägt Oberfläche und Text, breite Versalien stehen wie „PARFÜMERIE“ auf der Blende über dem Eingang. Der Rundbogen der Schaufenster ist die eine Form, die aus dem Haus übernommen wird: für das Stillleben der Startseite und die Fotos des Hauses. Produktbilder bleiben rechteckig, ihre Farbe kommt aus der Flüssigkeit im Glas.\n\nBewegung folgt einer kurzen, starken ease-out-Kurve. Es gibt einen inszenierten Moment (das Aufdecken des Schaufensters auf der Startseite); alles andere ist Rückmeldung auf Handlungen.",
     "keyCharacteristics": [
-      "Porzellanweißer Grund, anthrazitfarbene Tinte, ein Akzent (Flakongrün).",
-      "Farbe nur als Flüssigkeit im Glas: zehn Duftfamilien-Tönungen, nie für Text oder Bedienelemente.",
+      "Heller Grund, Anthrazit als Tinte, Liebe-Rot als einziger Markenakzent.",
+      "Das Original-Logo (roter Schriftzug) mit „PARFÜMERIE“ in breiten Versalien darunter.",
+      "Rundbogen wie die Schaufenster des Stammhauses, nur für Schaufenster-Momente.",
       "Bodoni Moda für Überschriften, Mona Sans mit Breitenachse für alles andere.",
-      "Bedienelemente und Panels 2 px, Bilder randlos, rund nur Icon-Knöpfe und Farbmuster.",
-      "Schatten nur auf Ebenen über der Seite.",
-      "Nur helles Theme: Die Briefing-Palette (Ivory, Weiß, Anthrazit, Warmgrau) ist hell gesetzt."
+      "Bedienelemente und Panels 2 px, Produktbilder randlos, rund nur Icon-Knöpfe und Farbmuster.",
+      "Schatten nur auf Ebenen über der Seite; nur helles Theme."
     ],
     "rules": [
       {
+        "name": "The One Red Rule",
+        "body": "Liebe-Rot ist die einzige kräftige Farbe der Oberfläche und gehört der Marke: Logo, Primärhandlung, Service-Leiste, Herz, Zähler. Auswahl, Fokus und Häkchen tragen Anthrazit.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red-Is-Not-Success Rule",
+        "body": "Positive Rückmeldungen sind grün (`positiv`), Fehler weinrot (`danger`). Liebe-Rot erscheint nie als Status.",
+        "section": "colors"
+      },
+      {
         "name": "The Only-Glass-Carries-Color Rule",
-        "body": "Flüssigkeitstöne erscheinen nie als Text, Knopf, Fläche oder Rahmen der Oberfläche. Wer Farbe braucht, zeigt ein Glas.",
+        "body": "Außer dem Rot der Marke kommt Farbe nur aus dem Glas: Flüssigkeitstöne erscheinen nie als Text, Knopf oder Fläche der Oberfläche.",
         "section": "colors"
       },
       {
-        "name": "The One Accent Rule",
-        "body": "Flakongrün ist der einzige Akzent. Reduzierungen tragen Tinte (`ink`), nicht Rot; Rot ist Fehlern vorbehalten.",
-        "section": "colors"
-      },
-      {
-        "name": "The Engraved Label Rule",
-        "body": "Breite Versalien benennen Dinge (Marke, Konzentration, Aktion). Sie stehen nie als Dachzeile über einer Abschnittsüberschrift.",
+        "name": "The Fascia Label Rule",
+        "body": "Breite Versalien benennen Dinge wie die Blende über dem Eingang („PARFÜMERIE“, Marke, Konzentration, Aktion). Sie stehen nie als Dachzeile über einer Abschnittsüberschrift.",
         "section": "typography"
       },
       {
@@ -580,18 +646,25 @@
         "name": "The Flat Counter Rule",
         "body": "Was auf dem Tisch liegt, wirft keinen Schatten. Nur was darüber schwebt, darf einen tragen.",
         "section": "elevation"
+      },
+      {
+        "name": "The Shop Window Rule",
+        "body": "Der Rundbogen (oben halbkreisförmig, `arch`) kommt von den Schaufenstern des Stammhauses und rahmt nur Schaufenster-Momente: das Stillleben der Startseite und Fotos des Hauses, im Hochformat 4:5. Produktkarten, Kacheln und Bedienelemente bleiben gerade.",
+        "section": "shapes"
       }
     ],
     "dos": [
-      "Do Farbe über ein Glas zeigen: Rendering, Notenschicht oder Farbmuster in einem `liquid-*`-Ton.",
+      "Do das Original-Logo unverändert in Liebe-Rot auf hellem Grund zeigen.",
+      "Do Rot sparsam einsetzen: eine rote Primärhandlung pro Bereich, dazu Service-Leiste, Herz und Zähler.",
+      "Do Fotos des Hauses im Rundbogen (4:5) zeigen, Produkte im geraden Bild.",
       "Do jede Kaufinformation sichtbar halten: Größe, Preis dieser Größe, Grundpreis pro 100 ml, Verfügbarkeit, Lieferzeit.",
       "Do fehlende Geschäftsdaten als gekennzeichneten Platzhalter setzen (gestrichelter Rahmen, Etikett „Platzhalter“).",
-      "Do Hover-Effekte nur für feine Zeiger und `prefers-reduced-motion` für jede Bewegung berücksichtigen.",
-      "Do Bewegungen kurz halten (140 bis 380 ms) und beim Schließen schneller als beim Öffnen."
+      "Do Hover-Effekte nur für feine Zeiger und `prefers-reduced-motion` für jede Bewegung berücksichtigen."
     ],
     "donts": [
+      "Don't Rot als Status (Erfolg, Hinweis), für Checkboxen oder den Fokusring verwenden.",
       "Don't Verläufe, Glas- oder Unschärfe-Flächen, Neon, Blobs, Pillen oder Emoji-Icons einsetzen.",
-      "Don't Gold oder Creme als Oberflächenfarbe verwenden; Luxus entsteht aus Typografie und Weißraum.",
+      "Don't Messing- oder Goldflächen nachbauen; das Gold der Fassade bleibt im Foto.",
       "Don't Dachzeilen (Eyebrows) über Überschriften, Abschnittsnummern oder Gedankenstriche in Texten der Oberfläche.",
       "Don't künstliche Knappheit, Countdowns, erfundene Bewertungen oder Vertrauenssiegel zeigen.",
       "Don't Schatten auf Karten oder Flächen der Seite legen."

@@ -34,7 +34,7 @@ export function FinderTeaser() {
                 key={o.key}
                 className={cn(
                   "flex h-16 cursor-pointer items-center justify-center rounded-sm border text-body transition-[border-color,background-color,color] duration-150 press",
-                  choice === o.key ? "border-accent bg-accent text-white" : "border-line-strong hover:border-ink",
+                  choice === o.key ? "border-ink bg-ink text-paper" : "border-line-strong hover:border-ink",
                 )}
               >
                 <input type="radio" name="finder-for" value={o.key} className="sr-only" checked={choice === o.key} onChange={() => setChoice(o.key)} />

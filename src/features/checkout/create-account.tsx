@@ -10,7 +10,7 @@ export function CreateAccountFromOrder({ token, email }: { token: string; email:
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<string | null>(null);
   const [pending, start] = useTransition();
-  if (done) return <p role="status" className="text-small text-accent">{done}</p>;
+  if (done) return <p role="status" className="text-small text-positive">{done}</p>;
   return (
     <form
       className="flex flex-col gap-4"

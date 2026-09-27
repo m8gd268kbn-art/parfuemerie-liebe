@@ -2,9 +2,9 @@
 
 /*
  * Parfümerie Liebe – Design-System
- * Welt: „Flakon und Licht“. Porzellanweißer Grund, anthrazitfarbene Tinte,
- * Flakongrün als einziger UI-Akzent. Farbe entsteht nur aus Flüssigkeiten im Glas
- * (Duftfamilien-Tönungen), nie als Dekoration.
+ * Welt: „Das Haus Liebe“. Weißer Stein, Rundbögen und die rote Schrift der Parfümerie Liebe
+ * (Karmarschstraße 25). Liebe-Rot ist der einzige Markenakzent, Anthrazit trägt Text und
+ * Bedienung, Farbe im Produktbild entsteht aus den Flüssigkeiten im Glas.
  * Dokumentation: /design-system (intern) und DESIGN.md.
  */
 
@@ -31,18 +31,24 @@
   --color-muted: #67635c; /* Tertiärtext, Platzhalter (≥ 4.5:1 auf paper & porcelain) */
   --color-inverse: #fafaf7;
 
-  /* Akzent: Flakongrün */
-  --color-accent: #1f3f36;
-  --color-accent-strong: #152d26;
-  --color-accent-soft: #e4ebe7;
+  /* Marke: Liebe-Rot. `brand` ist die Logofarbe (nur Logo), `accent` die Bedienfarbe
+     (etwas tiefer für ≥ 4.5:1 mit weißer Schrift): Primärknopf, Service-Leiste, Zähler, Herz. */
+  --color-brand: #ff0000;
+  --color-accent: #e30613;
+  --color-accent-strong: #b8101f;
+  --color-accent-soft: #fce8e9;
+
+  /* Positiv (auf Lager, gespeichert, Ersparnis): dunkles Grün, damit Rot nie „Erfolg“ bedeutet */
+  --color-positive: #1f6040;
+  --color-positive-soft: #e3eee8;
 
   /* Semantik */
   --color-danger: #9b2c2c;
   --color-danger-soft: #f6e8e6;
   --color-warning: #7a5212;
   --color-warning-soft: #f4ecdc;
-  --color-success: #1f3f36;
-  --color-success-soft: #e4ebe7;
+  --color-success: #1f6040;
+  --color-success-soft: #e3eee8;
 
   /* Flüssigkeiten der Duftfamilien – nur für Bildmaterial, Notenschichten, Duftwelten */
   --color-liquid-floral: #e6c3c6;
@@ -177,7 +183,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-ink);
     outline-offset: 2px;
   }
 

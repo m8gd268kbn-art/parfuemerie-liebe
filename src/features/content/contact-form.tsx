@@ -9,7 +9,7 @@ export function ContactForm({ enabled }: { enabled: boolean }) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [done, setDone] = useState<string | null>(null);
   const [pending, start] = useTransition();
-  if (done) return <p role="status" className="text-body-lg text-accent">{done}</p>;
+  if (done) return <p role="status" className="text-body-lg text-positive">{done}</p>;
   return (
     <form
       className="flex flex-col gap-5"

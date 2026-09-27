@@ -101,14 +101,14 @@ export function FreeShippingNote({ cart }: { cart: CartView }) {
             Noch <span className="numeric font-medium text-ink">{formatPrice(remaining)}</span> bis zum kostenlosen Versand.
           </>
         ) : (
-          <span className="inline-flex items-center gap-1.5 text-accent">
+          <span className="inline-flex items-center gap-1.5 text-positive">
             <Icon icon={CheckIcon} size={16} />
             Ihre Bestellung wird versandkostenfrei geliefert.
           </span>
         )}
       </p>
       <div className="h-px w-full bg-line" aria-hidden="true">
-        <div className="h-px origin-left bg-accent transition-transform duration-500 ease-out" style={{ transform: `scaleX(${progress})` }} />
+        <div className="h-px origin-left bg-positive transition-transform duration-500 ease-out" style={{ transform: `scaleX(${progress})` }} />
       </div>
     </div>
   );
@@ -147,7 +147,7 @@ export function SamplePicker({ cart }: { cart: CartView }) {
                   onClick={() => start(async () => void applyCartResult(await toggleSampleAction(o.id), { silent: true }))}
                   className={cn(
                     "flex h-full w-full items-center gap-3 rounded-sm border bg-white p-2 pr-3 text-left transition-[border-color,background-color] duration-150 press",
-                    selected ? "border-accent bg-accent-soft/40" : "border-line hover:border-line-strong",
+                    selected ? "border-ink bg-porcelain" : "border-line hover:border-line-strong",
                     (!o.available || full) && "cursor-not-allowed opacity-50",
                   )}
                 >
@@ -163,7 +163,7 @@ export function SamplePicker({ cart }: { cart: CartView }) {
                     aria-hidden="true"
                     className={cn(
                       "flex size-4 shrink-0 items-center justify-center rounded-full border transition-colors",
-                      selected ? "border-accent bg-accent text-white" : "border-line-strong",
+                      selected ? "border-ink bg-ink text-paper" : "border-line-strong",
                     )}
                   >
                     {selected && <Icon icon={CheckIcon} size={10} weight="regular" />}
@@ -189,7 +189,7 @@ export function CouponForm({ cart }: { cart: CartView }) {
     return (
       <div className="flex items-start justify-between gap-4 text-small">
         <p className="flex items-start gap-2">
-          <Icon icon={Tag} size={16} className="mt-0.5 text-accent" />
+          <Icon icon={Tag} size={16} className="mt-0.5 text-positive" />
           <span>
             Gutschein <span className="font-semibold">{cart.coupon.code}</span>
             {!cart.coupon.applied && <span className="block text-caption text-warning">{cart.coupon.message}</span>}
@@ -242,7 +242,7 @@ export function CouponForm({ cart }: { cart: CartView }) {
           autoComplete="off"
           aria-invalid={Boolean(error) || undefined}
           aria-describedby={error ? "coupon-error" : undefined}
-          className="h-11 min-w-0 flex-1 rounded-sm border border-line-strong bg-white px-3 text-small tracking-wider uppercase focus:border-accent focus:shadow-[0_0_0_3px_var(--color-accent-soft)] focus:outline-none aria-[invalid=true]:border-danger"
+          className="h-11 min-w-0 flex-1 rounded-sm border border-line-strong bg-white px-3 text-small tracking-wider uppercase focus:border-ink focus:shadow-[0_0_0_3px_var(--color-mist)] focus:outline-none aria-[invalid=true]:border-danger"
         />
         <Button type="submit" variant="secondary" size="sm" className="h-11" loading={pending} disabled={!code.trim()}>
           Einlösen
@@ -269,7 +269,7 @@ export function CartSummary({ cart, className }: { cart: CartView; className?: s
       {t.discountCents > 0 && (
         <div className={row}>
           <dt className="text-ink-soft">Rabatt</dt>
-          <dd className="text-accent">-{formatPrice(t.discountCents)}</dd>
+          <dd className="text-positive">-{formatPrice(t.discountCents)}</dd>
         </div>
       )}
       <div className={row}>

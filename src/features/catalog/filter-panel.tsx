@@ -77,7 +77,7 @@ function OptionList({ title, options, selected, onToggle, searchable }: { title:
           onChange={(e) => setQ(e.target.value)}
           placeholder={`${title} suchen`}
           aria-label={`${title} suchen`}
-          className="mb-3 h-10 w-full rounded-sm border border-line-strong bg-white px-3 text-small placeholder:text-muted focus:border-accent focus:outline-none"
+          className="mb-3 h-10 w-full rounded-sm border border-line-strong bg-white px-3 text-small placeholder:text-muted focus:border-ink focus:outline-none"
         />
       )}
       <ul className="clear-both flex flex-col">
@@ -92,7 +92,7 @@ function OptionList({ title, options, selected, onToggle, searchable }: { title:
                   checked={checked}
                   disabled={disabled}
                   onChange={() => onToggle(o.value)}
-                  className="peer size-[16px] shrink-0 cursor-pointer appearance-none rounded-[2px] border border-line-strong bg-white transition-colors duration-150 checked:border-accent checked:bg-accent group-hover:border-ink-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  className="peer size-[16px] shrink-0 cursor-pointer appearance-none rounded-[2px] border border-line-strong bg-white transition-colors duration-150 checked:border-ink checked:bg-ink group-hover:border-ink-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
                 />
                 <span className="flex-1 text-ink-soft peer-checked:text-ink">{o.label}</span>
                 <span className="numeric text-caption text-muted">{o.count}</span>
@@ -136,7 +136,7 @@ function PriceFilter() {
           <Slider.Thumb
             key={label}
             aria-label={label}
-            className="block size-5 rounded-full border border-ink bg-paper shadow-popover transition-transform duration-150 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-95"
+            className="block size-5 rounded-full border border-ink bg-paper shadow-popover transition-transform duration-150 hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink active:scale-95"
           />
         ))}
       </Slider.Root>
@@ -176,7 +176,7 @@ function FlagFilters() {
                     checked={on}
                     disabled={f.count === 0 && !on}
                     onChange={() => update({ [f.key]: !on })}
-                    className="relative h-5 w-9 cursor-pointer appearance-none rounded-full bg-line-strong transition-colors duration-200 before:absolute before:top-0.5 before:left-0.5 before:size-4 before:rounded-full before:bg-white before:transition-transform before:duration-200 before:ease-out checked:bg-accent checked:before:translate-x-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    className="relative h-5 w-9 cursor-pointer appearance-none rounded-full bg-line-strong transition-colors duration-200 before:absolute before:top-0.5 before:left-0.5 before:size-4 before:rounded-full before:bg-white before:transition-transform before:duration-200 before:ease-out checked:bg-ink checked:before:translate-x-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
                   />
                 </span>
               </label>
@@ -221,7 +221,7 @@ export function SortSelect() {
         <select
           value={filters.sort}
           onChange={(e) => update({ sort: e.target.value as SortKey })}
-          className="h-10 cursor-pointer appearance-none rounded-sm border border-line-strong bg-white pr-9 pl-3 text-small font-medium focus:border-accent focus:outline-none"
+          className="h-10 cursor-pointer appearance-none rounded-sm border border-line-strong bg-white pr-9 pl-3 text-small font-medium focus:border-ink focus:outline-none"
         >
           {SORTS.map((s) => (
             <option key={s.key} value={s.key}>

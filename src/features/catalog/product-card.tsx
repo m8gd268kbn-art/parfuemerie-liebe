@@ -107,8 +107,8 @@ export function ProductCard({ product, priority, headingLevel = "h3" }: { produc
                     "numeric h-9 min-w-14 rounded-sm border px-2.5 text-caption font-medium transition-[border-color,background-color,color] duration-150 press",
                     v.stock <= 0
                       ? "border-line text-muted line-through"
-                      : "border-line-strong bg-white text-ink hover:border-accent hover:bg-accent hover:text-white",
-                    adding === v.id && "border-accent bg-accent text-white",
+                      : "border-line-strong bg-white text-ink hover:border-ink hover:bg-ink hover:text-paper",
+                    adding === v.id && "border-ink bg-ink text-paper",
                   )}
                 >
                   {formatSize(v.sizeMl, v.displaySize)}
@@ -122,7 +122,7 @@ export function ProductCard({ product, priority, headingLevel = "h3" }: { produc
       <div className="mt-4 flex flex-col gap-1">
         <p className="label text-[0.6875rem] text-muted">{product.brand.name}</p>
         <Heading className="font-display text-[1.25rem] leading-[1.2] tracking-[-0.005em]">
-          <Link href={href} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none [&:focus-visible]:after:outline-2 [&:focus-visible]:after:outline-offset-4 [&:focus-visible]:after:outline-accent">
+          <Link href={href} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none [&:focus-visible]:after:outline-2 [&:focus-visible]:after:outline-offset-4 [&:focus-visible]:after:outline-ink">
             {product.name}
           </Link>
         </Heading>

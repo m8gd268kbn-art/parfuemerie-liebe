@@ -50,7 +50,7 @@ function FlaconGlyph({ ml, maxMl, color, selected, soldOut }: { ml: number; maxM
 function stockText(v: VariantDTO) {
   if (v.stock <= 0) return { text: "Diese Größe ist derzeit ausverkauft.", tone: "text-danger" };
   if (v.stock <= 3) return { text: `Auf Lager, nur noch ${v.stock} Stück.`, tone: "text-ink" };
-  return { text: "Auf Lager.", tone: "text-accent" };
+  return { text: "Auf Lager.", tone: "text-positive" };
 }
 
 export function BuyBox({ product, info }: { product: ProductDetailDTO; info: BuyBoxInfo }) {
@@ -129,7 +129,7 @@ export function BuyBox({ product, info }: { product: ProductDetailDTO; info: Buy
                 <FlaconGlyph ml={v.sizeMl} maxMl={maxMl} color={color} selected={selected} soldOut={soldOut} />
                 <span className={cn("numeric text-small font-medium", soldOut && "text-muted line-through")}>{formatSize(v.sizeMl, v.displaySize)}</span>
                 <span className="numeric text-caption text-ink-soft">{soldOut ? "ausverkauft" : formatPrice(v.priceCents)}</span>
-                <span className="pointer-events-none absolute inset-0 rounded-sm peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent" />
+                <span className="pointer-events-none absolute inset-0 rounded-sm peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink" />
               </label>
             );
           })}

@@ -66,7 +66,7 @@ function useFieldError(name: string) {
 }
 
 const control =
-  "w-full rounded-sm border border-line-strong bg-white px-3 text-small text-ink placeholder:text-muted focus:border-accent focus:outline-none focus:shadow-[0_0_0_3px_var(--color-accent-soft)] aria-[invalid=true]:border-danger";
+  "w-full rounded-sm border border-line-strong bg-white px-3 text-small text-ink placeholder:text-muted focus:border-ink focus:outline-none focus:shadow-[0_0_0_3px_var(--color-mist)] aria-[invalid=true]:border-danger";
 
 export function AField({
   name,
@@ -131,7 +131,7 @@ export function ASelect({ name, label, options, defaultValue, className }: { nam
 export function ACheck({ name, label, defaultChecked, value = "on" }: { name: string; label: string; defaultChecked?: boolean; value?: string }) {
   return (
     <label className="flex cursor-pointer items-center gap-2.5 text-small">
-      <input type="checkbox" name={name} value={value} defaultChecked={defaultChecked} className="size-4 accent-[var(--color-accent)]" />
+      <input type="checkbox" name={name} value={value} defaultChecked={defaultChecked} className="size-4 accent-[var(--color-ink)]" />
       {label}
     </label>
   );

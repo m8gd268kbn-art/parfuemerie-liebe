@@ -31,8 +31,11 @@ const COLORS: { name: string; token: string; hex: string; use: string }[] = [
   { name: "Ink", token: "ink", hex: "#1b1e1f", use: "Text, Anthrazit" },
   { name: "Ink soft", token: "ink-soft", hex: "#3e4244", use: "Sekundärtext" },
   { name: "Muted", token: "muted", hex: "#67635c", use: "Tertiärtext (≥ 4.5:1)" },
-  { name: "Flakongrün", token: "accent", hex: "#1f3f36", use: "Einziger UI-Akzent" },
-  { name: "Accent soft", token: "accent-soft", hex: "#e4ebe7", use: "Fokusring, Erfolg" },
+  { name: "Liebe-Rot (Logo)", token: "brand", hex: "#ff0000", use: "Nur der Schriftzug" },
+  { name: "Liebe-Rot", token: "accent", hex: "#e30613", use: "Primärknopf, Service-Leiste, Zähler, Herz" },
+  { name: "Liebe-Rot tief", token: "accent-strong", hex: "#b8101f", use: "Hover, Textauswahl" },
+  { name: "Rosé", token: "accent-soft", hex: "#fce8e9", use: "Auswahl-Hintergrund" },
+  { name: "Positiv", token: "positive", hex: "#1f6040", use: "Auf Lager, gespeichert, Ersparnis" },
   { name: "Danger", token: "danger", hex: "#9b2c2c", use: "Fehler" },
   { name: "Warning", token: "warning", hex: "#7a5212", use: "Hinweise" },
 ];
@@ -75,7 +78,7 @@ export default async function DesignSystemPage() {
       <header className="mt-8 max-w-3xl">
         <h1 className="font-display text-h1">Design-System</h1>
         <p className="mt-4 text-body-lg text-ink-soft">
-          Richtung „Flakon und Licht“: porzellanweißer Grund, Anthrazit als Tinte, Flakongrün als einziger Akzent. Farbe entsteht nur aus den Flüssigkeiten im Glas, nie als Dekoration. Interne Referenz, nicht indexiert.
+          Richtung „Das Haus Liebe“: weißer Stein, Rundbögen und die rote Schrift des Stammhauses in der Karmarschstraße. Liebe-Rot ist der einzige Markenakzent, Anthrazit trägt Text und Bedienung, Farbe im Produktbild kommt aus den Flüssigkeiten im Glas. Interne Referenz, nicht indexiert.
         </p>
         <nav aria-label="Abschnitte" className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-small">
           {[["farben", "Farben"], ["typo", "Typografie"], ["form", "Form und Bewegung"], ["aktionen", "Aktionen"], ["felder", "Formulare"], ["anzeige", "Anzeige"], ["produkt", "Produkt"]].map(([id, l]) => (
@@ -120,7 +123,7 @@ export default async function DesignSystemPage() {
 
       <Section id="form" title="Form und Bewegung">
         <dl className="grid grid-cols-1 gap-x-10 gap-y-6 text-small md:grid-cols-2">
-          <div><dt className="font-semibold">Radius</dt><dd className="text-ink-soft">2 px für Bedienelemente und Panels, 0 für Bilder, rund nur Icon-Buttons und Farbmuster.</dd></div>
+          <div><dt className="font-semibold">Radius</dt><dd className="text-ink-soft">2 px für Bedienelemente und Panels, 0 für Produktbilder, rund nur Icon-Buttons und Farbmuster. Rundbogen (oben halbkreisförmig) nur für Schaufenster-Momente: Startseiten-Stillleben und Fotos des Hauses.</dd></div>
           <div><dt className="font-semibold">Schatten</dt><dd className="text-ink-soft">Nur für Ebenen über der Seite (Drawer, Dialog, Popover, Hinweise). Flächen trennen Haarlinien.</dd></div>
           <div><dt className="font-semibold">Kurven</dt><dd className="tabular text-ink-soft">ease-out cubic-bezier(0.23, 1, 0.32, 1), Drawer cubic-bezier(0.32, 0.72, 0, 1)</dd></div>
           <div><dt className="font-semibold">Dauern</dt><dd className="tabular text-ink-soft">Druck 140 ms, schnell 180 ms, Basis 240 ms, Drawer 380 ms, Schließen 220 ms</dd></div>
