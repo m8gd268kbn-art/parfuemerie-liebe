@@ -5,9 +5,9 @@ import { expect, test } from "@playwright/test";
  * Warenkorb → Kasse → Testzahlung → Webhook → Bestätigung.
  * Voraussetzung: Demo-Seed und PAYMENT_PROVIDER=test.
  */
-test("Gastkauf mit Testzahlung und Webhook-Bestätigung", async ({ page }) => {
+test("Gastkauf mit Testzahlung und Webhook-Bestätigung", async ({ page, baseURL }) => {
   await page.context().addCookies([
-    { name: "pl_consent", value: encodeURIComponent(JSON.stringify({ v: 1, necessary: true, analytics: false, marketing: false, ts: "e2e" })), url: page.context()["_options"]?.baseURL ?? "http://localhost:3000" },
+    { name: "pl_consent", value: encodeURIComponent(JSON.stringify({ v: 1, necessary: true, analytics: false, marketing: false, ts: "e2e" })), url: baseURL! },
   ]);
 
   // 1. Startseite

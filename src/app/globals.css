@@ -505,3 +505,44 @@
     transform: translate3d(0, 10px, 0);
   }
 }
+
+/* ---------- Fließtext-Seiten ---------- */
+.prose-liebe {
+  color: var(--color-ink-soft);
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+.prose-liebe h2 {
+  margin: 2.75rem 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+.prose-liebe h3 {
+  margin: 2rem 0 0.5rem;
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.prose-liebe p,
+.prose-liebe ul,
+.prose-liebe dl,
+.prose-liebe table {
+  margin: 0 0 1rem;
+}
+.prose-liebe ul {
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+.prose-liebe li {
+  margin: 0.25rem 0;
+}
+.prose-liebe a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+.prose-liebe > :first-child {
+  margin-top: 0;
+}

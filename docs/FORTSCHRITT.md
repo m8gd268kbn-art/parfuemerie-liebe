@@ -37,8 +37,8 @@ Admin-Login (lokal): siehe `.env.local` (SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD)
 
 ## Nächster Schritt (hier weitermachen)
 
-1. Startseite `src/app/(shop)/page.tsx` mit Sektionen in `src/features/home/*` (Hero, Neu eingetroffen, Duftwelten, Empfehlungen, Für Sie, Bestseller, Nischendüfte, Marken, Duftberatung, Parfümerie-Teaser).
-2. Kategorie-Route `src/app/(shop)/[category]/page.tsx` mit Filtern (URL) + Filter-Drawer, `/suche`.
-3. PDP `/produkt/[slug]` (Galerie, Flakon-Größenwahl, Notenschichten, Accordions, Cross-Selling, JSON-LD).
-4. Warenkorb-Seite, Wunschliste, Checkout (`/kasse`, Testzahlung `/kasse/testzahlung/[ref]`, Bestätigung), Konto, Auth-Seiten, Marken, `/parfuemerie`, Duftfinder, Service-/Rechtsseiten, Newsletter-Bestätigung, 404.
-5. Admin, SEO (sitemap/robots/metadata), Tests (Vitest, Playwright E2E), Audits, DESIGN.md.
+Storefront, Checkout (Testzahlung + Webhook, E2E grün), Konto, Auth, Marken, Filialseite, Duftfinder, Service-/Rechtsseiten, 404, Sitemap/Robots sind fertig.
+Offen:
+1. Admin `src/app/admin/*` (Dashboard, Produkte+Varianten+Bilder, Bestellungen mit Status/Tracking/Erstattung, Marken, Kategorien, Kunden, Gutscheine, Reviews, Newsletter, Proben, Einstellungen, E-Mail-Outbox).
+2. `/design-system` (noindex), E2E um Admin-Statuswechsel erweitern, Vitest-Unit-Tests (pricing, filters, coupons, lowest price, finder, webhook signature).
+3. Audits: Impeccable detect + Finish-Review (degraded, in-thread), Emil-Motion-Audit, Taste-Pre-Flight, Polish-Pass, DESIGN.md + `.impeccable/design.json`, README, docs/MEDIA.md.
