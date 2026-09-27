@@ -1,13 +1,13 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { fail } from "@/lib/action-result";
+import { fail, type ActionResult } from "@/lib/action-result";
 import { MANUAL_TRANSITIONS, type OrderStatus } from "@/lib/commerce/order-status";
 import { parseEuroToCents } from "@/lib/format";
 import { requireAdmin } from "@/services/auth/session";
 import { refundOrder, updateOrderStatus, updateTracking } from "@/services/orders/admin";
 
-type S = Awaited<ReturnType<typeof updateOrderStatus>> | null;
+type S = ActionResult<unknown> | null;
 
 export async function changeStatusAction(orderId: string, _prev: S, fd: FormData) {
   const admin = await requireAdmin();
