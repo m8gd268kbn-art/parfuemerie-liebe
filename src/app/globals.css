@@ -226,9 +226,14 @@
   font-variation-settings: "wdth" 112;
 }
 
+/* Mona Sans' tabellarische Ziffern haben eine durchgestrichene Null; für Preise daher
+   proportionale Versalziffern. Tabellen im Admin nutzen `tabular`. */
 @utility numeric {
-  font-variant-numeric: tabular-nums lining-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+@utility tabular {
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 @utility container-page {

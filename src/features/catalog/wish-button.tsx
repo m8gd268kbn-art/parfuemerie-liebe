@@ -16,7 +16,7 @@ export function WishButton({ productId, name, className, size = "md" }: { produc
       aria-label={active ? `${name} von der Wunschliste entfernen` : `${name} auf die Wunschliste`}
       title={active ? "Von der Wunschliste entfernen" : "Auf die Wunschliste"}
       className={cn(
-        "relative z-10 inline-flex items-center justify-center rounded-full text-ink transition-[background-color,transform] duration-150 ease-out active:scale-90",
+        "z-10 inline-flex items-center justify-center rounded-full text-ink transition-[background-color,transform] duration-150 ease-out active:scale-90",
         size === "lg" ? "size-12 border border-line-strong hover:border-ink" : "size-11 hover:bg-paper/80",
         className,
       )}
