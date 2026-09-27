@@ -39,6 +39,6 @@ Admin-Login (lokal): siehe `.env.local` (SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD)
 
 Storefront, Checkout (Testzahlung + Webhook, E2E grün), Konto, Auth, Marken, Filialseite, Duftfinder, Service-/Rechtsseiten, 404, Sitemap/Robots sind fertig.
 Offen:
-1. Admin `src/app/admin/*` (Dashboard, Produkte+Varianten+Bilder, Bestellungen mit Status/Tracking/Erstattung, Marken, Kategorien, Kunden, Gutscheine, Reviews, Newsletter, Proben, Einstellungen, E-Mail-Outbox).
+1. Admin `src/app/admin/*`: Layout, Navigation, Dashboard und Formular-Kit (`src/features/admin/kit.tsx`, `ui.tsx`) stehen. Noch zu bauen: Bestellungen (Liste, Detail mit Status/Tracking/Erstattung über `src/services/orders/admin.ts`), Produkte+Varianten+Bilder, Bestellungen mit Status/Tracking/Erstattung, Marken, Kategorien, Kunden, Gutscheine, Reviews, Newsletter, Proben, Einstellungen, E-Mail-Outbox).
 2. `/design-system` (noindex), E2E um Admin-Statuswechsel erweitern, Vitest-Unit-Tests (pricing, filters, coupons, lowest price, finder, webhook signature).
 3. Audits: Impeccable detect + Finish-Review (degraded, in-thread), Emil-Motion-Audit, Taste-Pre-Flight, Polish-Pass, DESIGN.md + `.impeccable/design.json`, README, docs/MEDIA.md.
