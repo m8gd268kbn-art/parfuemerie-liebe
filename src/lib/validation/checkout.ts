@@ -1,4 +1,5 @@
 import { z } from "zod";
+import "./locale";
 import { emailSchema } from "./auth";
 
 const req = (msg: string, max = 120) => z.string().trim().min(1, msg).max(max, "Diese Angabe ist zu lang.");
@@ -7,7 +8,7 @@ const opt = (max = 120) =>
     .string()
     .trim()
     .max(max, "Diese Angabe ist zu lang.")
-    .optional()
+    .nullish()
     .transform((v) => (v ? v : null));
 
 export const addressSchema = z
