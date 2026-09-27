@@ -23,7 +23,7 @@ export default async function EditCategory({ params }: { params: Promise<{ id: s
       actions={<AdminLink href="/admin/kategorien">Zur Übersicht</AdminLink>}
     >
       <Panel>
-        <AdminForm key={c?.updatedAt.getTime()} action={saveCategoryAction.bind(null, c?.id ?? null)} submitLabel={c ? "Änderungen speichern" : "Kategorie anlegen"}>
+        <AdminForm action={saveCategoryAction.bind(null, c?.id ?? null)} submitLabel={c ? "Änderungen speichern" : "Kategorie anlegen"}>
           <div className="grid gap-5 md:grid-cols-2">
             <AField name="name" label="Name" required defaultValue={c?.name} />
             {c?.system ? (

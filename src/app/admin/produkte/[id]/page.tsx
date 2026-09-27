@@ -88,7 +88,6 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
                   </span>
                 </div>
                 <AdminForm
-                  key={`${v.id}-${v.updatedAt.getTime()}`}
                   action={saveVariantAction.bind(null, id, v.id)}
                   footer={<ActionButton action={deleteVariantAction.bind(null, id, v.id)} label="Größe löschen" variant="ghost" confirm="Diese Größe wirklich löschen?" />}
                 >
@@ -99,7 +98,7 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
           })}
           <div>
             <h3 className="mb-4 text-small font-semibold">Neue Größe</h3>
-            <AdminForm key={`new-${variants.length}`} action={saveVariantAction.bind(null, id, null)} submitLabel="Größe hinzufügen">
+            <AdminForm action={saveVariantAction.bind(null, id, null)} submitLabel="Größe hinzufügen">
               <VariantFields />
             </AdminForm>
           </div>
@@ -115,7 +114,6 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
                 <li key={img.id} className="grid grid-cols-[6rem_1fr] gap-4">
                   <Image src={img.url} alt={img.alt} width={96} height={120} className="h-30 w-24 bg-porcelain object-cover" />
                   <AdminForm
-                    key={`${img.id}-${img.alt}-${img.kind}-${img.sortOrder}`}
                     action={updateImageAction.bind(null, id, img.id)}
                     className="gap-3"
                     footer={<ActionButton action={deleteImageAction.bind(null, id, img.id)} label="Entfernen" variant="ghost" confirm="Bild entfernen?" />}
@@ -133,7 +131,7 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
           )}
           <div className="border-t border-line pt-6">
             <h3 className="mb-4 text-small font-semibold">Bild hochladen</h3>
-            <AdminForm key={`upload-${images.length}`} action={uploadImageAction.bind(null, id)} submitLabel="Hochladen">
+            <AdminForm action={uploadImageAction.bind(null, id)} submitLabel="Hochladen">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="image-file" className="text-caption font-medium">Datei</label>
@@ -152,7 +150,6 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
 
       <Panel title="Stammdaten">
         <ProductForm
-          key={product.updatedAt.getTime()}
           action={saveProductAction.bind(null, id)}
           product={product}
           brands={brandRows}

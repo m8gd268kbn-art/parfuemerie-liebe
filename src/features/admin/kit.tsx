@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useActionState, useContext, useEffect, useId, type ReactNode } from "react";
+import { createContext, startTransition, useActionState, useContext, useEffect, useId, useRef, type ReactNode } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import type { ActionResult } from "@/lib/action-result";
@@ -26,18 +26,27 @@ export function AdminForm({
   confirm?: string;
 }) {
   const [state, formAction, pending] = useActionState(action, null);
+  const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
     if (!state) return;
-    if (state.ok) toast(state.message ?? "Gespeichert.");
-    else toast.error(state.error);
+    if (state.ok) {
+      toast(state.message ?? "Gespeichert.");
+      // Erst nach Erfolg auf die (neu geladenen) gespeicherten Werte zurücksetzen.
+      formRef.current?.reset();
+    } else toast.error(state.error);
   }, [state]);
   return (
     <FormState.Provider value={state}>
       <form
-        action={formAction}
+        ref={formRef}
         className={cn("flex flex-col gap-6", className)}
+        // Manuelles Absenden statt `action`: React würde das Formular sonst auch nach
+        // Validierungsfehlern zurücksetzen und Eingaben verwerfen.
         onSubmit={(e) => {
-          if (confirm && !window.confirm(confirm)) e.preventDefault();
+          e.preventDefault();
+          if (confirm && !window.confirm(confirm)) return;
+          const fd = new FormData(e.currentTarget);
+          startTransition(() => formAction(fd));
         }}
       >
         {children}
@@ -92,7 +101,7 @@ export function AField({
     <div className={cn("flex flex-col gap-1.5", className)}>
       <label htmlFor={id} className="text-caption font-medium text-ink">
         {label}
-        {!required && <span className="ml-1 font-normal text-muted">(optional)</span>}
+        {!required && <span className="font-normal text-muted"> (optional)</span>}
       </label>
       {textarea ? (
         <textarea id={id} name={name} rows={rows} defaultValue={defaultValue ?? ""} placeholder={placeholder} aria-invalid={Boolean(error) || undefined} className={cn(control, "py-2 leading-relaxed")} />
@@ -139,18 +148,27 @@ export function ACheckGroup({ name, label, options, selected }: { name: string; 
   );
 }
 
-/** Kleiner Einzelknopf für eine Server Action (z. B. Freigeben, Löschen). */
+/** Kleiner Einzelknopf für eine Server Action (z. B. Freigeben, Löschen). Kein eigenes <form>, damit er auch im Footer eines AdminForm stehen darf. */
 export function ActionButton({ action, label, variant = "secondary", confirm }: { action: () => Promise<ActionResult<unknown>>; label: string; variant?: "primary" | "secondary" | "ghost"; confirm?: string }) {
-  const [state, formAction, pending] = useActionState(async () => action(), null);
+  const [state, dispatch, pending] = useActionState(async () => action(), null);
   useEffect(() => {
     if (!state) return;
     if (state.ok) toast(state.message ?? "Erledigt.");
     else toast.error(state.error);
   }, [state]);
   return (
-    <form action={formAction} onSubmit={(e) => { if (confirm && !window.confirm(confirm)) e.preventDefault(); }}>
-      <Button type="submit" size="sm" variant={variant} loading={pending}>{label}</Button>
-    </form>
+    <Button
+      type="button"
+      size="sm"
+      variant={variant}
+      loading={pending}
+      onClick={() => {
+        if (confirm && !window.confirm(confirm)) return;
+        startTransition(() => dispatch());
+      }}
+    >
+      {label}
+    </Button>
   );
 }
 

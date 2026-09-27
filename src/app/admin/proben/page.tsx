@@ -43,7 +43,7 @@ export default async function AdminSamples() {
       }
     >
       <Panel title="Neue Probe">
-        <AdminForm key={`new-${rows.length}`} action={saveSampleAction.bind(null, null)} submitLabel="Probe anlegen">
+        <AdminForm action={saveSampleAction.bind(null, null)} submitLabel="Probe anlegen">
           <SampleFields productOptions={productOptions} />
         </AdminForm>
       </Panel>
@@ -54,7 +54,6 @@ export default async function AdminSamples() {
           actions={<span className="flex gap-1">{!s.active && <StatusPill tone="neutral">inaktiv</StatusPill>}{s.stock <= 0 && <StatusPill tone="danger">vergriffen</StatusPill>}</span>}
         >
           <AdminForm
-            key={s.updatedAt.getTime()}
             action={saveSampleAction.bind(null, s.id)}
             footer={<ActionButton action={deleteSampleAction.bind(null, s.id)} label="Löschen" variant="ghost" confirm="Probe löschen?" />}
           >

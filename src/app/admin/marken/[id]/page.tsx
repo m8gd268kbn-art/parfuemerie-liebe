@@ -21,7 +21,7 @@ export default async function EditBrand({ params }: { params: Promise<{ id: stri
       actions={<AdminLink href="/admin/marken">Zur Übersicht</AdminLink>}
     >
       <Panel>
-        <AdminForm key={b?.updatedAt.getTime()} action={saveBrandAction.bind(null, b?.id ?? null)} submitLabel={b ? "Änderungen speichern" : "Marke anlegen"}>
+        <AdminForm action={saveBrandAction.bind(null, b?.id ?? null)} submitLabel={b ? "Änderungen speichern" : "Marke anlegen"}>
           <div className="grid gap-5 md:grid-cols-2">
             <AField name="name" label="Name" required defaultValue={b?.name} />
             <AField name="slug" label="URL-Pfad" defaultValue={b?.slug} hint="Leer lassen: wird aus dem Namen erzeugt." />

@@ -23,7 +23,7 @@ export default async function EditCoupon({ params }: { params: Promise<{ id: str
   return (
     <AdminPage title={c?.code ?? "Neuer Gutschein"} description={c ? `Bisher ${c.usageCount}-mal eingelöst.` : undefined} actions={<AdminLink href="/admin/gutscheine">Zur Übersicht</AdminLink>}>
       <Panel>
-        <AdminForm key={c?.updatedAt.getTime()} action={saveCouponAction.bind(null, c?.id ?? null)} submitLabel={c ? "Änderungen speichern" : "Gutschein anlegen"}>
+        <AdminForm action={saveCouponAction.bind(null, c?.id ?? null)} submitLabel={c ? "Änderungen speichern" : "Gutschein anlegen"}>
           <div className="grid gap-5 md:grid-cols-2">
             <AField name="code" label="Code" required defaultValue={c?.code} hint="Wird in Großbuchstaben gespeichert, z. B. HERBST10." />
             <AField name="description" label="Interne Beschreibung" defaultValue={c?.description} />

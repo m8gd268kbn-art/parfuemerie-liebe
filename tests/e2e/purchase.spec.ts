@@ -5,6 +5,12 @@ import { expect, test } from "@playwright/test";
  * Warenkorb → Kasse → Testzahlung → Webhook → Bestätigung.
  * Voraussetzung: Demo-Seed und PAYMENT_PROVIDER=test.
  */
+test.describe.configure({ mode: "serial" });
+
+let orderNumber = "";
+const ADMIN_EMAIL = process.env.SEED_ADMIN_EMAIL ?? "admin@parfuemerie-liebe.test";
+const ADMIN_PASSWORD = process.env.SEED_ADMIN_PASSWORD ?? "Admin-Passwort-2026";
+
 test("Gastkauf mit Testzahlung und Webhook-Bestätigung", async ({ page, baseURL }) => {
   await page.context().addCookies([
     { name: "pl_consent", value: encodeURIComponent(JSON.stringify({ v: 1, necessary: true, analytics: false, marketing: false, ts: "e2e" })), url: baseURL! },
@@ -69,14 +75,72 @@ test("Gastkauf mit Testzahlung und Webhook-Bestätigung", async ({ page, baseURL
 
   // 12. Testzahlung
   await expect(page).toHaveURL(/\/kasse\/testzahlung\//);
-  const orderNumber = (await page.locator("dd").first().textContent())?.trim();
+  orderNumber = (await page.locator("dd").first().textContent())?.trim() ?? "";
   expect(orderNumber).toMatch(/^PL-\d+$/);
   await page.getByRole("button", { name: "Zahlung erfolgreich" }).click();
 
   // 13.–15. Webhook bestätigt → Bestätigungsseite
   await expect(page).toHaveURL(/\/kasse\/bestaetigung\//);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Vielen Dank, Mara");
-  await expect(page.getByText(orderNumber!)).toBeVisible();
+  await expect(page.getByText(orderNumber)).toBeVisible();
 
-  test.info().annotations.push({ type: "order", description: orderNumber! });
+  test.info().annotations.push({ type: "order", description: orderNumber });
+});
+
+/**
+ * Admin: Zugriffsschutz, Statuswechsel der eben bezahlten Bestellung mit Versandmail,
+ * Preisänderung einer Variante mit Wirkung im Shop.
+ */
+test("Admin: Statuswechsel, Versandmail und Preisänderung", async ({ page, baseURL }) => {
+  expect(orderNumber, "setzt den Gastkauf-Test voraus").not.toBe("");
+  await page.context().addCookies([
+    { name: "pl_consent", value: encodeURIComponent(JSON.stringify({ v: 1, necessary: true, analytics: false, marketing: false, ts: "e2e" })), url: baseURL! },
+  ]);
+
+  // Ohne Anmeldung existiert der Admin-Bereich nicht (404, kein Hinweis auf seine Existenz).
+  const anon = await page.request.get("/admin");
+  expect(anon.status()).toBe(404);
+
+  // Anmeldung als Admin leitet ins Dashboard.
+  await page.goto("/anmelden");
+  const main = page.getByRole("main");
+  await main.getByLabel("E-Mail-Adresse").fill(ADMIN_EMAIL);
+  await main.getByLabel("Passwort", { exact: true }).fill(ADMIN_PASSWORD);
+  await main.getByRole("button", { name: "Anmelden" }).click();
+  await expect(page).toHaveURL(/\/admin$/);
+  await expect(page.getByRole("heading", { level: 1, name: "Dashboard" })).toBeVisible();
+
+  // Bestellung öffnen: per Webhook bezahlt.
+  await page.goto(`/admin/bestellungen?q=${orderNumber}`);
+  await page.getByRole("link", { name: orderNumber }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(orderNumber);
+  await expect(page.getByText("Bezahlt").first()).toBeVisible();
+
+  // Status: versendet mit Sendungsnummer → Versandmail im Protokoll.
+  await page.getByLabel("Neuer Status").selectOption("shipped");
+  await page.getByLabel("Sendungsnummer").first().fill("00340434161234567890");
+  await page.getByRole("button", { name: "Status setzen" }).click();
+  await expect(page.getByText("Versendet").first()).toBeVisible();
+  await page.goto("/admin/emails");
+  await expect(page.getByRole("row", { name: /e2e-gast@example\.com.*Versandbestätigung/ }).first()).toBeVisible();
+
+  // Preisänderung einer Variante wirkt sofort im Shop (Cache-Invalidierung).
+  await page.goto("/admin/produkte?q=Sauvage");
+  await page.getByRole("link", { name: "Sauvage" }).first().click();
+  const variant = page.locator("form").filter({ has: page.locator('input[name="sizeMl"][value="200"]') });
+  const priceInput = variant.getByLabel("Preis in €", { exact: true });
+  const oldPrice = await priceInput.inputValue();
+  await priceInput.fill("123,45");
+  await variant.getByRole("button", { name: "Speichern" }).click();
+  await expect(page.getByText("Variante gespeichert.")).toBeVisible();
+  await page.goto("/produkt/dior-sauvage-eau-de-toilette");
+  await page.getByText("200 ml", { exact: true }).first().click();
+  await expect(page.getByText("123,45 €").first()).toBeVisible();
+
+  // Zurücksetzen, damit der Demo-Katalog unverändert bleibt.
+  await page.goto("/admin/produkte?q=Sauvage");
+  await page.getByRole("link", { name: "Sauvage" }).first().click();
+  await variant.getByLabel("Preis in €", { exact: true }).fill(oldPrice);
+  await variant.getByRole("button", { name: "Speichern" }).click();
+  await expect(page.getByText("Variante gespeichert.")).toBeVisible();
 });
