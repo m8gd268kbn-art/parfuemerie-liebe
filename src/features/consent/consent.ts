@@ -20,6 +20,20 @@ export function readConsent(): Consent | null {
   }
 }
 
+let cached: { raw: string | undefined; value: Consent | null } | null = null;
+
+/** Stabiler Snapshot für useSyncExternalStore (neues Objekt nur bei geändertem Cookie). */
+export function consentSnapshot(): Consent | null {
+  const raw = document.cookie.split("; ").find((c) => c.startsWith(`${CONSENT_COOKIE}=`));
+  if (!cached || cached.raw !== raw) cached = { raw, value: readConsent() };
+  return cached.value;
+}
+
+export function subscribeConsent(onChange: () => void) {
+  window.addEventListener(CONSENT_EVENT, onChange);
+  return () => window.removeEventListener(CONSENT_EVENT, onChange);
+}
+
 export function writeConsent(choice: { analytics: boolean; marketing: boolean }) {
   const value: Consent = { v: 1, necessary: true, analytics: choice.analytics, marketing: choice.marketing, ts: new Date().toISOString() };
   const secure = location.protocol === "https:" ? "; Secure" : "";

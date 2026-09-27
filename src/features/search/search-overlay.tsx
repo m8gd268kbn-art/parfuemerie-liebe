@@ -31,39 +31,36 @@ export function SearchOverlay({ defaults }: { defaults: SearchDefaults }) {
   const router = useRouter();
   const pathname = usePathname();
   const [q, setQ] = useState("");
-  const [data, setData] = useState<SearchSuggestions | null>(null);
-  const [loading, setLoading] = useState(false);
+  // Ergebnis gehört immer zu einer Anfrage; „lädt“ ergibt sich aus der Abweichung zur aktuellen Eingabe.
+  const [result, setResult] = useState<{ query: string; data: SearchSuggestions | null } | null>(null);
+  const query = q.trim();
+  const active = query.length >= 2;
+  const data = active ? (result?.data ?? null) : null;
+  const loading = active && result?.query !== query;
   const recent = useRecentlyViewed();
   const abort = useRef<AbortController | null>(null);
 
   useEffect(() => setSearchOpen(false), [pathname, setSearchOpen]);
 
   useEffect(() => {
-    const query = q.trim();
-    if (query.length < 2) {
-      setData(null);
-      setLoading(false);
-      return;
-    }
-    setLoading(true);
+    if (query.length < 2) return;
     const t = setTimeout(async () => {
       abort.current?.abort();
       const ctrl = new AbortController();
       abort.current = ctrl;
       try {
         const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal: ctrl.signal });
-        if (res.ok) setData(await res.json());
+        const next = res.ok ? ((await res.json()) as SearchSuggestions) : null;
+        setResult((prev) => ({ query, data: next ?? prev?.data ?? null }));
       } catch {
-        // abgebrochen
-      } finally {
-        if (!ctrl.signal.aborted) setLoading(false);
+        // abgebrochen (neue Eingabe) oder Netzwerkfehler: Zustand nicht verändern
+        if (!ctrl.signal.aborted) setResult((prev) => ({ query, data: prev?.data ?? null }));
       }
     }, 160);
     return () => clearTimeout(t);
-  }, [q]);
+  }, [query]);
 
   const submit = () => {
-    const query = q.trim();
     if (!query) return;
     track("search", { query });
     setSearchOpen(false);
@@ -71,7 +68,7 @@ export function SearchOverlay({ defaults }: { defaults: SearchDefaults }) {
   };
 
   const close = () => setSearchOpen(false);
-  const showResults = q.trim().length >= 2;
+  const showResults = active;
 
   return (
     <RD.Root open={searchOpen} onOpenChange={setSearchOpen}>

@@ -153,3 +153,32 @@ export function ActionButton({ action, label, variant = "secondary", confirm }: 
     </form>
   );
 }
+
+/** Datei-Upload (Bild) mit Vorschau des aktuellen Bildes und optionalem Entfernen. */
+export function AFile({ name, label, hint, current, removeName }: { name: string; label: string; hint?: string; current?: string | null; removeName?: string }) {
+  const id = useId();
+  const error = useFieldError(name);
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={id} className="text-caption font-medium">
+        {label} <span className="font-normal text-muted">(optional)</span>
+      </label>
+      {current && (
+        <div className="mb-1 flex items-center gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={current} alt="" className="h-14 w-auto max-w-32 border border-line bg-porcelain object-contain" />
+          {removeName && <ACheck name={removeName} label="Bild entfernen" />}
+        </div>
+      )}
+      <input
+        id={id}
+        name={name}
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/avif"
+        className="text-small file:mr-3 file:h-9 file:cursor-pointer file:rounded-sm file:border file:border-line-strong file:bg-white file:px-3 file:text-small"
+      />
+      <p className="text-[0.75rem] text-muted">{hint ?? "JPG, PNG, WebP oder AVIF, höchstens 5 MB."}</p>
+      {error && <p role="alert" className="text-[0.75rem] text-danger">{error}</p>}
+    </div>
+  );
+}

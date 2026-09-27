@@ -2,40 +2,38 @@
 
 import Link from "next/link";
 import Script from "next/script";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
 import { Check } from "@/components/ui/field";
 import { Modal } from "@/components/ui/dialog";
 import { analyticsProvider } from "./analytics";
-import { CONSENT_EVENT, CONSENT_OPEN_EVENT, readConsent, writeConsent, type Consent } from "./consent";
+import { CONSENT_OPEN_EVENT, consentSnapshot, readConsent, subscribeConsent, writeConsent, type Consent } from "./consent";
 
 /**
  * Zurückhaltender Consent-Hinweis unten links (kein blockierendes Popup).
  * „Nur notwendige“ ist gleichwertig zu „Alle akzeptieren“ platziert.
  */
 export function ConsentBanner() {
-  const [consent, setConsent] = useState<Consent | null | undefined>(undefined);
+  // undefined = noch unbekannt (Server-Rendering), null = keine Auswahl getroffen.
+  const consent = useSyncExternalStore<Consent | null | undefined>(subscribeConsent, consentSnapshot, () => undefined);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
 
-  useEffect(() => {
+  const openSettings = useCallback(() => {
     const current = readConsent();
-    setConsent(current);
     setAnalytics(current?.analytics ?? false);
     setMarketing(current?.marketing ?? false);
-    const onOpen = () => setSettingsOpen(true);
-    const onChange = (e: Event) => setConsent((e as CustomEvent<Consent>).detail);
-    window.addEventListener(CONSENT_OPEN_EVENT, onOpen);
-    window.addEventListener(CONSENT_EVENT, onChange);
-    return () => {
-      window.removeEventListener(CONSENT_OPEN_EVENT, onOpen);
-      window.removeEventListener(CONSENT_EVENT, onChange);
-    };
+    setSettingsOpen(true);
   }, []);
 
+  useEffect(() => {
+    window.addEventListener(CONSENT_OPEN_EVENT, openSettings);
+    return () => window.removeEventListener(CONSENT_OPEN_EVENT, openSettings);
+  }, [openSettings]);
+
   const save = (choice: { analytics: boolean; marketing: boolean }) => {
-    setConsent(writeConsent(choice));
+    writeConsent(choice);
     setSettingsOpen(false);
   };
 
@@ -76,7 +74,7 @@ export function ConsentBanner() {
           </div>
           <button
             type="button"
-            onClick={() => setSettingsOpen(true)}
+            onClick={openSettings}
             className="mt-4 text-caption text-ink-soft link-underline"
           >
             Einstellungen anpassen

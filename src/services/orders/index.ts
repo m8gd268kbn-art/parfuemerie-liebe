@@ -7,7 +7,7 @@ import { methodsForCountry } from "@/lib/commerce/shipping";
 import { checkoutSchema, type AddressInput } from "@/lib/validation/checkout";
 import { getCurrentUser } from "@/services/auth/session";
 import { invalidate, TAGS } from "@/services/cache";
-import { clearCart, loadLines, pricingLines, resolveCartId } from "@/services/cart";
+import { clearCart, loadLines, resolveCartId } from "@/services/cart";
 import { findCoupon, priorRedemptions } from "@/services/cart/coupons";
 import { db } from "@/services/db";
 import {

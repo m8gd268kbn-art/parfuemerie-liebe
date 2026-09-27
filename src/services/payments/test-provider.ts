@@ -38,7 +38,7 @@ export async function deliverTestWebhook(payload: TestWebhookPayload) {
 export const testProvider: PaymentProvider = {
   id: "test",
 
-  async createCheckout(req: CheckoutRequest): Promise<CheckoutSession> {
+  async createCheckout(_req: CheckoutRequest): Promise<CheckoutSession> {
     const providerRef = `test_cs_${randomToken(12)}`;
     return { providerRef, redirectUrl: `${siteUrl()}/kasse/testzahlung/${providerRef}` };
   },

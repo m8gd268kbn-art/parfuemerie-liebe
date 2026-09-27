@@ -10,7 +10,7 @@ const ALLOWED: Record<string, string> = {
   "image/webp": "webp",
   "image/avif": "avif",
 };
-const MAX_BYTES = 8 * 1024 * 1024;
+const MAX_BYTES = 5 * 1024 * 1024;
 
 /** Prüft Bilddateien anhand der tatsächlichen Signatur (nicht nur des angegebenen MIME-Typs). */
 function sniff(buffer: Buffer): string | null {
@@ -27,7 +27,7 @@ function sniff(buffer: Buffer): string | null {
  * `supabase`: Supabase Storage (öffentlicher Bucket).
  */
 export async function storeImage(file: File, folder = "products"): Promise<{ url: string }> {
-  if (file.size > MAX_BYTES) throw new Error("Die Datei ist größer als 8 MB.");
+  if (file.size > MAX_BYTES) throw new Error("Die Datei ist größer als 5 MB.");
   const buffer = Buffer.from(await file.arrayBuffer());
   const type = sniff(buffer);
   if (!type || !ALLOWED[type]) throw new Error("Bitte laden Sie ein JPG-, PNG-, WebP- oder AVIF-Bild hoch.");

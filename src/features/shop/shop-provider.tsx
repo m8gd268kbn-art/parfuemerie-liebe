@@ -90,6 +90,8 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    // refresh() setzt State erst nach dem await (asynchron), daher keine kaskadierenden Renders.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void refresh();
   }, [refresh]);
 

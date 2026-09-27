@@ -123,29 +123,6 @@ function castShadowPlane(width, depth, opacity = 0.22) {
   return mesh;
 }
 
-/** Farbiger Lichtfleck (vereinfachte Kaustik) neben dem Flakon. */
-function causticSpot(color, width, depth, strength = 0.5) {
-  const size = 256;
-  const c = document.createElement("canvas");
-  c.width = c.height = size;
-  const ctx = c.getContext("2d");
-  const col = new THREE.Color(color);
-  const r = Math.round(col.r * 255), gg = Math.round(col.g * 255), b = Math.round(col.b * 255);
-  const g = ctx.createRadialGradient(size * 0.5, size * 0.5, 0, size * 0.5, size * 0.5, size * 0.5);
-  g.addColorStop(0, `rgba(${r},${gg},${b},${strength})`);
-  g.addColorStop(0.6, `rgba(${r},${gg},${b},${strength * 0.35})`);
-  g.addColorStop(1, `rgba(${r},${gg},${b},0)`);
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, size, size);
-  const tex = new THREE.CanvasTexture(c);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, blending: THREE.MultiplyBlending, premultipliedAlpha: true });
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), mat);
-  mesh.rotation.x = -Math.PI / 2;
-  mesh.position.y = 0.004;
-  return mesh;
-}
-
 function latheBody(profilePts, segments = 96) {
   return new THREE.LatheGeometry(profilePts.map(([x, y]) => new THREE.Vector2(x, y)), segments);
 }

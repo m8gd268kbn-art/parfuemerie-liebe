@@ -147,7 +147,6 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
   const countries = useMemo(() => [...new Set(config.zones.flatMap((z) => z.countries))], [config.zones]);
   const [step, setStep] = useState(0);
   const [email, setEmail] = useState(prefill?.email ?? "");
-  const [phone, setPhone] = useState("");
   const [newsletter, setNewsletter] = useState(false);
   const [fulfillment, setFulfillment] = useState<"shipping" | "pickup">("shipping");
   const [shipping, setShipping] = useState<AddressInput>(savedAddresses[0] ?? { ...EMPTY_ADDRESS, firstName: prefill?.firstName ?? "", lastName: prefill?.lastName ?? "" });
@@ -226,7 +225,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
     start(async () => {
       const result = await placeOrderAction({
         email,
-        phone: phone || undefined,
+        phone: (fulfillment === "shipping" ? shipping.phone : billing.phone) || undefined,
         fulfillment,
         shippingAddress: fulfillment === "shipping" ? shipping : null,
         billingSameAsShipping: fulfillment === "shipping" ? billingSame : false,
