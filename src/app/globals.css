@@ -283,3 +283,220 @@
     transition-property: opacity, color, background-color, border-color !important;
   }
 }
+
+/* ---------- Komponenten-Details ---------- */
+
+/* Lade-Zustand in Buttons: drei ruhig pulsierende Punkte statt Spinner */
+.loading-dots {
+  display: inline-flex;
+  gap: 5px;
+}
+.loading-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.35;
+  animation: loading-dot 1s ease-in-out infinite;
+}
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes loading-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Skip-Link */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: var(--z-skip);
+  transform: translateY(-160%);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.75rem 1.25rem;
+  border-radius: 2px;
+  font-size: var(--text-small);
+  font-weight: 600;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ---------- Overlays (Radix Dialog): kurze, starke ease-out-Kurven ---------- */
+
+.overlay[data-state="open"] {
+  animation: overlay-in 240ms var(--ease-out);
+}
+.overlay[data-state="closed"] {
+  animation: overlay-out 200ms var(--ease-out);
+}
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes overlay-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.drawer[data-side="right"][data-state="open"] {
+  animation: drawer-in-right var(--dur-drawer) var(--ease-drawer);
+}
+.drawer[data-side="right"][data-state="closed"] {
+  animation: drawer-out-right var(--dur-exit) var(--ease-out);
+}
+.drawer[data-side="left"][data-state="open"] {
+  animation: drawer-in-left var(--dur-drawer) var(--ease-drawer);
+}
+.drawer[data-side="left"][data-state="closed"] {
+  animation: drawer-out-left var(--dur-exit) var(--ease-out);
+}
+@keyframes drawer-in-right {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+@keyframes drawer-out-right {
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+@keyframes drawer-in-left {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes drawer-out-left {
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.modal[data-state="open"] {
+  animation: modal-in 220ms var(--ease-out);
+}
+.modal[data-state="closed"] {
+  animation: modal-out 160ms var(--ease-out);
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.97);
+  }
+}
+@keyframes modal-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -49%) scale(0.98);
+  }
+}
+
+.sheet-top[data-state="open"] {
+  animation: sheet-top-in 260ms var(--ease-out);
+}
+.sheet-top[data-state="closed"] {
+  animation: sheet-top-out 180ms var(--ease-out);
+}
+@keyframes sheet-top-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -12px, 0);
+  }
+}
+@keyframes sheet-top-out {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+/* Accordion (Radix): Höhe über CSS-Variable */
+.accordion-content[data-state="open"] {
+  animation: accordion-open 240ms var(--ease-out);
+}
+.accordion-content[data-state="closed"] {
+  animation: accordion-close 200ms var(--ease-out);
+}
+@keyframes accordion-open {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+@keyframes accordion-close {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Popover/Dropdown: vom Auslöser aus skalieren */
+.popover[data-state="open"] {
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin, var(--radix-popover-content-transform-origin));
+  animation: popover-in 160ms var(--ease-out);
+}
+.popover[data-state="closed"] {
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin, var(--radix-popover-content-transform-origin));
+  animation: popover-out 120ms var(--ease-out);
+}
+@keyframes popover-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+@keyframes popover-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+/* ---------- Startseite: ein einziger inszenierter Moment ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-media {
+    animation: hero-reveal 1200ms var(--ease-in-out) both;
+  }
+  .hero-copy > * {
+    animation: hero-copy 800ms var(--ease-out) both;
+    animation-delay: calc(240ms + var(--i, 0) * 80ms);
+  }
+}
+@keyframes hero-reveal {
+  from {
+    clip-path: inset(0 0 14% 0);
+    transform: scale(1.02);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+@keyframes hero-copy {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+}

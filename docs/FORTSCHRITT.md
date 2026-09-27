@@ -29,14 +29,16 @@
 - Playwright **1.56.1** passt zum vorinstallierten Chromium (`/opt/pw-browsers/chromium-1194`). Nicht `playwright install` ausführen.
 - Gesperrt: api.stripe.com, Unsplash/Pexels, jsdelivr. Erreichbar: npm-Registry, Google Fonts.
 
+## Stand 27.09. (Session 2)
+
+Fertig: Env (`src/config/env.ts`), DB-Client (lazy), Migrationen `drizzle/` (RLS, pg_trgm, Bestellnummern-Sequenz), Services in `src/services/*` (auth, session, settings, catalog, search, cart, coupons, orders inkl. atomarer Reservierung, payments Stripe+Test mit signiertem Webhook, email Resend/Outbox, newsletter DOI, wishlist, storage, rate-limit), reine Logik `src/lib/*` (filters, pricing, shipping, order-status, format, settings-schema, validation), Seed (`npm run db:reset`, 26 Demo-Produkte), Render-Pipeline `scripts/render-bottles.ts` (three.js, `npm run images:render`), UI-Basis `src/components/ui/*`, Layout (Service-Bar, Header, Mobile-Menü, Footer, Consent, Toaster, Demo-Banner), Shop-State (`src/features/shop/shop-provider.tsx`, `/api/me`), Cart-Drawer, Such-Overlay (`/api/search`), ProductCard, ProductRail.
+
+Admin-Login (lokal): siehe `.env.local` (SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD).
+
 ## Nächster Schritt (hier weitermachen)
 
-Phase 4/5 fortsetzen (Task „Datenmodell, DB, Services, Seed & Produktbilder“):
-1. `src/config/env.ts` (Zod-validierte Env), `.env.example`, `drizzle.config.ts`, `src/services/db/index.ts` (postgres.js-Client).
-2. Migration generieren (`drizzle-kit generate`) + Zusatz-SQL: `pg_trgm`, RLS auf allen Tabellen aktivieren (keine Policies; Server verbindet als Owner), Sequenz für Bestellnummern.
-3. Shop-Settings-Schema (Zod, Defaults: Versand DE 4,95 € / frei ab 49 €, Proben, Service-Bar mit Platzhaltern wie `{freeShippingFrom}`, Zahlarten, Click & Collect aus, Store-Daten leer = Platzhalter, Rechtstexte als Platzhalter).
-4. Services: auth, settings, catalog (Filter/Sortierung/Facetten), search (pg_trgm), cart, coupons, shipping, orders (Bestandsreservierung atomar), payments (Stripe + Test), email, rate-limit, storage.
-5. Seed (≥ 20 Produkte, mehrere Marken, Größen, Sale, ausverkaufte Varianten, Proben, Admin-Nutzer aus Env).
-6. Render-Pipeline für Flakon-Bilder.
-
-Danach Tasks 3–6 laut Master-Prompt: Storefront → Checkout/Konto/Inhalte → Admin/SEO → Audits, Tests, Polish. Außerdem müssen `src/app/layout.tsx` und `src/app/page.tsx` noch ersetzt werden (sie sind noch die create-next-app-Vorlage).
+1. Startseite `src/app/(shop)/page.tsx` mit Sektionen in `src/features/home/*` (Hero, Neu eingetroffen, Duftwelten, Empfehlungen, Für Sie, Bestseller, Nischendüfte, Marken, Duftberatung, Parfümerie-Teaser).
+2. Kategorie-Route `src/app/(shop)/[category]/page.tsx` mit Filtern (URL) + Filter-Drawer, `/suche`.
+3. PDP `/produkt/[slug]` (Galerie, Flakon-Größenwahl, Notenschichten, Accordions, Cross-Selling, JSON-LD).
+4. Warenkorb-Seite, Wunschliste, Checkout (`/kasse`, Testzahlung `/kasse/testzahlung/[ref]`, Bestätigung), Konto, Auth-Seiten, Marken, `/parfuemerie`, Duftfinder, Service-/Rechtsseiten, Newsletter-Bestätigung, 404.
+5. Admin, SEO (sitemap/robots/metadata), Tests (Vitest, Playwright E2E), Audits, DESIGN.md.
