@@ -15,6 +15,7 @@ import {
   variantPriceHistory,
 } from "@/services/db/schema";
 import { TAGS } from "@/services/cache";
+import { lowestPriceBeforeReduction } from "@/lib/commerce/price-history";
 import type {
   BrandDTO,
   CategoryDTO,
@@ -30,28 +31,8 @@ import type {
 /* Hilfsfunktionen                                                     */
 /* ------------------------------------------------------------------ */
 
-type HistoryRow = { variantId: string; priceCents: number; changedAt: Date };
-
-/**
- * Niedrigster Preis der 30 Tage vor der aktuellen Preissenkung (§ 11 PAngV).
- * Berücksichtigt den zu Beginn des Zeitraums gültigen Preis und alle Änderungen danach.
- */
-export function lowestPriceBeforeReduction(history: HistoryRow[], currentPrice: number): number | null {
-  if (!history.length) return null;
-  const sorted = [...history].sort((a, b) => a.changedAt.getTime() - b.changedAt.getTime());
-  const current = sorted[sorted.length - 1];
-  if (current.priceCents !== currentPrice) return null;
-  const windowStart = current.changedAt.getTime() - 30 * 86_400_000;
-  const before = sorted.slice(0, -1);
-  const candidates: number[] = [];
-  let lastBeforeWindow: HistoryRow | undefined;
-  for (const row of before) {
-    if (row.changedAt.getTime() < windowStart) lastBeforeWindow = row;
-    else candidates.push(row.priceCents);
-  }
-  if (lastBeforeWindow) candidates.push(lastBeforeWindow.priceCents);
-  return candidates.length ? Math.min(...candidates) : null;
-}
+// Reine Logik (§ 11 PAngV) liegt in src/lib/commerce/price-history.ts und ist unit-getestet.
+export { lowestPriceBeforeReduction } from "@/lib/commerce/price-history";
 
 function toImage(row: typeof productImages.$inferSelect): ImageDTO {
   return {

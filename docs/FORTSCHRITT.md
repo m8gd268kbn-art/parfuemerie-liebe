@@ -35,10 +35,15 @@ Fertig: Env (`src/config/env.ts`), DB-Client (lazy), Migrationen `drizzle/` (RLS
 
 Admin-Login (lokal): siehe `.env.local` (SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD).
 
+## Stand 27.09. (Session 3)
+
+Fertig: kompletter Admin (`src/app/admin/*`): Dashboard, Bestellungen (Status, Tracking, Erstattung), Produkte (Stammdaten, Varianten mit Preisverlauf, Bild-Upload), Marken, Kategorien (Regel/manuell, reservierte URLs), Duftproben, Gutscheine (Berliner Zeit), Bewertungen (Moderation), Newsletter (DOI, CSV-Export nur bestätigte, CSV-Injection-Schutz), Kunden (Sperren beendet Sessions), Einstellungen (9 Tabs), E-Mail-Protokoll (sandboxed Vorschau). Server Actions prüfen alle `requireAdmin()`.
+`next.config.ts`: Sicherheits-Header, `X-Robots-Tag` für /admin und /design-system, Upload-Limit 6 MB.
+Tests: Vitest 26 Unit-Tests (`npm test`), E2E Kauf + Admin-Statuswechsel + Preisänderung grün (`npm run build && npm run start`, dann `BASE_URL=http://localhost:3000 npx playwright test`). Für lokalen Produktions-Build mit Testzahlung steht `ALLOW_TEST_PAYMENTS=true` in `.env.local` (nie live).
+Hinweis Shell: `pkill -f "next start"` beendet die eigene Shell; stattdessen `pkill -f "[n]ext start"`.
+
 ## Nächster Schritt (hier weitermachen)
 
-Storefront, Checkout (Testzahlung + Webhook, E2E grün), Konto, Auth, Marken, Filialseite, Duftfinder, Service-/Rechtsseiten, 404, Sitemap/Robots sind fertig.
-Offen:
-1. Admin `src/app/admin/*`: Layout, Navigation, Dashboard und Formular-Kit (`src/features/admin/kit.tsx`, `ui.tsx`) stehen. Noch zu bauen: Bestellungen (Liste, Detail mit Status/Tracking/Erstattung über `src/services/orders/admin.ts`), Produkte+Varianten+Bilder, Bestellungen mit Status/Tracking/Erstattung, Marken, Kategorien, Kunden, Gutscheine, Reviews, Newsletter, Proben, Einstellungen, E-Mail-Outbox).
-2. `/design-system` (noindex), E2E um Admin-Statuswechsel erweitern, Vitest-Unit-Tests (pricing, filters, coupons, lowest price, finder, webhook signature).
-3. Audits: Impeccable detect + Finish-Review (degraded, in-thread), Emil-Motion-Audit, Taste-Pre-Flight, Polish-Pass, DESIGN.md + `.impeccable/design.json`, README, docs/MEDIA.md.
+1. `/design-system` (noindex).
+2. Audits: Impeccable detect + Finish-Review (degraded, in-thread), Emil-Motion-Audit, Taste-Pre-Flight, Polish-Pass (mobil/tablet/desktop).
+3. Doku: DESIGN.md + `.impeccable/design.json`, README (Setup, Env, Stripe/Supabase, offene Punkte), docs/MEDIA.md.
