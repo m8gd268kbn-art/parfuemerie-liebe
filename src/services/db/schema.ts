@@ -443,6 +443,8 @@ export const orders = pgTable(
     /** Zufälliges Token für Gast-Links (Bestätigung, Sendungsstatus). */
     publicToken: text("public_token").notNull(),
     userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
+    /** Warenkorb, aus dem bestellt wurde; wird nach bestätigter Zahlung geleert. */
+    cartId: uuid("cart_id"),
     email: text("email").notNull(),
     phone: text("phone"),
     status: orderStatusEnum("status").notNull().default("pending_payment"),
