@@ -170,6 +170,8 @@ export const settingsSchema = z.object({
     .prefault({}),
   home: z
     .object({
+      /** Großes Wort über die ganze Breite der Startseite (kurz halten, 4 bis 7 Buchstaben). */
+      heroWord: z.string().default("Liebe"),
       heroHeadline: z.string().default("Der Duft, der bleibt."),
       heroSubline: z
         .string()
@@ -178,8 +180,9 @@ export const settingsSchema = z.object({
       heroPrimaryHref: z.string().default("/parfum"),
       heroSecondaryLabel: z.string().default("Neuheiten"),
       heroSecondaryHref: z.string().default("/neuheiten"),
-      heroImageUrl: z.string().default("/media/hero/hero.webp"),
-      heroImageAlt: z.string().default("Glasflakons im Streiflicht auf hellem Stein"),
+      /** Freigestelltes Motiv mit transparentem Hintergrund (steht vor dem großen Wort). */
+      heroImageUrl: z.string().default("/media/cutouts/hero.webp"),
+      heroImageAlt: z.string().default("Parfumflakon mit roséfarbener Flüssigkeit und goldener Kappe (Platzhalterbild)"),
     })
     .prefault({}),
   legal: z

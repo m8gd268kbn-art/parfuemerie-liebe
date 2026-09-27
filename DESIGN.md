@@ -130,12 +130,15 @@ Der Shop ist das Haus in der Karmarschstraße im Netz: weißer Stein, hohe Rundb
 
 Premium entsteht durch Typografie, Proportionen, Weißraum und Produktpräsentation. Bodoni Moda setzt Überschriften, Mona Sans trägt Oberfläche und Text, breite Versalien stehen wie „PARFÜMERIE“ auf der Blende über dem Eingang. Der Rundbogen der Schaufenster ist die eine Form, die aus dem Haus übernommen wird: für das Stillleben der Startseite und die Fotos des Hauses. Produktbilder bleiben rechteckig, ihre Farbe kommt aus der Flüssigkeit im Glas.
 
-Bewegung folgt einer kurzen, starken ease-out-Kurve. Es gibt einen inszenierten Moment (das Aufdecken des Schaufensters auf der Startseite); alles andere ist Rückmeldung auf Handlungen.
+Der Aufbau folgt einer editorialen Modehaus-Vorlage des Auftraggebers (Struktur übernommen, Farben nicht): ein großes Wort über die volle Breite mit freigestelltem Flakon davor, ein Kategorie-Band mit großen Ziffern, ein geteilter Abschnitt mit schräger Kante, eine Service-Zeile und klare Produktraster.
+
+Bewegung folgt einer kurzen, starken ease-out-Kurve. Es gibt einen inszenierten Moment (Wort und Flakon erscheinen auf der Startseite); alles andere ist Rückmeldung auf Handlungen.
 
 **Key Characteristics:**
 - Heller Grund, Anthrazit als Tinte, Liebe-Rot als einziger Markenakzent.
 - Das Original-Logo (roter Schriftzug) mit „PARFÜMERIE“ in breiten Versalien darunter.
-- Rundbogen wie die Schaufenster des Stammhauses, nur für Schaufenster-Momente.
+- Großes Wort in Bodoni über die volle Breite, davor ein freigestellter Flakon mit echter Glastransparenz.
+- Rundbogen wie die Schaufenster des Stammhauses nur auf der Filialseite; auf der Startseite die schräge Kante.
 - Bodoni Moda für Überschriften, Mona Sans mit Breitenachse für alles andere.
 - Bedienelemente und Panels 2 px, Produktbilder randlos, rund nur Icon-Knöpfe und Farbmuster.
 - Schatten nur auf Ebenen über der Seite; nur helles Theme.
@@ -214,7 +217,11 @@ Die Seite ist flach. Flächen trennen sich durch Haarlinien und den Wechsel von 
 Präzise statt weich, mit einer Ausnahme aus der Architektur. Bedienelemente und Panels haben 2 px Radius (Knöpfe, Felder, Größen-Kacheln, Badges), Produktbilder sind randlos (0), rund sind nur Icon-Knöpfe (44 px Trefferfläche), Farbmuster und Zähler. Linien sind 1 px. Kein Element ist eine Pille.
 
 ### Named Rules
-**The Shop Window Rule.** Der Rundbogen (oben halbkreisförmig, `arch`) kommt von den Schaufenstern des Stammhauses und rahmt nur Schaufenster-Momente: das Stillleben der Startseite und Fotos des Hauses, im Hochformat 4:5. Produktkarten, Kacheln und Bedienelemente bleiben gerade.
+**The Shop Window Rule.** Der Rundbogen (oben halbkreisförmig, `arch`) kommt von den Schaufenstern des Stammhauses und rahmt nur das Foto des Hauses auf der Filialseite (Hochformat 4:5). Produktkarten, Kacheln und Bedienelemente bleiben gerade.
+
+**The Diagonal Rule.** Die einzige schräge Linie ist die Kante zwischen Text und Foto im geteilten Abschnitt der Startseite (Bild von 22 % oben auf 0 % unten angeschnitten). Keine weiteren schrägen Flächen oder Streifen.
+
+**The Numeral Rule.** Große Ziffern 01 bis 04 nur im Kategorie-Band, als Umriss in Bodoni (1 px `line-strong`), nie gefüllt und nie als Abschnittsnummerierung.
 
 ## Components
 
@@ -236,8 +243,14 @@ Präzise statt weich, mit einer Ausnahme aus der Architektur. Bedienelemente und
 
 ### Navigation
 - **Logo:** Original-Schriftzug „Liebe“ in `liebe-rot-logo` (vektorisiert aus der gelieferten Datei, `public/media/brand/liebe-logo.svg`), darunter „PARFÜMERIE“ in breiten Versalien. Header 40 px Schrifthöhe, kompakt 32 px, Footer 52 px. Nie umfärben, verzerren oder auf Rot setzen.
-- **Header:** Logo links, Hauptnavigation mittig in Mona Sans (ab `xl`), rechts runde Icon-Knöpfe (Suche, Parfümerie, Konto, Wunschliste, Warenkorb mit Zähler). Aktiver Punkt mit feiner Unterstreichung. Darunter `xl` ein Menü-Drawer von links.
-- **Service-Leiste:** Rote Leiste wie das Band über der Fassade, weiße Schrift, höchstens drei konfigurierbare, wahre Aussagen (mobil eine, Tablet zwei).
+- **Header:** Menü-Knopf und Hauptnavigation links (breite Versalien 11 px, „Angebote“ in Liebe-Rot), Logo mittig, rechts Suche, Parfümerie, Konto, Wunschliste und Warenkorb mit „(n)“. Hauptnavigation ab 1280 px, „Nischendüfte“ ab 1536 px; alles Weitere im Menü.
+- **Service-Leiste:** Rote Leiste wie das Band über der Fassade, weiße breite Versalien: links konfigurierbare, wahre Hinweise (mobil einer, ab 1280 px zwei), rechts „Bestellung verfolgen | Hilfe | Unsere Parfümerie“. Nie abgeschnitten.
+
+### Startseite (Struktur)
+- **Hero:** oben links die Überschrift als kleine Versalien (H1) mit einem Satz darunter, oben rechts ein runder Stempel „Parfümerie Liebe · Hannover · seit 1871“ (statisch), in der Mitte das große Wort (Einstellung `heroWord`) in Bodoni über die volle Breite, davor der freigestellte Flakon (Höhe an die Viewportbreite gekoppelt, verdeckt etwa 30 % des Worts), unten links Primärknopf mit Pfeil und Textlink, unten rechts „Hannover / seit 1871“.
+- **Kategorie-Band:** Porzellan-Band, vier Kacheln (Damen, Herren, Unisex, Nischendüfte) mit Umriss-Ziffer, freigestelltem Flakon, Name, Anzahl und „Ansehen →“.
+- **Geteilter Abschnitt:** Text auf Porzellan links, Foto des Hauses rechts mit schräger Kante.
+- **Service-Zeile:** vier Punkte mit Icon (Versand, Widerruf, Duftproben, sichere Zahlung) aus den Einstellungen, getrennt durch Haarlinien.
 
 ### Flakon-Größenwahl (Signature)
 Jede Größe ist eine Kachel mit einer gezeichneten Flakon-Silhouette, deren Füllstand die Größe relativ zur größten zeigt, gefüllt in der Flüssigkeitsfarbe des Dufts (500 ms ease-out beim Wechsel). Darunter Größe und Preis dieser Größe; Ausverkauftes ist durchgestrichen und gestrichelt.
@@ -250,7 +263,8 @@ Kopf-, Herz- und Basisnote als übereinanderliegende Flüssigkeitsschichten, jew
 ### Do:
 - **Do** das Original-Logo unverändert in Liebe-Rot auf hellem Grund zeigen.
 - **Do** Rot sparsam einsetzen: eine rote Primärhandlung pro Bereich, dazu Service-Leiste, Herz und Zähler.
-- **Do** Fotos des Hauses im Rundbogen (4:5) zeigen, Produkte im geraden Bild.
+- **Do** das große Wort kurz halten (4 bis 7 Buchstaben) und das Motiv davor freigestellt mit transparentem Hintergrund liefern.
+- **Do** Fotos des Hauses auf der Filialseite im Rundbogen (4:5) zeigen, Produkte im geraden Bild.
 - **Do** jede Kaufinformation sichtbar halten: Größe, Preis dieser Größe, Grundpreis pro 100 ml, Verfügbarkeit, Lieferzeit.
 - **Do** fehlende Geschäftsdaten als gekennzeichneten Platzhalter setzen (gestrichelter Rahmen, Etikett „Platzhalter“).
 - **Do** Hover-Effekte nur für feine Zeiger und `prefers-reduced-motion` für jede Bewegung berücksichtigen.

@@ -186,13 +186,14 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
         {tab === "startseite" && (
           <AdminForm action={action}>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              <AField name="heroWord" label="Großes Wort" required defaultValue={s.home.heroWord} hint="Steht über die ganze Breite hinter dem Motiv, höchstens 12 Zeichen." />
               <AField name="heroHeadline" label="Überschrift" required defaultValue={s.home.heroHeadline} />
               <AField name="heroSubline" label="Unterzeile" defaultValue={s.home.heroSubline} />
               <AField name="heroPrimaryLabel" label="Hauptknopf: Text" required defaultValue={s.home.heroPrimaryLabel} />
               <AField name="heroPrimaryHref" label="Hauptknopf: Pfad" required defaultValue={s.home.heroPrimaryHref} hint="Interner Pfad, z. B. /parfum" />
               <AField name="heroSecondaryLabel" label="Zweiter Link: Text" defaultValue={s.home.heroSecondaryLabel} />
               <AField name="heroSecondaryHref" label="Zweiter Link: Pfad" defaultValue={s.home.heroSecondaryHref} />
-              <AFile name="heroImage" label="Titelbild" current={s.home.heroImageUrl} hint="Querformat, mindestens 2400 px breit." />
+              <AFile name="heroImage" label="Motiv (freigestellt)" current={s.home.heroImageUrl} hint="PNG oder WebP mit transparentem Hintergrund, Hochformat, mindestens 1400 px hoch." />
               <AField name="heroImageAlt" label="Alternativtext zum Titelbild" required defaultValue={s.home.heroImageAlt} />
             </div>
           </AdminForm>

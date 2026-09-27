@@ -122,6 +122,7 @@ export async function saveSettingsAction(section: SettingsSection, _prev: S, fd:
         const heroImageUrl = await upload(fd, "heroImage");
         patch = {
           home: {
+            heroWord: str(fd, "heroWord").slice(0, 12) || "Liebe",
             heroHeadline: str(fd, "heroHeadline"),
             heroSubline: str(fd, "heroSubline"),
             heroPrimaryLabel: str(fd, "heroPrimaryLabel"),

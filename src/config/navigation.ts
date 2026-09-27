@@ -12,6 +12,19 @@ export const MAIN_NAV: NavItem[] = [
   { label: "Angebote", href: "/angebote" },
 ];
 
+/**
+ * Kopfzeile (Desktop, links vom zentrierten Logo). Kürzer als MAIN_NAV, damit Logo mittig bleibt;
+ * alles Weitere im Menü (Hamburger). `wide`: erst ab 1536 px.
+ */
+export const HEADER_NAV: (NavItem & { wide?: boolean })[] = [
+  { label: "Damen", href: "/damen" },
+  { label: "Herren", href: "/herren" },
+  { label: "Unisex", href: "/unisex" },
+  { label: "Nischendüfte", href: "/nischenduefte", wide: true },
+  { label: "Marken", href: "/marken" },
+  { label: "Angebote", href: "/angebote" },
+];
+
 /** Mobile Navigation: eigene Struktur statt zusammengedrückter Desktop-Navigation. */
 export const MOBILE_NAV: { title: string; items: NavItem[] }[] = [
   {

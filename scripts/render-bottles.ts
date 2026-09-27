@@ -23,6 +23,40 @@ const OUT = path.join(ROOT, "public", "media");
 const force = process.argv.includes("--force");
 const only = process.argv.find((a) => a.startsWith("--only="))?.split("=")[1];
 const heroOnly = process.argv.includes("--hero");
+const cutoutsOnly = process.argv.includes("--cutouts");
+
+/**
+ * Freisteller für die Startseite (Hero und Kategorie-Band): jeweils ein Flakon mit echter Transparenz.
+ * Zusammengesetzt aus zwei Renderings vor Weiß und Schwarz (Differenz-Matting).
+ */
+const CUTOUTS = [
+  { file: "hero.webp", width: 1400, height: 2000, bottle: { shape: "tall-rect", cap: "gold", liquid: "#e7b39a", glass: "#f3e7df" }, rotY: -0.32 },
+  { file: "damen.webp", width: 1000, height: 1250, bottle: { shape: "round", cap: "gold", liquid: "#eab8c0", glass: "#f6ecee" }, rotY: -0.2 },
+  { file: "herren.webp", width: 1000, height: 1250, bottle: { shape: "tall-rect", cap: "black", liquid: "#8aa4c2", glass: "#3f5a7a" }, rotY: -0.3 },
+  { file: "unisex.webp", width: 1000, height: 1250, bottle: { shape: "cylinder", cap: "black", liquid: "#e6d6b8", glass: "#eef1f0" }, rotY: -0.2 },
+  { file: "nische.webp", width: 1000, height: 1250, bottle: { shape: "stepped", cap: "glass", liquid: "#b67b58", glass: "#efe6dd" }, rotY: -0.45 },
+] as const;
+
+/** Differenz-Matting: alpha = 1 - (weiß - schwarz), Farbe = schwarz / alpha (je Kanal gemittelt). */
+async function matte(whiteUrl: string, blackUrl: string, target: string, width: number) {
+  const decode = async (u: string) => sharp(Buffer.from(u.split(",")[1], "base64")).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const [w, b] = await Promise.all([decode(whiteUrl), decode(blackUrl)]);
+  const { width: W, height: H } = w.info;
+  const out = Buffer.alloc(W * H * 4);
+  for (let i = 0, j = 0; i < w.data.length; i += 3, j += 4) {
+    const diff = (w.data[i] - b.data[i] + w.data[i + 1] - b.data[i + 1] + w.data[i + 2] - b.data[i + 2]) / 3;
+    const a = Math.max(0, Math.min(255, 255 - diff));
+    out[j + 3] = a;
+    if (a > 0) for (let c = 0; c < 3; c++) out[j + c] = Math.min(255, Math.round((b.data[i + c] * 255) / a));
+  }
+  await mkdir(path.dirname(target), { recursive: true });
+  const webp = await sharp(out, { raw: { width: W, height: H, channels: 4 } })
+    .trim({ threshold: 1 })
+    .resize({ width, withoutEnlargement: true })
+    .webp({ quality: 86, alphaQuality: 90, effort: 5 })
+    .toBuffer();
+  await writeFile(target, webp);
+}
 
 const MIME: Record<string, string> = { ".js": "text/javascript", ".html": "text/html" };
 
@@ -86,6 +120,23 @@ async function main() {
 
   const render = (spec: unknown) =>
     page.evaluate((s) => (window as unknown as { renderScene: (x: unknown) => Promise<string> }).renderScene(s), spec);
+
+  // Freisteller (Startseite: Hero vor dem großen Schriftzug, Kategorie-Band)
+  for (const c of CUTOUTS) {
+    const target = path.join(OUT, "cutouts", c.file);
+    if (!force && !cutoutsOnly && (await exists(target))) continue;
+    const t = Date.now();
+    const base = { view: "cutout", width: c.width, height: c.height, bottle: c.bottle, rotY: c.rotY };
+    const white = await render({ ...base, matte: "#ffffff" });
+    const black = await render({ ...base, matte: "#000000" });
+    await matte(white, black, target, c.width);
+    console.log(`Freisteller ${c.file} (${((Date.now() - t) / 1000).toFixed(1)} s)`);
+  }
+  if (cutoutsOnly) {
+    await browser.close();
+    server.close();
+    return;
+  }
 
   // Hero: drei Flakons auf Stein im Streiflicht
   const heroTarget = path.join(OUT, "hero", "hero.webp");

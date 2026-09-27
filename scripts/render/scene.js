@@ -411,6 +411,32 @@ window.renderScene = async function renderScene(spec) {
   const height = spec.height ?? 2000;
   const renderer = makeRenderer(width, height);
   const scene = new THREE.Scene();
+
+  // Freisteller: gleicher Flakon einmal vor Weiß, einmal vor Schwarz (spec.matte). Aus der Differenz
+  // berechnet render-bottles.ts echte Transparenz, auch durch das Glas und den Kontaktschatten.
+  if (spec.view === "cutout") {
+    scene.background = new THREE.Color(spec.matte);
+    environment(renderer, scene);
+    studioLights(scene, { warm: true, keyFrom: spec.keyFrom ?? [-7, 8, 6] });
+    const b = buildBottle(spec.bottle);
+    b.group.rotation.y = spec.rotY ?? -0.28;
+    scene.add(b.group);
+    const cs = contactShadow(b.width * 2.2, b.depth * 2.6, 0.5);
+    scene.add(cs);
+    const center = b.totalHeight / 2;
+    const camera = new THREE.PerspectiveCamera(spec.fov ?? 22, width / height, 0.1, 200);
+    const dist = (spec.distance ?? 2.7) * b.totalHeight + 2.4;
+    camera.position.set(0, center + 0.6, dist);
+    camera.lookAt(0, center - 0.12, 0);
+    camera.updateProjectionMatrix();
+    renderer.render(scene, camera);
+    renderer.render(scene, camera);
+    const url = renderer.domElement.toDataURL("image/png");
+    renderer.dispose();
+    renderer.domElement.remove();
+    return url;
+  }
+
   const ground = spec.view === "lifestyle" || spec.view === "hero" ? new THREE.Color(spec.ground ?? "#d3ccc0") : PAPER;
   scene.background = ground.clone();
   environment(renderer, scene);

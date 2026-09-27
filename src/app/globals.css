@@ -464,23 +464,39 @@
 }
 
 /* ---------- Startseite: ein einziger inszenierter Moment ---------- */
+/* Großes Wort über die volle Breite: Schriftgröße aus der verfügbaren Breite (Faktor = Laufweite des Worts in em). */
+.hero-word {
+  font-size: min(calc((100vw - 2 * var(--gutter)) / var(--word-em, 2.9)), 36rem);
+  line-height: 0.78;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 90rem) {
+  .hero-word {
+    font-size: min(calc((var(--container-max) - 2 * var(--gutter)) / var(--word-em, 2.9)), 36rem);
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
-  .hero-media {
-    animation: hero-reveal 1200ms var(--ease-in-out) both;
+  .hero-word {
+    animation: hero-word 900ms var(--ease-out) 80ms both;
+  }
+  .hero-bottle {
+    animation: hero-bottle 1100ms var(--ease-out) 240ms both;
   }
   .hero-copy > * {
     animation: hero-copy 800ms var(--ease-out) both;
-    animation-delay: calc(240ms + var(--i, 0) * 80ms);
+    animation-delay: calc(420ms + var(--i, 0) * 80ms);
   }
 }
-@keyframes hero-reveal {
+@keyframes hero-word {
   from {
-    clip-path: inset(0 0 14% 0);
-    transform: scale(1.02);
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
   }
-  to {
-    clip-path: inset(0 0 0 0);
-    transform: scale(1);
+}
+@keyframes hero-bottle {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
   }
 }
 @keyframes hero-copy {

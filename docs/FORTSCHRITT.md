@@ -64,6 +64,17 @@ Hinweis Shell: `pkill -f "next start"` beendet die eigene Shell; stattdessen `pk
 - Detector ohne neue Befunde, Finish-Review in-thread: ship. E2E 3/3, Unit 26/26, Lint 0.
 - Offen beim Auftraggeber: offizielle Logo-Vektordatei und CI-Farbwerte, höher aufgelöstes Foto mit geklärtem Nutzungsrecht, Öffnungszeiten, Adresse Göttingen.
 
+## Stand 27.09. (Session 3, Nachtrag: Struktur nach Vorlage)
+
+- Auftraggeber hat eine Modehaus-Vorlage geschickt: **Struktur übernehmen, Farben nicht.** Umgesetzt:
+  - Service-Leiste: Hinweise links, Links rechts (Bestellung verfolgen | Hilfe | Unsere Parfümerie).
+  - Header: Menü und Navigation links (`HEADER_NAV`), Logo mittig, Icons rechts, Warenkorb „(n)“.
+  - Hero: großes Wort (`home.heroWord`, Standard „Liebe“) in Bodoni über die volle Breite, freigestellter Flakon davor, Versalien-H1 oben links, Stempel „seit 1871“ oben rechts, Knopf und Textlink unten links, „Hannover / seit 1871“ unten rechts.
+  - Kategorie-Band (Damen, Herren, Unisex, Nische) mit Umriss-Ziffern und Freistellern; geteilter Abschnitt „Unser Haus in Hannover“ mit schräger Kante; Service-Zeile; Bestseller-Raster.
+- Render-Pipeline: Ansicht „cutout“ mit Differenz-Matting (Weiß/Schwarz) für echte Transparenz (`npm run images:render -- --cutouts`, `public/media/cutouts/`).
+- Entfernt: Abschnitte Empfehlungen, Für Sie, Nischendüfte, Parfümerie-Teaser (durch Band/Split ersetzt).
+- Detector: nur bekannte Fehlalarme plus gewollte Versalien-Etiketten und angeschnittene Kachel-Motive. E2E 3/3.
+
 ## Nächster Schritt (hier weitermachen)
 
-Technisch nichts offen. Sobald CI-Unterlagen, Fotos oder Öffnungszeiten kommen: Logo/Icon ersetzen, Farbwerte in `src/app/globals.css` und DESIGN.md angleichen, Fotos im Admin hochladen, Öffnungszeiten im Admin eintragen. Inhalte des Inhabers siehe README „Vor dem Livegang“.
+Technisch nichts offen. Offene Inhalte siehe README „Vor dem Livegang“ (CI-Unterlagen, Fotos, Öffnungszeiten, Adresse Göttingen).
