@@ -24,6 +24,8 @@ export function organizationJsonLd(settings: ShopSettings) {
     ...(sameAs.length ? { sameAs } : {}),
     ...(settings.store.email ? { email: settings.store.email } : {}),
     ...(settings.store.phone ? { telephone: settings.store.phone } : {}),
+    ...(settings.store.foundedYear ? { foundingDate: settings.store.foundedYear } : {}),
+    ...(settings.store.legalName ? { legalName: settings.store.legalName } : {}),
   };
 }
 

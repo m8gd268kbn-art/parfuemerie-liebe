@@ -202,7 +202,9 @@ export const getBrands = unstable_cache(
     const rows = await db
       .select({
         brand: brands,
-        productCount: sql<number>`(select count(*)::int from ${products} p where p.brand_id = ${brands.id} and p.active)`,
+        // Äußere Spalte explizit qualifizieren: Drizzle rendert ${brands.id} in Abfragen ohne Join
+        // als unqualifiziertes "id", das in der Unterabfrage p.id meinen würde.
+        productCount: sql<number>`(select count(*)::int from ${products} p where p.brand_id = ${sql.identifier("brands")}.${sql.identifier("id")} and p.active)`,
       })
       .from(brands)
       .where(eq(brands.active, true))

@@ -55,7 +55,26 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
               <AField name="email" label="E-Mail (öffentlich)" defaultValue={s.store.email} type="email" />
               <AField name="supportEmail" label="E-Mail für Kontaktanfragen" defaultValue={s.store.supportEmail} type="email" hint="Empfängt Nachrichten aus dem Kontaktformular." />
               <AField name="mapUrl" label="Link zur Karte" defaultValue={s.store.mapUrl} hint="Wird als Link geöffnet, keine eingebettete Karte (Datenschutz)." />
+              <AField name="foundedYear" label="Gegründet" defaultValue={s.store.foundedYear} hint="Nur belegtes Jahr eintragen." />
             </div>
+            <fieldset className="border-t border-line pt-6">
+              <legend className="mb-4 text-small font-semibold">Weitere Häuser</legend>
+              <input type="hidden" name="branchCount" value={s.store.branches.length} />
+              <div className="flex flex-col gap-4">
+                {[...s.store.branches, null].map((b, i) => (
+                  <div key={b?.name ?? "neu"} className="grid grid-cols-1 gap-3 rounded-sm bg-porcelain/60 p-4 sm:grid-cols-2 lg:grid-cols-5">
+                    <AField name={`branch.${i}.name`} label={b ? "Name" : "Neues Haus: Name"} defaultValue={b?.name} className="lg:col-span-2" />
+                    <AField name={`branch.${i}.street`} label="Straße und Nr." defaultValue={b?.street} />
+                    <div className="grid grid-cols-[6rem_1fr] gap-3 lg:col-span-2">
+                      <AField name={`branch.${i}.postalCode`} label="PLZ" defaultValue={b?.postalCode} />
+                      <AField name={`branch.${i}.city`} label="Ort" defaultValue={b?.city} />
+                    </div>
+                    <AField name={`branch.${i}.phone`} label="Telefon" defaultValue={b?.phone} />
+                    {b && <div className="flex items-end pb-2.5"><ACheck name={`branch.${i}.remove`} label="Entfernen" /></div>}
+                  </div>
+                ))}
+              </div>
+            </fieldset>
             <fieldset className="border-t border-line pt-6">
               <legend className="mb-4 text-small font-semibold">Öffnungszeiten</legend>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">

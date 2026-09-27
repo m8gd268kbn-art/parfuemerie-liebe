@@ -13,7 +13,7 @@ import { getSettings } from "@/services/settings";
 
 export const metadata: Metadata = {
   title: "Unsere Parfümerie in Hannover",
-  description: "Die Parfümerie Liebe in Hannover: persönliche Beratung, Düfte zum Testen, Adresse und Öffnungszeiten.",
+  description: "Die Parfümerie Liebe in Hannover, seit 1871: persönliche Beratung, Düfte zum Testen, Adresse und Öffnungszeiten.",
   alternates: { canonical: "/parfuemerie" },
 };
 
@@ -31,7 +31,7 @@ export default async function StorePage() {
           <div className="flex flex-col justify-end gap-5 md:col-span-5">
             <h1 className="font-display text-display">Parfümerie Liebe</h1>
             <p className="text-body-lg text-ink-soft">
-              {s.about || `Unsere Parfümerie in ${s.city}. Hier testen Sie Düfte in Ruhe und lassen sich persönlich beraten. Den Online-Shop führen wir aus demselben Sortiment.`}
+              {s.about || `Unsere Parfümerie in ${s.city}. Hier testen Sie Düfte in Ruhe und lassen sich persönlich beraten.`}
             </p>
           </div>
           <div className="md:col-span-7">
@@ -92,6 +92,22 @@ export default async function StorePage() {
           <StoreInfo settings={settings} />
         </div>
       </section>
+
+      {s.branches.length > 0 && (
+        <section aria-labelledby="branches-title" className="container-page pb-[var(--section-space)]">
+          <h2 id="branches-title" className="mb-6 font-display text-h3">Weitere Häuser</h2>
+          <ul className="grid grid-cols-1 gap-x-6 gap-y-8 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-3">
+            {s.branches.map((b) => (
+              <li key={b.name} className="flex flex-col gap-1.5 text-small">
+                <p className="font-semibold">{b.name}</p>
+                {b.street ? <p className="text-ink-soft">{b.street}<br />{b.postalCode} {b.city}</p> : <p><Placeholder>Adresse in {b.city}</Placeholder></p>}
+                {b.phone && <a href={`tel:${b.phone.replace(/[^+\d]/g, "")}`} className="self-start link-underline">{b.phone}</a>}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 max-w-2xl text-caption text-muted">Der Online-Shop wird von der Parfümerie Liebe in {s.city} betreut.</p>
+        </section>
+      )}
 
       <section aria-labelledby="store-brands" className="container-page pb-[var(--section-space)]">
         <h2 id="store-brands" className="mb-6 font-display text-h3">Marken, die Sie auch online finden</h2>

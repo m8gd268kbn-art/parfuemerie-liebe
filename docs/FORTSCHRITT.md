@@ -51,7 +51,14 @@ Hinweis Shell: `pkill -f "next start"` beendet die eigene Shell; stattdessen `pk
 - Doku: `README.md`, `DESIGN.md` + `.impeccable/design.json`, `docs/MEDIA.md`.
 - Checks: typecheck, lint (0 Warnungen), 26 Unit-Tests, Build, 2 E2E-Tests grün.
 
+## Stand 27.09. (Session 3, Nachtrag: echte Geschäftsdaten)
+
+- Auftraggeber hat https://www.liebe-hannover.de/ genannt und gewünscht: Geschäftsdaten **und** Markenauftritt übernehmen, vorerst auf Basis der Websuche (Seite aus dem Container gesperrt, auch Archive/Caches).
+- Übernommen als Admin-Vorbelegung (`src/lib/settings-schema.ts`): Karmarschstraße 25, 30159 Hannover, 0511 304711, info@liebe-hannover.de, W. Liebe GmbH & Co. KG, seit 1871, Geschichte, Filialen Celle (Poststraße 1) und Göttingen (Adresse Platzhalter), Instagram/Facebook @liebe.hannover. Quellen: PRODUCT.md → „Quellen der Geschäftsdaten“. Öffnungszeiten bleiben Platzhalter (Quellen widersprüchlich).
+- Neu: `store.foundedYear`, `store.branches` (Admin → Einstellungen → Parfümerie und Kontakt), Abschnitt „Weitere Häuser“ auf /parfuemerie, JSON-LD mit foundingDate/legalName/sameAs.
+- Bug behoben: Markenanzahl war immer 0 (Drizzle rendert `${brands.id}` ohne Join unqualifiziert), dadurch waren /marken, Markenbereich der Startseite und der Filialseite leer. E2E-Test dafür ergänzt.
+
 ## Nächster Schritt (hier weitermachen)
 
-Technisch nichts Offenes aus dem Master-Prompt. Offen sind Inhalte, die nur der Inhaber liefern kann (Checkliste „Vor dem Livegang“ in README.md): Geschäftsdaten, geprüfte Rechtstexte, echtes Sortiment und Fotos, Stripe-Konto und Zahlarten, Domain/Absender, Deployment auf Supabase/Vercel.
-Mögliche Ausbauten: Österreich/Schweiz als Versandzonen, Mehrsprachigkeit, Rechnungs-PDF, Lagerbuchungen/Warenwirtschaft.
+**Markenauftritt von liebe-hannover.de übernehmen.** Braucht visuelle Vorlagen: entweder Domain in den Netzwerkeinstellungen der Umgebung freigeben (dann Seite, Impressum, Filialen, Logo direkt lesen) oder Screenshots/Logo-Datei vom Auftraggeber. Danach: Richtung neu bewerten (Impeccable new-work: Erweiterung vs. Ersatz der Welt „Flakon und Licht“), Tokens/Logo/Schriften anpassen, DESIGN.md aktualisieren, Audits wiederholen.
+Sonst technisch nichts offen; Inhalte des Inhabers siehe README „Vor dem Livegang“.

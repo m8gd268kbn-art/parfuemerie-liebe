@@ -86,6 +86,17 @@ export async function saveSettingsAction(section: SettingsSection, _prev: S, fd:
             directions: str(fd, "directions"),
             services: lines(str(fd, "services")),
             openingHours: current.store.openingHours.map((h, i) => ({ day: h.day, hours: str(fd, `hours.${i}`) })),
+            foundedYear: str(fd, "foundedYear"),
+            branches: Array.from({ length: (int(fd, "branchCount") ?? 0) + 1 }, (_, i) => ({
+              name: str(fd, `branch.${i}.name`),
+              street: str(fd, `branch.${i}.street`),
+              postalCode: str(fd, `branch.${i}.postalCode`),
+              city: str(fd, `branch.${i}.city`),
+              phone: str(fd, `branch.${i}.phone`),
+              remove: bool(fd, `branch.${i}.remove`),
+            }))
+              .filter((b) => b.name && b.city && !b.remove)
+              .map(({ remove: _remove, ...b }) => b),
           },
         };
         break;

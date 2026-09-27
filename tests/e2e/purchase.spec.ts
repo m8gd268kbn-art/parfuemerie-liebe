@@ -7,6 +7,14 @@ import { expect, test } from "@playwright/test";
  */
 test.describe.configure({ mode: "serial" });
 
+test("Markenübersicht und Filialseite zeigen Marken mit Produkten", async ({ page }) => {
+  await page.goto("/marken");
+  await expect(page.getByRole("link", { name: "Dior", exact: true }).first()).toBeVisible();
+  await page.goto("/parfuemerie");
+  await expect(page.getByText("Karmarschstraße 25").first()).toBeVisible();
+  await expect(page.getByRole("link", { name: "Chanel", exact: true }).first()).toBeVisible();
+});
+
 let orderNumber = "";
 const ADMIN_EMAIL = process.env.SEED_ADMIN_EMAIL ?? "admin@parfuemerie-liebe.test";
 const ADMIN_PASSWORD = process.env.SEED_ADMIN_PASSWORD ?? "Admin-Passwort-2026";
