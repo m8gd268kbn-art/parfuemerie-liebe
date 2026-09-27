@@ -22,7 +22,7 @@ export default async function EditBrand({ params }: { params: Promise<{ id: stri
     >
       <Panel>
         <AdminForm action={saveBrandAction.bind(null, b?.id ?? null)} submitLabel={b ? "Änderungen speichern" : "Marke anlegen"}>
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <AField name="name" label="Name" required defaultValue={b?.name} />
             <AField name="slug" label="URL-Pfad" defaultValue={b?.slug} hint="Leer lassen: wird aus dem Namen erzeugt." />
             <AField name="country" label="Herkunftsland" defaultValue={b?.country} />

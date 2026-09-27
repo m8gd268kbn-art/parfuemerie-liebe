@@ -24,7 +24,7 @@ export default async function AdminOrderDetail({ params }: { params: Promise<{ i
       description={<>{order.email}{order.phone ? ` · ${order.phone}` : ""} · angelegt {formatDateTime(order.createdAt)}</>}
       actions={<StatusPill tone={ORDER_STATUS[order.status].tone}>{ORDER_STATUS[order.status].label}</StatusPill>}
     >
-      <div className="grid gap-6 xl:grid-cols-[1fr_22rem]">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1fr_22rem]">
         <div className="flex flex-col gap-6">
           <Panel><OrderDetails view={view} /></Panel>
           {order.customerNote && <Panel title="Anmerkung der Kundin/des Kunden"><p className="text-small whitespace-pre-line">{order.customerNote}</p></Panel>}

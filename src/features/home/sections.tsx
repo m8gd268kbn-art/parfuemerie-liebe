@@ -17,7 +17,7 @@ export function Hero({ settings }: { settings: ShopSettings }) {
   const h = settings.home;
   return (
     <section aria-labelledby="hero-title" className="container-page">
-      <div className="grid gap-8 pt-4 pb-4 md:min-h-[calc(100dvh-var(--header-height)-var(--service-bar-height))] md:grid-cols-12 md:items-stretch md:gap-6 md:pb-10">
+      <div className="grid grid-cols-1 gap-8 pt-4 pb-4 md:min-h-[calc(100dvh-var(--header-height)-var(--service-bar-height))] md:grid-cols-12 md:items-stretch md:gap-6 md:pb-10">
         <div className="hero-media relative order-1 aspect-[4/5] overflow-hidden bg-porcelain md:order-2 md:col-span-7 md:aspect-auto md:min-h-[34rem]">
           <Image
             src={h.heroImageUrl}
@@ -94,7 +94,7 @@ export function ScentWorlds({ counts }: { counts: Record<string, number> }) {
   return (
     <section aria-labelledby="worlds-title" className="bg-porcelain">
       <div className="container-page section-space">
-        <SectionHeader id="worlds-title" title="Duftwelten" href="/parfum" linkLabel="Alle Düfte">
+        <SectionHeader id="worlds-title" title="Duftwelten">
           Die Farbe im Glas verrät die Familie. Wählen Sie eine Richtung, wir zeigen die passenden Düfte.
         </SectionHeader>
         <ul className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-4 md:gap-x-6">
@@ -110,9 +110,9 @@ export function ScentWorlds({ counts }: { counts: Record<string, number> }) {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                 </span>
-                <span className="flex items-baseline justify-between gap-3">
+                <span className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
                   <span className="font-display text-h3">{f.world}</span>
-                  <span className="numeric text-caption text-muted">{counts[f.key]} Düfte</span>
+                  <span className="numeric text-caption whitespace-nowrap text-muted">{counts[f.key]} Düfte</span>
                 </span>
                 <span className="-mt-2 text-small text-ink-soft">{f.description}</span>
               </Link>
@@ -132,8 +132,8 @@ export function Curated({ products }: { products: ProductCardDTO[] }) {
   const leadImage = lead.images.find((i) => i.kind === "lifestyle") ?? lead.images[0];
   return (
     <section aria-labelledby="curated-title" className="container-page section-space">
-      <SectionHeader id="curated-title" title="Unsere Empfehlungen" href="/parfum?sort=popular" linkLabel="Mehr entdecken" />
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
+      <SectionHeader id="curated-title" title="Unsere Empfehlungen" />
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-6">
         <Link href={`/produkt/${lead.slug}`} className="group relative block lg:col-span-6">
           <span className="relative block aspect-[4/5] overflow-hidden bg-porcelain">
             {leadImage && (
@@ -200,7 +200,7 @@ export function NicheFeature({ products }: { products: ProductCardDTO[] }) {
   const image = hero.images.find((i) => i.kind === "lifestyle") ?? hero.images[0];
   return (
     <section aria-labelledby="niche-title" className="bg-porcelain">
-      <div className="container-page section-space grid gap-12 lg:grid-cols-12 lg:gap-6">
+      <div className="container-page section-space grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-6">
         <div className="flex flex-col gap-6 lg:col-span-4 lg:pr-10">
           <h2 id="niche-title" className="font-display text-h1">
             Nischendüfte
@@ -267,7 +267,7 @@ export function StoreTeaser({ settings }: { settings: ShopSettings }) {
   const today = s.openingHours.find((o) => o.hours);
   return (
     <section aria-labelledby="store-title" className="container-page section-space">
-      <div className="grid gap-10 md:grid-cols-12 md:gap-6">
+      <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-6">
         <div className="md:col-span-7">
           {s.imageUrl ? (
             <div className="relative aspect-[4/3] overflow-hidden bg-porcelain">

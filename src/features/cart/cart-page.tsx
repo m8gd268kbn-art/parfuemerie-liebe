@@ -11,7 +11,7 @@ export function CartPageView() {
   const { cart, ready } = useShop();
   if (!ready) {
     return (
-      <div className="mt-10 grid gap-12 lg:grid-cols-12" aria-label="Warenkorb wird geladen">
+      <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-12" aria-label="Warenkorb wird geladen">
         <div className="flex flex-col gap-6 lg:col-span-7">
           {[0, 1].map((i) => (
             <div key={i} className="grid grid-cols-[6.5rem_1fr] gap-5">
@@ -27,9 +27,9 @@ export function CartPageView() {
       </div>
     );
   }
-  if (!cart || cart.lines.length === 0) return <div className="-mx-6"><EmptyCart /></div>;
+  if (!cart || cart.lines.length === 0) return <EmptyCart className="px-0" />;
   return (
-    <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-6">
+    <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-6">
       <div className="flex flex-col gap-8 lg:col-span-7">
         <FreeShippingNote cart={cart} />
         <ul className="divide-y divide-line border-y border-line">
@@ -50,7 +50,7 @@ export function CartPageView() {
           <ul className="flex flex-col gap-2 text-caption text-ink-soft">
             {cart.shipping?.deliveryTime && (
               <li className="flex items-center gap-2">
-                <Icon icon={Truck} size={16} /> Lieferung in {cart.shipping.deliveryTime}
+                <Icon icon={Truck} size={16} /> Lieferzeit: {cart.shipping.deliveryTime}
               </li>
             )}
             <li className="flex items-center gap-2">

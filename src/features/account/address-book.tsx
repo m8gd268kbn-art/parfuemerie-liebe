@@ -83,7 +83,7 @@ export function AddressBook({ addresses, countries }: { addresses: SavedAddress[
   return (
     <div className="flex flex-col gap-6">
       {addresses.length === 0 && editing !== "new" && <p className="text-body text-ink-soft">Noch keine Adressen gespeichert. Gespeicherte Adressen stehen Ihnen an der Kasse zur Auswahl.</p>}
-      <ul className="grid gap-4 md:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {addresses.map((a) =>
           editing === a.id ? (
             <li key={a.id} className="md:col-span-2"><AddressForm initial={a} countries={countries} onDone={() => setEditing(null)} /></li>

@@ -57,7 +57,7 @@ export function LegalPlaceholder({ title, sections }: { title: string; sections:
   return (
     <>
       <div className="not-prose mb-10 rounded-sm border border-dashed border-line-strong bg-porcelain px-5 py-4 text-small text-ink-soft">
-        <p className="label mb-1 text-[0.625rem] text-muted">Platzhalter</p>
+        <p className="label mb-1 text-[0.6875rem] text-muted">Platzhalter</p>
         <p>
           Der rechtsverbindliche Text „{title}“ der Parfümerie Liebe liegt noch nicht vor. Er muss vor dem Livegang professionell erstellt oder geprüft und im Admin unter
           „Einstellungen → Rechtstexte“ eingefügt werden. Die folgende Gliederung zeigt nur die üblichen Bestandteile.

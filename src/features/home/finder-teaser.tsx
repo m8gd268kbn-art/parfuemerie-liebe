@@ -17,7 +17,7 @@ export function FinderTeaser() {
   const [choice, setChoice] = useState<string | null>(null);
   return (
     <section aria-labelledby="finder-title" className="container-page section-space">
-      <div className="grid gap-10 border-y border-line py-14 md:grid-cols-12 md:gap-6 md:py-20">
+      <div className="grid grid-cols-1 gap-10 border-y border-line py-14 md:grid-cols-12 md:gap-6 md:py-20">
         <div className="md:col-span-5">
           <h2 id="finder-title" className="font-display text-h1">
             Welcher Duft passt zu mir?

@@ -25,7 +25,7 @@ export default async function BrandsPage() {
         <h1 className="font-display text-h1">Marken</h1>
         <p className="mt-4 text-body-lg text-ink-soft">{brands.length} Marken, von großen Parfumhäusern bis zu unabhängigen Manufakturen.</p>
       </header>
-      <div className="mb-16 grid gap-10 md:grid-cols-2">
+      <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2">
         {[{ title: "Im Fokus", list: featured }, { title: "Nischenmarken", list: niche }].map((g) => (
           <section key={g.title} aria-label={g.title}>
             <h2 className="mb-4 text-small font-semibold">{g.title}</h2>

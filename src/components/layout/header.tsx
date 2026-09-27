@@ -16,7 +16,7 @@ function CountBadge({ count, label }: { count: number; label: string }) {
     <span
       aria-hidden={count === 0}
       className={cn(
-        "numeric absolute top-1 right-0.5 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent px-1 text-[0.625rem] font-semibold text-white",
+        "numeric absolute top-1 right-0.5 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent px-1 text-[0.6875rem] font-semibold text-white",
         "transition-[transform,opacity] duration-200 ease-out",
         count > 0 ? "scale-100 opacity-100" : "scale-75 opacity-0",
       )}
@@ -51,7 +51,7 @@ export function Header() {
       <div ref={sentinel} aria-hidden="true" className="h-px" />
       <header
         className={cn(
-          "sticky top-0 z-40 border-b bg-paper/95 backdrop-blur-[6px] transition-[border-color,background-color] duration-200 ease-out supports-[backdrop-filter]:bg-paper/88",
+          "sticky top-0 z-40 border-b bg-paper transition-[border-color] duration-200 ease-out",
           compact ? "border-line" : "border-transparent",
         )}
       >

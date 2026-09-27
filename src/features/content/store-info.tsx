@@ -8,7 +8,7 @@ export function StoreInfo({ settings }: { settings: ShopSettings }) {
   const s = settings.store;
   const hasHours = s.openingHours.some((o) => o.hours);
   return (
-    <div className="grid gap-8 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
       <dl className="flex flex-col gap-4 text-small">
         <div className="flex gap-3">
           <dt><Icon icon={MapPin} size={18} className="mt-0.5 text-ink-soft" /><span className="sr-only">Adresse</span></dt>

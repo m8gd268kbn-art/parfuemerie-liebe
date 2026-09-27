@@ -19,7 +19,7 @@ export function NoteLayers({ product }: { product: ProductDetailDTO }) {
       {layers.map((l) => (
         <div
           key={l.title}
-          className="grid gap-2 border-b border-white/40 px-5 py-5 last:border-b-0 sm:grid-cols-[10rem_1fr] sm:gap-6 sm:px-6"
+          className="grid grid-cols-1 gap-2 border-b border-white/40 px-5 py-5 last:border-b-0 sm:grid-cols-[10rem_1fr] sm:gap-6 sm:px-6"
           style={{ backgroundColor: `color-mix(in srgb, ${color} ${Math.round(l.alpha * 100)}%, var(--color-white))` }}
         >
           <div>

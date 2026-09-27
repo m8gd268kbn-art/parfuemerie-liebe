@@ -46,7 +46,7 @@ export function OrderDetails({ view }: { view: OrderView }) {
   const { order, items, samples } = view;
   const tUrl = trackingUrl(order.carrier, order.trackingNumber);
   return (
-    <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
+    <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-6">
       <div className="flex flex-col gap-8 lg:col-span-7">
         <ul className="divide-y divide-line border-y border-line">
           {items.map((i) => (
@@ -95,7 +95,7 @@ export function OrderDetails({ view }: { view: OrderView }) {
           <div className="mt-2 flex justify-between border-t border-line pt-3 text-body font-semibold"><dt>Gesamt</dt><dd>{formatPrice(order.totalCents)}</dd></div>
           <p className="text-right text-caption text-muted">inkl. {formatPrice(order.taxCents)} MwSt.</p>
         </dl>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1">
           <div>
             <h3 className="mb-2 text-small font-semibold">{order.fulfillmentType === "pickup" ? "Abholung" : "Lieferadresse"}</h3>
             {order.shippingAddress ? <Address a={order.shippingAddress} /> : <p className="text-small">Parfümerie Liebe, Hannover</p>}

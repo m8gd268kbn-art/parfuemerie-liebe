@@ -3,6 +3,8 @@
  *   npm run db:seed            – legt fehlende Daten an
  *   npm run db:seed -- --reset – leert vorher alle Shop-Tabellen (nur Entwicklung!)
  */
+import { existsSync, rmSync } from "node:fs";
+import path from "node:path";
 import { config } from "dotenv";
 config({ path: ".env.local" });
 config();
@@ -18,6 +20,8 @@ import { DEMO_BRANDS, DEMO_COUPONS, DEMO_PRODUCTS, DEMO_SAMPLES } from "./demo-c
 
 const url = process.env.DATABASE_URL;
 if (!url) throw new Error("DATABASE_URL fehlt");
+const NEXT_DATA_CACHE = path.join(process.cwd(), ".next", "cache", "fetch-cache");
+
 if (process.env.NODE_ENV === "production" && process.argv.includes("--reset")) {
   throw new Error("--reset ist in Produktion nicht erlaubt.");
 }
@@ -214,6 +218,13 @@ async function main() {
     }
   } else {
     console.log("Kein Admin angelegt (SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD fehlen).");
+  }
+
+  // Next.js-Datencache (unstable_cache) hält sonst Katalog-IDs aus der Zeit vor dem Seed.
+  // Lokal liegt er unter .next/cache/fetch-cache; auf Vercel wird bei jedem Deployment neu gebaut.
+  if (existsSync(NEXT_DATA_CACHE)) {
+    rmSync(NEXT_DATA_CACHE, { recursive: true, force: true });
+    console.log("Next.js-Datencache geleert (.next/cache/fetch-cache). Laufenden Server bitte neu starten.");
   }
 
   await client.end();

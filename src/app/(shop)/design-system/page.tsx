@@ -110,7 +110,7 @@ export default async function DesignSystemPage() {
       <Section id="typo" title="Typografie" intro="Bodoni Moda (optische Größen) für Überschriften, Mona Sans mit Breitenachse für Oberfläche und Etiketten. Preise mit proportionalen Versalziffern.">
         <ul className="flex flex-col gap-8">
           {TYPE.map((t) => (
-            <li key={t.label} className="grid gap-2 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <li key={t.label} className="grid grid-cols-1 gap-2 md:grid-cols-[14rem_1fr] md:items-baseline">
               <span className="text-caption text-muted">{t.label}</span>
               <span className={t.cls}>{t.sample}</span>
             </li>
@@ -119,7 +119,7 @@ export default async function DesignSystemPage() {
       </Section>
 
       <Section id="form" title="Form und Bewegung">
-        <dl className="grid gap-x-10 gap-y-6 text-small md:grid-cols-2">
+        <dl className="grid grid-cols-1 gap-x-10 gap-y-6 text-small md:grid-cols-2">
           <div><dt className="font-semibold">Radius</dt><dd className="text-ink-soft">2 px für Bedienelemente und Panels, 0 für Bilder, rund nur Icon-Buttons und Farbmuster.</dd></div>
           <div><dt className="font-semibold">Schatten</dt><dd className="text-ink-soft">Nur für Ebenen über der Seite (Drawer, Dialog, Popover, Hinweise). Flächen trennen Haarlinien.</dd></div>
           <div><dt className="font-semibold">Kurven</dt><dd className="tabular text-ink-soft">ease-out cubic-bezier(0.23, 1, 0.32, 1), Drawer cubic-bezier(0.32, 0.72, 0, 1)</dd></div>
@@ -157,7 +157,7 @@ export default async function DesignSystemPage() {
       </Section>
 
       <Section id="felder" title="Formulare" intro="Beschriftung immer sichtbar über dem Feld, Fehler direkt darunter und per aria-describedby verknüpft.">
-        <div className="grid max-w-3xl gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 max-w-3xl gap-6 md:grid-cols-2">
           <Field label="E-Mail-Adresse" hint="Für Bestellbestätigung und Versandinfo.">
             {({ id, describedBy, invalid }) => <Input id={id} type="email" placeholder="name@beispiel.de" aria-describedby={describedBy} invalid={invalid} />}
           </Field>
@@ -188,13 +188,13 @@ export default async function DesignSystemPage() {
             <Badge tone="sale">-15 %</Badge>
             <Badge tone="muted">Nische</Badge>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <div><p className="mb-2 text-caption text-muted">Preis</p><Price cents={12900} unit={{ sizeMl: 100 }} /></div>
             <div><p className="mb-2 text-caption text-muted">Ab-Preis</p><Price cents={6900} from /></div>
             <div><p className="mb-2 text-caption text-muted">Reduziert mit § 11 PAngV</p><Price cents={9900} compareAtCents={12900} lowest30dCents={11900} unit={{ sizeMl: 100 }} /></div>
             <div><p className="mb-2 text-caption text-muted">Bewertung</p><Stars value={4.5} label="4,5 von 5 Sternen" /></div>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="flex flex-col gap-2"><p className="text-caption text-muted">Skeleton</p><Skeleton className="aspect-[4/5] max-w-56" /><Skeleton className="h-4 w-40" /></div>
             <div className="flex flex-col gap-2"><p className="text-caption text-muted">Bildplatzhalter</p><ImagePlaceholder label="Foto der Parfümerie folgt" className="aspect-[4/5] max-w-56" /></div>
             <div className="flex flex-col gap-3"><p className="text-caption text-muted">Datenplatzhalter</p><Placeholder>Telefonnummer</Placeholder><Placeholder>Öffnungszeiten</Placeholder></div>
@@ -204,7 +204,7 @@ export default async function DesignSystemPage() {
 
       {sample && (
         <Section id="produkt" title="Produkt" intro="Produktkarte mit echten Katalogdaten (Demo). Duftnoten als Flüssigkeitsschichten, Intensität als Skala.">
-          <div className="grid gap-10 lg:grid-cols-[repeat(2,minmax(0,16rem))_1fr]">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[repeat(2,minmax(0,16rem))_1fr]">
             {catalog.slice(0, 2).map((p) => <ProductCard key={p.id} product={p} />)}
             {detail && (
               <div className="flex flex-col gap-8">

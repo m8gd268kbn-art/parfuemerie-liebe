@@ -28,6 +28,8 @@ const schema = z
     SUPABASE_STORAGE_BUCKET: z.string().default("product-images"),
 
     NEXT_PUBLIC_DEMO_MODE: bool,
+    /** Schützt /api/cron/maintenance (Vercel Cron sendet „Authorization: Bearer <CRON_SECRET>“). */
+    CRON_SECRET: z.string().min(16).optional(),
   })
   .superRefine((env, ctx) => {
     if (env.PAYMENT_PROVIDER === "stripe") {

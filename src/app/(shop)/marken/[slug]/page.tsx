@@ -29,7 +29,7 @@ export default async function BrandPage({ params, searchParams }: Props) {
     <div className="container-page pt-8 pb-24">
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <Breadcrumbs items={crumbs} />
-      <header className="mt-8 mb-14 grid gap-6 border-b border-line pb-12 md:grid-cols-12">
+      <header className="mt-8 mb-14 grid grid-cols-1 gap-6 border-b border-line pb-12 md:grid-cols-12">
         <div className="md:col-span-7">
           <h1 className="font-display text-[clamp(2.75rem,1.6rem+4vw,5rem)] leading-[1.02] tracking-[-0.02em]">{brand.name}</h1>
           <p className="mt-3 text-small text-ink-soft">

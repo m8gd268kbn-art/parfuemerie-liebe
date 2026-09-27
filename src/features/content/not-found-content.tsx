@@ -4,7 +4,7 @@ import { SearchLauncher } from "./search-launcher";
 
 export function NotFoundContent() {
   return (
-    <div className="container-page grid gap-12 py-16 md:grid-cols-12 md:gap-6 md:py-24">
+    <div className="container-page grid grid-cols-1 gap-12 py-16 md:grid-cols-12 md:gap-6 md:py-24">
       <div className="flex flex-col justify-center gap-6 md:col-span-6">
         <p className="numeric text-small text-muted">Fehler 404</p>
         <h1 className="font-display text-display">Dieser Flakon ist leer.</h1>

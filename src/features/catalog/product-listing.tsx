@@ -38,7 +38,7 @@ export function ProductListing({ products, filters, basePath, hidden = [], keepO
 
   return (
     <FilterProvider filters={filters} facets={facets} hidden={hidden}>
-      <div className="grid gap-10 lg:grid-cols-[15.5rem_1fr] lg:gap-12">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[15.5rem_1fr] lg:gap-12">
         <aside aria-label="Filter" className="hidden lg:block">
           <div className="sticky top-[calc(var(--header-height)+1.5rem)] max-h-[calc(100dvh-var(--header-height)-3rem)] overflow-y-auto pr-2 pb-8">
             <FilterPanel />

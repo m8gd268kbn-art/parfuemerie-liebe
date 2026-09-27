@@ -14,11 +14,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   const user = await requireAdmin();
   return (
     <div className="min-h-[100dvh] bg-paper">
-      <header className="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur-[6px]">
+      <header className="sticky top-0 z-40 border-b border-line bg-paper">
         <div className="flex h-14 items-center justify-between gap-4 px-5">
           <div className="flex items-center gap-4">
             <Link href="/admin" aria-label="Admin-Dashboard"><Wordmark compact className="scale-90" /></Link>
-            <span className="label text-[0.625rem] text-muted">Admin</span>
+            <span className="label text-[0.6875rem] text-muted">Admin</span>
           </div>
           <div className="flex items-center gap-4 text-small">
             <Link href="/" className="text-ink-soft link-underline">Zum Shop</Link>
@@ -27,7 +27,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </div>
         </div>
       </header>
-      <div className="grid gap-8 px-5 py-8 lg:grid-cols-[13rem_1fr]">
+      <div className="grid grid-cols-1 gap-8 px-5 py-8 lg:grid-cols-[13rem_1fr]">
         <aside className="lg:sticky lg:top-22 lg:self-start">
           <AdminNav />
         </aside>

@@ -80,7 +80,7 @@ export function CartDrawer() {
             {cart.shipping?.deliveryTime && (
               <li className="flex items-center gap-2">
                 <Icon icon={Truck} size={16} />
-                Lieferung in {cart.shipping.deliveryTime}
+                Lieferzeit: {cart.shipping.deliveryTime}
               </li>
             )}
             <li className="flex items-center gap-2">

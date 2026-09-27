@@ -255,7 +255,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
     m.freeFromCents != null && cart.totals.subtotalCents - cart.totals.discountCents >= m.freeFromCents ? "kostenlos" : formatPrice(m.priceCents);
 
   return (
-    <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
+    <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-6">
       <div className="lg:col-span-7">
         <StepShell index={0} current={step} title={STEPS[0]} onEdit={() => go(0)} summary={email}>
           <div className="flex flex-col gap-5">
@@ -407,7 +407,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
 
         <StepShell index={4} current={step} title={STEPS[4]} onEdit={() => go(4)}>
           <div className="flex flex-col gap-6">
-            <dl className="grid gap-4 text-small sm:grid-cols-2">
+            <dl className="grid grid-cols-1 gap-4 text-small sm:grid-cols-2">
               <div>
                 <dt className="text-muted">Kontakt</dt>
                 <dd>{email}</dd>
@@ -480,7 +480,7 @@ export function CheckoutForm({ cart, config, prefill, savedAddresses }: { cart: 
               <li key={l.variantId} className="grid grid-cols-[3.5rem_1fr_auto] items-center gap-3">
                 <span className="relative block aspect-[4/5] overflow-hidden bg-porcelain">
                   {l.imageUrl && <Image src={l.imageUrl} alt="" fill sizes="56px" className="object-cover" />}
-                  <span className="numeric absolute -top-1.5 -right-1.5 inline-flex size-5 items-center justify-center rounded-full bg-ink text-[0.625rem] text-paper">{l.quantity}</span>
+                  <span className="numeric absolute -top-1.5 -right-1.5 inline-flex size-5 items-center justify-center rounded-full bg-ink text-[0.6875rem] text-paper">{l.quantity}</span>
                 </span>
                 <span className="min-w-0 text-caption">
                   <span className="block text-muted">{l.brandName}</span>

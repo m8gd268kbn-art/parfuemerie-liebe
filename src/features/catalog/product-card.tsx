@@ -89,12 +89,12 @@ export function ProductCard({ product, priority, headingLevel = "h3" }: { produc
         {product.inStock && (
           <div
             className={cn(
-              "absolute inset-x-3 bottom-3 z-10 hidden translate-y-2 flex-col gap-2 rounded-sm bg-paper/95 p-3 opacity-0 shadow-popover backdrop-blur-[4px]",
+              "absolute inset-x-3 bottom-3 z-10 hidden translate-y-2 flex-col gap-2 rounded-sm bg-paper p-3 opacity-0 shadow-popover",
               "transition-[opacity,transform] duration-200 ease-out",
               "[@media(hover:hover)_and_(pointer:fine)]:flex group-hover/card:translate-y-0 group-hover/card:opacity-100 focus-within:translate-y-0 focus-within:opacity-100",
             )}
           >
-            <p className="label text-[0.625rem] text-muted">{multiple ? "Größe wählen" : "Schnell hinzufügen"}</p>
+            <p className="label text-[0.6875rem] text-muted">{multiple ? "Größe wählen" : "Schnell hinzufügen"}</p>
             <div className="flex flex-wrap gap-1.5">
               {product.variants.map((v) => (
                 <button

@@ -59,7 +59,7 @@ export default async function ProductPage({ params }: Props) {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <div className="container-page pt-6 pb-10 md:pt-8">
         <Breadcrumbs items={crumbs} className="mb-6" />
-        <div className="grid gap-10 md:grid-cols-12 md:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8 lg:gap-12">
           <div className="md:col-span-7">
             <ProductGallery images={product.images} name={`${product.brand.name} ${product.name}`} />
           </div>
@@ -97,7 +97,7 @@ export default async function ProductPage({ params }: Props) {
       </div>
 
       <section aria-labelledby="notes-title" className="container-page section-space">
-        <div className="grid gap-10 md:grid-cols-12 md:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8 lg:gap-12">
           <div className="md:col-span-7">
             <h2 id="notes-title" className="mb-8 font-display text-h2">
               Duftnoten

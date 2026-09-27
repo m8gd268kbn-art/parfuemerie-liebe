@@ -93,7 +93,7 @@ export function ReviewForm({ productId }: { productId: string }) {
       <Field label="Ihr Eindruck" error={errors.body} hint="Mindestens 20 Zeichen. Bitte keine persönlichen Daten.">
         {({ id, describedBy, invalid }) => <Textarea id={id} name="body" required minLength={20} maxLength={2000} aria-describedby={describedBy} invalid={invalid} />}
       </Field>
-      <div className="grid gap-4 sm:grid-cols-1">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-1">
         <RatingInput name="longevity" label="Haltbarkeit" value={longevity} onChange={setLongevity} />
         <RatingInput name="sillage" label="Sillage" value={sillage} onChange={setSillage} />
         <RatingInput name="value" label="Preis-Leistung" value={value} onChange={setValue} />

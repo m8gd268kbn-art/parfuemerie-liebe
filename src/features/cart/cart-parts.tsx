@@ -287,9 +287,9 @@ export function CartSummary({ cart, className }: { cart: CartView; className?: s
   );
 }
 
-export function EmptyCart({ onNavigate }: { onNavigate?: () => void }) {
+export function EmptyCart({ onNavigate, className }: { onNavigate?: () => void; className?: string }) {
   return (
-    <div className="flex flex-col items-start gap-6 px-6 py-12">
+    <div className={cn("flex flex-col items-start gap-6 px-6 py-12", className)}>
       <div>
         <p className="font-display text-h2">Ihr Warenkorb ist leer.</p>
         <p className="mt-3 max-w-sm text-body text-ink-soft">

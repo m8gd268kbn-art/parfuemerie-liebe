@@ -130,12 +130,15 @@ test("Admin: Statuswechsel, Versandmail und Preisänderung", async ({ page, base
   const variant = page.locator("form").filter({ has: page.locator('input[name="sizeMl"][value="200"]') });
   const priceInput = variant.getByLabel("Preis in €", { exact: true });
   const oldPrice = await priceInput.inputValue();
-  await priceInput.fill("123,45");
+  // Neuer Preis = alter Preis + 1 €, damit der Test unabhängig vom Ausgangswert wirkt.
+  const newCents = Math.round(Number(oldPrice.replace(/\./g, "").replace(",", ".")) * 100) + 100;
+  const newPrice = (newCents / 100).toFixed(2).replace(".", ",");
+  await priceInput.fill(newPrice);
   await variant.getByRole("button", { name: "Speichern" }).click();
   await expect(page.getByText("Variante gespeichert.")).toBeVisible();
   await page.goto("/produkt/dior-sauvage-eau-de-toilette");
   await page.getByText("200 ml", { exact: true }).first().click();
-  await expect(page.getByText("123,45 €").first()).toBeVisible();
+  await expect(page.getByText(`${newPrice} €`).first()).toBeVisible();
 
   // Zurücksetzen, damit der Demo-Katalog unverändert bleibt.
   await page.goto("/admin/produkte?q=Sauvage");

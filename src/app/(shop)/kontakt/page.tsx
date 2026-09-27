@@ -11,7 +11,7 @@ export default async function ContactPage() {
   return (
     <div className="container-page pt-8 pb-24">
       <Breadcrumbs items={[{ label: "Startseite", href: "/" }, { label: "Kontakt" }]} />
-      <div className="mt-10 grid gap-14 lg:grid-cols-12 lg:gap-6">
+      <div className="mt-10 grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-5">
           <h1 className="font-display text-h1">Kontakt</h1>
           <p className="mt-4 text-body-lg text-ink-soft">Fragen zu einem Duft, zu Ihrer Bestellung oder zur Beratung? Wir helfen gern, online und in der Parfümerie.</p>

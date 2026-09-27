@@ -11,7 +11,7 @@ export function ProfileForm({ firstName, lastName, email }: { firstName: string;
   const [pending, start] = useTransition();
   return (
     <form
-      className="grid max-w-xl gap-5 sm:grid-cols-2"
+      className="grid grid-cols-1 max-w-xl gap-5 sm:grid-cols-2"
       onSubmit={(e) => {
         e.preventDefault();
         const fd = new FormData(e.currentTarget);

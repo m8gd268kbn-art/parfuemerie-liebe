@@ -43,7 +43,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
         {tab === "shop" && (
           <AdminForm action={action}>
             <p className="text-small text-ink-soft">Name im Shop: <strong className="font-semibold">Parfümerie Liebe</strong> (fest).</p>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               <AField name="legalName" label="Rechtlicher Name (Impressum)" defaultValue={s.store.legalName} hint="z. B. Inhaberin/Inhaber oder Firma laut Gewerbeanmeldung" />
               <AField name="vatId" label="USt-IdNr." defaultValue={s.store.vatId} />
               <AField name="street" label="Straße und Hausnummer" defaultValue={s.store.street} />
@@ -58,11 +58,11 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
             </div>
             <fieldset className="border-t border-line pt-6">
               <legend className="mb-4 text-small font-semibold">Öffnungszeiten</legend>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {s.store.openingHours.map((h, i) => <AField key={h.day} name={`hours.${i}`} label={h.day} defaultValue={h.hours} placeholder="z. B. 10:00 bis 18:00 oder geschlossen" />)}
               </div>
             </fieldset>
-            <fieldset className="grid gap-5 border-t border-line pt-6 md:grid-cols-2">
+            <fieldset className="grid grid-cols-1 gap-5 border-t border-line pt-6 md:grid-cols-2">
               <legend className="mb-4 text-small font-semibold">Filialseite</legend>
               <AField name="about" label="Über die Parfümerie" textarea rows={5} defaultValue={s.store.about} className="md:col-span-2" />
               <AField name="history" label="Geschichte" textarea rows={5} defaultValue={s.store.history} hint="Nur belegte Angaben (Gründungsjahr, Inhaberin/Inhaber …)." />
@@ -94,7 +94,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
                   <legend className="mb-4 text-small font-semibold">{z ? `Versandzone: ${z.name}` : "Neue Versandzone"}</legend>
                   <input type="hidden" name={`${p}id`} value={z?.id ?? ""} />
                   <input type="hidden" name={`${p}methodCount`} value={z?.methods.length ?? 0} />
-                  <div className="grid gap-4 md:grid-cols-3">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                     <AField name={`${p}name`} label="Name der Zone" defaultValue={z?.name} placeholder={z ? undefined : "z. B. Österreich"} />
                     <AField name={`${p}countries`} label="Länder (ISO-Codes)" defaultValue={z?.countries.join(", ")} placeholder="DE" />
                     <div className="flex items-end gap-5 pb-2.5">
@@ -105,7 +105,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
                   {[...(z?.methods ?? []), null].map((m, mi) => {
                     const mp = `${p}method.${mi}.`;
                     return (
-                      <div key={m?.id ?? "new"} className="grid gap-3 rounded-sm bg-porcelain/60 p-4 sm:grid-cols-3 lg:grid-cols-6">
+                      <div key={m?.id ?? "new"} className="grid grid-cols-1 gap-3 rounded-sm bg-porcelain/60 p-4 sm:grid-cols-3 lg:grid-cols-6">
                         <input type="hidden" name={`${mp}id`} value={m?.id ?? ""} />
                         <AField name={`${mp}name`} label={m ? "Versandart" : "Neue Versandart"} defaultValue={m?.name} className="lg:col-span-2" />
                         <AField name={`${mp}carrier`} label="Versanddienst" defaultValue={m?.carrier} />
@@ -122,7 +122,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
                 </fieldset>
               );
             })}
-            <fieldset className="grid gap-4 border-t border-line pt-6 md:grid-cols-[12rem_1fr]">
+            <fieldset className="grid grid-cols-1 gap-4 border-t border-line pt-6 md:grid-cols-[12rem_1fr]">
               <legend className="mb-4 text-small font-semibold">Rückgabe</legend>
               <AField name="withdrawalDays" label="Widerrufsfrist in Tagen" type="number" required defaultValue={s.returns.withdrawalDays} />
               <AField name="returnsSummary" label="Kurzinfo zur Rückgabe" defaultValue={s.returns.summary} />
@@ -133,7 +133,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
         {tab === "proben" && (
           <AdminForm action={action}>
             <ACheck name="enabled" label="Kostenlose Duftproben im Warenkorb anbieten" defaultChecked={s.samples.enabled} />
-            <div className="grid max-w-xl gap-5 sm:grid-cols-2">
+            <div className="grid grid-cols-1 max-w-xl gap-5 sm:grid-cols-2">
               <AField name="maxCount" label="Proben pro Bestellung" type="number" required defaultValue={s.samples.maxCount} />
               <AField name="minSubtotal" label="Ab Warenwert in €" defaultValue={centsToEuroInput(s.samples.minSubtotalCents)} inputMode="decimal" hint="0 = ohne Mindestwert" />
             </div>
@@ -156,7 +156,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
         {tab === "abholung" && (
           <AdminForm action={action}>
             <ACheck name="enabled" label="Abholung in der Parfümerie anbieten (Click & Collect)" defaultChecked={s.pickup.enabled} />
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               <AField name="label" label="Bezeichnung im Checkout" required defaultValue={s.pickup.label} />
               <AField name="readyTime" label="Abholbereit" defaultValue={s.pickup.readyTime} placeholder="z. B. am nächsten Werktag" />
               <AField name="instructions" label="Hinweise zur Abholung" textarea rows={3} defaultValue={s.pickup.instructions} className="md:col-span-2" hint="z. B. Ausweis und Bestellnummer mitbringen." />
@@ -166,7 +166,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
 
         {tab === "startseite" && (
           <AdminForm action={action}>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               <AField name="heroHeadline" label="Überschrift" required defaultValue={s.home.heroHeadline} />
               <AField name="heroSubline" label="Unterzeile" defaultValue={s.home.heroSubline} />
               <AField name="heroPrimaryLabel" label="Hauptknopf: Text" required defaultValue={s.home.heroPrimaryLabel} />
@@ -193,7 +193,7 @@ export default async function AdminSettings({ searchParams }: { searchParams: Pr
 
         {tab === "social" && (
           <AdminForm action={action}>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               <AField name="instagram" label="Instagram" defaultValue={s.social.instagram} placeholder="https://www.instagram.com/…" />
               <AField name="facebook" label="Facebook" defaultValue={s.social.facebook} />
               <AField name="tiktok" label="TikTok" defaultValue={s.social.tiktok} />

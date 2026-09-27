@@ -1,0 +1,600 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T17:23:25.424Z",
+  "title": "Design System: Parfümerie Liebe",
+  "extensions": {
+    "colorMeta": {
+      "flakongruen": {
+        "role": "primary",
+        "displayName": "Flakongrün",
+        "canonical": "#1f3f36",
+        "tonalRamp": [
+          "#16201d",
+          "#192924",
+          "#1b322b",
+          "#1d3a32",
+          "#4c655e",
+          "#849590",
+          "#bcc5c3",
+          "#e9eceb"
+        ]
+      },
+      "flakongruen-tief": {
+        "role": "primary",
+        "displayName": "Flakongrün tief",
+        "canonical": "#152d26",
+        "tonalRamp": [
+          "#131a18",
+          "#14201c",
+          "#142520",
+          "#152a24",
+          "#445751",
+          "#7e8c88",
+          "#b9c0be",
+          "#e8eae9"
+        ]
+      },
+      "flakongruen-hauch": {
+        "role": "primary",
+        "displayName": "Flakongrün Hauch",
+        "canonical": "#e4ebe7",
+        "tonalRamp": [
+          "#515352",
+          "#7b7f7d",
+          "#a5aaa7",
+          "#cbd1cd",
+          "#e9efec",
+          "#f0f4f2",
+          "#f7f9f8",
+          "#fcfdfd"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fafaf7",
+        "tonalRamp": [
+          "#585857",
+          "#868685",
+          "#b4b4b2",
+          "#dededc",
+          "#fbfbf9",
+          "#fcfcfb",
+          "#fefefd",
+          "#fffffe"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Weiß",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#595959",
+          "#898989",
+          "#b8b8b8",
+          "#e3e3e3",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
+      },
+      "porcelain": {
+        "role": "neutral",
+        "displayName": "Porzellan",
+        "canonical": "#f2f1ec",
+        "tonalRamp": [
+          "#555553",
+          "#82827f",
+          "#afaeab",
+          "#d7d6d2",
+          "#f5f4f0",
+          "#f8f7f5",
+          "#fbfbf9",
+          "#fefefd"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Nebel",
+        "canonical": "#e9e7e1",
+        "tonalRamp": [
+          "#535250",
+          "#7e7d7a",
+          "#a9a7a3",
+          "#cfcdc8",
+          "#edece7",
+          "#f3f2ef",
+          "#f8f8f6",
+          "#fdfdfc"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Haarlinie",
+        "canonical": "#e3e0d9",
+        "tonalRamp": [
+          "#51504e",
+          "#7b7976",
+          "#a4a29d",
+          "#cac7c1",
+          "#e9e6e1",
+          "#f0eeea",
+          "#f7f6f4",
+          "#fcfcfb"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Kante",
+        "canonical": "#8c877e",
+        "tonalRamp": [
+          "#373532",
+          "#4f4d48",
+          "#67645e",
+          "#7d7971",
+          "#a39f98",
+          "#c0bdb8",
+          "#dddbd8",
+          "#f4f3f2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinte",
+        "canonical": "#1b1e1f",
+        "tonalRamp": [
+          "#151616",
+          "#171819",
+          "#181a1b",
+          "#1a1d1d",
+          "#494b4c",
+          "#828384",
+          "#bbbcbc",
+          "#e8e9e9"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Tinte weich",
+        "canonical": "#3e4244",
+        "tonalRamp": [
+          "#1f2021",
+          "#282a2b",
+          "#313435",
+          "#393c3e",
+          "#656869",
+          "#959798",
+          "#c5c6c7",
+          "#ececec"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Gedämpft",
+        "canonical": "#67635c",
+        "tonalRamp": [
+          "#2c2a28",
+          "#3d3b37",
+          "#4e4b46",
+          "#5d5953",
+          "#85827d",
+          "#aba9a5",
+          "#d1d0ce",
+          "#f0efef"
+        ]
+      },
+      "danger": {
+        "role": "semantic",
+        "displayName": "Gefahr",
+        "canonical": "#9b2c2c",
+        "tonalRamp": [
+          "#3b1a1a",
+          "#571f1f",
+          "#722424",
+          "#8b2929",
+          "#af5656",
+          "#c88b8b",
+          "#e1c0c0",
+          "#f5eaea"
+        ]
+      },
+      "danger-soft": {
+        "role": "semantic",
+        "displayName": "Gefahr weich",
+        "canonical": "#f6e8e6",
+        "tonalRamp": [
+          "#565252",
+          "#847d7c",
+          "#b2a8a6",
+          "#dbcecd",
+          "#f8edeb",
+          "#faf2f1",
+          "#fcf8f8",
+          "#fefdfd"
+        ]
+      },
+      "warning": {
+        "role": "semantic",
+        "displayName": "Hinweis",
+        "canonical": "#7a5212",
+        "tonalRamp": [
+          "#312512",
+          "#463212",
+          "#5b3f12",
+          "#6e4a12",
+          "#957541",
+          "#b6a07d",
+          "#d7cbb8",
+          "#f2eee7"
+        ]
+      },
+      "warning-soft": {
+        "role": "semantic",
+        "displayName": "Hinweis weich",
+        "canonical": "#f4ecdc",
+        "tonalRamp": [
+          "#56534f",
+          "#837f77",
+          "#b0ab9f",
+          "#d9d2c4",
+          "#f6f0e3",
+          "#f9f5ec",
+          "#fcf9f5",
+          "#fefdfc"
+        ]
+      },
+      "liquid-floral": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Blumig",
+        "canonical": "#e6c3c6",
+        "tonalRamp": [
+          "#524748",
+          "#7c6b6c",
+          "#a68e90",
+          "#cdaeb0",
+          "#ebcfd1",
+          "#f1dee0",
+          "#f8edee",
+          "#fdf9f9"
+        ]
+      },
+      "liquid-woody": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Holzig",
+        "canonical": "#a9805f",
+        "tonalRamp": [
+          "#3f3329",
+          "#5e4939",
+          "#7c5f48",
+          "#977356",
+          "#ba997f",
+          "#d0b9a7",
+          "#e5d9cf",
+          "#f6f2ef"
+        ]
+      },
+      "liquid-fresh": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Frisch",
+        "canonical": "#bcd7d3",
+        "tonalRamp": [
+          "#454d4c",
+          "#677573",
+          "#899c99",
+          "#a8bfbc",
+          "#c9dfdc",
+          "#dae9e7",
+          "#ebf3f2",
+          "#f8fbfb"
+        ]
+      },
+      "liquid-citrus": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Zitrisch",
+        "canonical": "#e8cf78",
+        "tonalRamp": [
+          "#524b31",
+          "#7d7145",
+          "#a89659",
+          "#ceb86c",
+          "#edd993",
+          "#f2e5b5",
+          "#f8f1d7",
+          "#fdfaf2"
+        ]
+      },
+      "liquid-aromatic": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Aromatisch",
+        "canonical": "#9fb28b",
+        "tonalRamp": [
+          "#3c4236",
+          "#59624f",
+          "#758267",
+          "#8e9f7c",
+          "#b2c1a2",
+          "#cad5bf",
+          "#e2e8dc",
+          "#f5f7f3"
+        ]
+      },
+      "liquid-amber": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Amber",
+        "canonical": "#c78a41",
+        "tonalRamp": [
+          "#483620",
+          "#6d4e2a",
+          "#916633",
+          "#b17c3b",
+          "#d2a167",
+          "#e0bf97",
+          "#eedcc6",
+          "#f9f3ec"
+        ]
+      },
+      "liquid-gourmand": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Gourmand",
+        "canonical": "#b67b58",
+        "tonalRamp": [
+          "#433227",
+          "#644735",
+          "#855c43",
+          "#a26e50",
+          "#c59579",
+          "#d7b6a3",
+          "#e9d7cd",
+          "#f8f2ee"
+        ]
+      },
+      "liquid-fruity": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Fruchtig",
+        "canonical": "#dfa0a4",
+        "tonalRamp": [
+          "#503d3e",
+          "#79595b",
+          "#a27578",
+          "#c68f92",
+          "#e5b3b6",
+          "#edcbcd",
+          "#f5e3e4",
+          "#fcf6f6"
+        ]
+      },
+      "liquid-leather": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Leder",
+        "canonical": "#6f4d3c",
+        "tonalRamp": [
+          "#2e241f",
+          "#413027",
+          "#533b2f",
+          "#644637",
+          "#8c7163",
+          "#b09d94",
+          "#d4cac5",
+          "#f1edec"
+        ]
+      },
+      "liquid-musk": {
+        "role": "tertiary",
+        "displayName": "Flüssigkeit Moschus",
+        "canonical": "#d8cec3",
+        "tonalRamp": [
+          "#4d4a47",
+          "#75706b",
+          "#9d968e",
+          "#c0b7ae",
+          "#e0d8cf",
+          "#eae4de",
+          "#f3f0ed",
+          "#fbfaf9"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Startseiten-Headline, eine pro Seite."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "H1 auf Unterseiten und Produktname."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Abschnittsüberschriften."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Fließtext und Oberfläche, 65 bis 75 Zeichen pro Zeile."
+      },
+      "label": {
+        "displayName": "Etikett",
+        "purpose": "Marke, Konzentration, Badges; breite Versalien, nie unter 11 px."
+      },
+      "button": {
+        "displayName": "Knopf",
+        "purpose": "Knopfbeschriftungen, breite Versalien, nie umbrechend."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overlay",
+        "value": "0 24px 60px -24px rgb(27 30 31 / 0.28), 0 2px 8px rgb(27 30 31 / 0.06)",
+        "purpose": "Drawer, Dialoge, Consent-Hinweis."
+      },
+      {
+        "name": "popover",
+        "value": "0 12px 32px -12px rgb(27 30 31 / 0.22), 0 1px 3px rgb(27 30 31 / 0.08)",
+        "purpose": "Schnellkauf-Leiste auf Produktkarten, Toasts."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Standard für Zustandswechsel und Einblenden."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Bewegung sichtbarer Elemente, Stillleben-Aufdecken der Startseite."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "Drawer öffnen."
+      },
+      {
+        "name": "dur-press",
+        "value": "140ms",
+        "purpose": "Druckzustand scale(0.97)."
+      },
+      {
+        "name": "dur-fast",
+        "value": "180ms",
+        "purpose": "Hover, Farbwechsel."
+      },
+      {
+        "name": "dur-base",
+        "value": "240ms",
+        "purpose": "Overlays, Akkordeon."
+      },
+      {
+        "name": "dur-drawer",
+        "value": "380ms",
+        "purpose": "Drawer öffnen."
+      },
+      {
+        "name": "dur-exit",
+        "value": "220ms",
+        "purpose": "Schließen, immer schneller als Öffnen."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primärknopf",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Eine primäre Handlung pro Bereich, z. B. In den Warenkorb.",
+      "html": "<button class=\"ds-btn-primary\">In den Warenkorb</button>",
+      "css": ".ds-btn-primary { font-family: var(--font-mona, 'Mona Sans', sans-serif); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; font-variation-settings: 'wdth' 108; height: 48px; padding: 0 24px; border-radius: 2px; transition: background-color 180ms cubic-bezier(0.23,1,0.32,1), color 180ms cubic-bezier(0.23,1,0.32,1), transform 140ms cubic-bezier(0.23,1,0.32,1); cursor: pointer; background: #1f3f36; color: #fff; border: 0; } .ds-btn-primary:hover { background: #152d26; } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+    },
+    {
+      "name": "Sekundärknopf",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Gleichwertige Nebenhandlung mit Tintenrahmen.",
+      "html": "<button class=\"ds-btn-secondary\">Zur Wunschliste</button>",
+      "css": ".ds-btn-secondary { font-family: var(--font-mona, 'Mona Sans', sans-serif); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; font-variation-settings: 'wdth' 108; height: 48px; padding: 0 24px; border-radius: 2px; transition: background-color 180ms cubic-bezier(0.23,1,0.32,1), color 180ms cubic-bezier(0.23,1,0.32,1), transform 140ms cubic-bezier(0.23,1,0.32,1); cursor: pointer; background: transparent; color: #1b1e1f; border: 1px solid #1b1e1f; } .ds-btn-secondary:hover { background: #1b1e1f; color: #fafaf7; } .ds-btn-secondary:active { transform: scale(0.97); } .ds-btn-secondary:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+    },
+    {
+      "name": "Eingabefeld",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Beschriftung sichtbar über dem Feld, Fehler darunter.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">E-Mail-Adresse</span><input class=\"ds-input\" type=\"email\" placeholder=\"name@beispiel.de\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font-family: 'Mona Sans', sans-serif; } .ds-field-label { font-size: 0.875rem; font-weight: 500; color: #1b1e1f; } .ds-input { height: 48px; padding: 0 16px; border: 1px solid #8c877e; border-radius: 2px; background: #fff; color: #1b1e1f; font-size: 1rem; transition: border-color 160ms cubic-bezier(0.23,1,0.32,1), box-shadow 160ms cubic-bezier(0.23,1,0.32,1); caret-color: #1f3f36; } .ds-input::placeholder { color: #67635c; } .ds-input:hover { border-color: #3e4244; } .ds-input:focus { outline: none; border-color: #1f3f36; box-shadow: 0 0 0 3px #e4ebe7; }"
+    },
+    {
+      "name": "Etikett-Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Neu, Bestseller, Exklusiv, Reduzierung; auf Bildern, ohne Pillenform.",
+      "html": "<span class=\"ds-badge\">Bestseller</span> <span class=\"ds-badge ds-badge-sale\">-15 %</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 2px; background: rgba(255,255,255,0.85); color: #1b1e1f; font-family: 'Mona Sans', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; font-variation-settings: 'wdth' 112; } .ds-badge-sale { background: #1b1e1f; color: #fafaf7; }"
+    },
+    {
+      "name": "Größen-Kachel mit Flakon",
+      "kind": "custom",
+      "refersTo": "flakon-size-picker",
+      "description": "Signature: Füllstand zeigt die Größe, gefüllt in der Farbe des Dufts.",
+      "html": "<div class=\"ds-sizes\"><button class=\"ds-size ds-size-on\"><svg width=\"18\" height=\"28\" viewBox=\"0 0 18 28\"><rect x=\"6\" y=\"1\" width=\"6\" height=\"4\" rx=\"1\" fill=\"#1b1e1f\"/><rect x=\"2\" y=\"7\" width=\"14\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#1b1e1f\"/><rect x=\"3\" y=\"15\" width=\"12\" height=\"11\" fill=\"#bcd7d3\"/></svg><span>60 ml</span><small>89,00 €</small></button><button class=\"ds-size\"><svg width=\"18\" height=\"28\" viewBox=\"0 0 18 28\"><rect x=\"6\" y=\"1\" width=\"6\" height=\"4\" rx=\"1\" fill=\"#8c877e\"/><rect x=\"2\" y=\"7\" width=\"14\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#8c877e\"/><rect x=\"3\" y=\"8\" width=\"12\" height=\"18\" fill=\"#bcd7d3\"/></svg><span>200 ml</span><small>169,00 €</small></button></div>",
+      "css": ".ds-sizes { display: flex; gap: 8px; font-family: 'Mona Sans', sans-serif; } .ds-size { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 96px; padding: 12px 8px; background: #fff; border: 1px solid #e3e0d9; border-radius: 2px; color: #1b1e1f; font-size: 0.875rem; cursor: pointer; transition: border-color 150ms cubic-bezier(0.23,1,0.32,1); } .ds-size small { font-size: 0.8125rem; color: #3e4244; } .ds-size:hover { border-color: #8c877e; } .ds-size-on { border-color: #1b1e1f; box-shadow: inset 0 0 0 1px #1b1e1f; } .ds-size:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+    },
+    {
+      "name": "Hauptnavigation",
+      "kind": "nav",
+      "refersTo": "header-nav",
+      "description": "Einzeilig, Mona Sans, aktiver Punkt fein unterstrichen.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Neuheiten</a><a href=\"#\" aria-current=\"page\">Parfum</a><a href=\"#\">Damen</a><a href=\"#\">Herren</a><a href=\"#\">Nischendüfte</a><a href=\"#\">Marken</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 28px; font-family: 'Mona Sans', sans-serif; font-size: 0.9375rem; } .ds-nav a { color: #1b1e1f; text-decoration: none; padding: 8px 0; text-underline-offset: 0.35em; text-decoration-thickness: 1px; } .ds-nav a:hover, .ds-nav a[aria-current='page'] { text-decoration-line: underline; } .ds-nav a:focus-visible { outline: 2px solid #1f3f36; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Flakon und Licht",
+    "overview": "Jeder Duft ist ein Flakon im Licht. Die Oberfläche ist ein hell beleuchteter Verkaufstisch aus Porzellan: porzellanweißer Grund, anthrazitfarbene Tinte, feine Haarlinien und ein einziges Flakongrün für Handlungen. Farbe kommt nur aus der Flüssigkeit im Glas, also aus Produktbildern, den Duftnoten-Schichten und den Duftwelten. Das trennt den Shop vom Creme-und-Gold-Luxus-Template und vom lauten Badge-Raster großer Beauty-Shops.\n\nPremium entsteht durch Typografie, Proportionen, Weißraum und Produktpräsentation. Bodoni Moda setzt Überschriften wie gravierte Etiketten, Mona Sans trägt Oberfläche und Text, breite Versalien bleiben den Etiketten vorbehalten (Marke, Konzentration, Knöpfe). Die Dichte ist ruhig: große Bilder, wenige Elemente pro Blick, Kaufinformationen (Größe, Preis dieser Größe, Verfügbarkeit, Lieferzeit) nie versteckt.\n\nBewegung folgt einer kurzen, starken ease-out-Kurve. Es gibt einen inszenierten Moment (das Aufdecken des Stilllebens auf der Startseite); alles andere ist Rückmeldung auf Handlungen.",
+    "keyCharacteristics": [
+      "Porzellanweißer Grund, anthrazitfarbene Tinte, ein Akzent (Flakongrün).",
+      "Farbe nur als Flüssigkeit im Glas: zehn Duftfamilien-Tönungen, nie für Text oder Bedienelemente.",
+      "Bodoni Moda für Überschriften, Mona Sans mit Breitenachse für alles andere.",
+      "Bedienelemente und Panels 2 px, Bilder randlos, rund nur Icon-Knöpfe und Farbmuster.",
+      "Schatten nur auf Ebenen über der Seite.",
+      "Nur helles Theme: Die Briefing-Palette (Ivory, Weiß, Anthrazit, Warmgrau) ist hell gesetzt."
+    ],
+    "rules": [
+      {
+        "name": "The Only-Glass-Carries-Color Rule",
+        "body": "Flüssigkeitstöne erscheinen nie als Text, Knopf, Fläche oder Rahmen der Oberfläche. Wer Farbe braucht, zeigt ein Glas.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Accent Rule",
+        "body": "Flakongrün ist der einzige Akzent. Reduzierungen tragen Tinte (`ink`), nicht Rot; Rot ist Fehlern vorbehalten.",
+        "section": "colors"
+      },
+      {
+        "name": "The Engraved Label Rule",
+        "body": "Breite Versalien benennen Dinge (Marke, Konzentration, Aktion). Sie stehen nie als Dachzeile über einer Abschnittsüberschrift.",
+        "section": "typography"
+      },
+      {
+        "name": "The Honest Numerals Rule",
+        "body": "Preise nutzen proportionale Versalziffern (`numeric`), weil Mona Sans' Tabellenziffern eine durchgestrichene Null haben; Tabellen im Admin nutzen `tabular`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Counter Rule",
+        "body": "Was auf dem Tisch liegt, wirft keinen Schatten. Nur was darüber schwebt, darf einen tragen.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do Farbe über ein Glas zeigen: Rendering, Notenschicht oder Farbmuster in einem `liquid-*`-Ton.",
+      "Do jede Kaufinformation sichtbar halten: Größe, Preis dieser Größe, Grundpreis pro 100 ml, Verfügbarkeit, Lieferzeit.",
+      "Do fehlende Geschäftsdaten als gekennzeichneten Platzhalter setzen (gestrichelter Rahmen, Etikett „Platzhalter“).",
+      "Do Hover-Effekte nur für feine Zeiger und `prefers-reduced-motion` für jede Bewegung berücksichtigen.",
+      "Do Bewegungen kurz halten (140 bis 380 ms) und beim Schließen schneller als beim Öffnen."
+    ],
+    "donts": [
+      "Don't Verläufe, Glas- oder Unschärfe-Flächen, Neon, Blobs, Pillen oder Emoji-Icons einsetzen.",
+      "Don't Gold oder Creme als Oberflächenfarbe verwenden; Luxus entsteht aus Typografie und Weißraum.",
+      "Don't Dachzeilen (Eyebrows) über Überschriften, Abschnittsnummern oder Gedankenstriche in Texten der Oberfläche.",
+      "Don't künstliche Knappheit, Countdowns, erfundene Bewertungen oder Vertrauenssiegel zeigen.",
+      "Don't Schatten auf Karten oder Flächen der Seite legen."
+    ]
+  }
+}

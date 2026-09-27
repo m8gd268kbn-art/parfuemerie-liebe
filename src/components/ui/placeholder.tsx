@@ -8,12 +8,12 @@ export function Placeholder({ children, className }: { children: React.ReactNode
   return (
     <span
       className={cn(
-        "inline-flex items-baseline gap-2 rounded-sm border border-dashed border-line-strong px-2 py-0.5 text-caption text-muted",
+        "inline-flex max-w-full flex-wrap items-baseline gap-x-2 rounded-sm border border-dashed border-line-strong px-2 py-0.5 text-caption text-muted",
         className,
       )}
       title="Platzhalter: echte Angabe folgt (im Admin unter Einstellungen pflegen)"
     >
-      <span className="label text-[0.625rem] tracking-[0.1em]">Platzhalter</span>
+      <span className="label text-[0.6875rem] tracking-[0.1em]">Platzhalter</span>
       <span>{children}</span>
     </span>
   );
@@ -32,7 +32,7 @@ export function ImagePlaceholder({ label, className }: { label: string; classNam
       aria-label={`Platzhalter: ${label}`}
     >
       <span className="flex flex-col gap-1">
-        <span className="label text-[0.625rem] text-muted">Platzhalter</span>
+        <span className="label text-[0.6875rem] text-muted">Platzhalter</span>
         <span className="text-small text-ink-soft">{label}</span>
       </span>
     </div>

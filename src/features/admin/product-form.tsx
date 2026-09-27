@@ -10,7 +10,7 @@ function Group({ title, children }: { title: string; children: React.ReactNode }
   return (
     <fieldset className="border-t border-line pt-6 first:border-0 first:pt-0">
       <legend className="float-left mb-5 w-full text-small font-semibold">{title}</legend>
-      <div className="clear-left grid gap-5 md:grid-cols-2">{children}</div>
+      <div className="clear-left grid grid-cols-1 gap-5 md:grid-cols-2">{children}</div>
     </fieldset>
   );
 }

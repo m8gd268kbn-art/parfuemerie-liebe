@@ -11,13 +11,13 @@ export default async function AdminDashboard() {
   const d = await dashboardData();
   return (
     <AdminPage title="Dashboard" description="Kennzahlen der letzten 30 Tage aus bezahlten Bestellungen.">
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Stat label="Umsatz (30 Tage, brutto)" value={formatPrice(d.revenueCents)} />
         <Stat label="Bestellungen (30 Tage)" value={d.orderCount} />
         <Stat label="Durchschnittlicher Bestellwert" value={d.orderCount ? formatPrice(d.avgCents) : "-"} />
         <Stat label="Offen zu versenden" value={d.openOrders} hint={d.pendingReviews ? `${d.pendingReviews} Bewertungen warten auf Freigabe` : undefined} />
       </div>
-      <div className="grid gap-6 xl:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
         <Panel title="Aktuelle Bestellungen" actions={<AdminLink href="/admin/bestellungen">Alle</AdminLink>}>
           {d.recent.length === 0 ? <p className="text-small text-muted">Noch keine Bestellungen.</p> : (
             <ul className="divide-y divide-line">

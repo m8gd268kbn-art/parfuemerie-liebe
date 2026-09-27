@@ -17,7 +17,7 @@ export function AdminNav() {
     <nav aria-label="Admin" className="flex flex-col gap-6">
       {GROUPS.map((g) => (
         <div key={g.title}>
-          <p className="label mb-2 px-3 text-[0.625rem] text-muted">{g.title}</p>
+          <p className="label mb-2 px-3 text-[0.6875rem] text-muted">{g.title}</p>
           <ul className="flex flex-col">
             {g.items.map((i) => {
               const active = i.href === "/admin" ? path === "/admin" : path.startsWith(i.href);

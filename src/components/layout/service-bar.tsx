@@ -10,7 +10,8 @@ export function ServiceBar({ settings }: { settings: ShopSettings }) {
     <div className="bg-accent text-[0.75rem] text-white/90 [font-variation-settings:'wdth'_104]">
       <ul className="container-page flex h-8 items-center justify-center gap-10 overflow-hidden">
         {items.map((item, i) => (
-          <li key={item} className={i === 0 ? "truncate" : "hidden truncate md:block"}>
+          // Mobil ein Hinweis, Tablet zwei, Desktop alle: nie abgeschnittene Aussagen.
+          <li key={item} className={i === 0 ? "truncate" : i === 1 ? "hidden truncate md:block" : "hidden truncate xl:block"}>
             {item}
           </li>
         ))}

@@ -24,7 +24,7 @@ export default async function AdminCustomer({ params }: { params: Promise<{ id: 
   const name = `${u.firstName} ${u.lastName}`.trim() || u.email;
   return (
     <AdminPage title={name} description={u.email} actions={<AdminLink href="/admin/kunden">Zur Übersicht</AdminLink>}>
-      <div className="grid gap-6 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
         <Panel title="Konto">
           <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-small">
             <dt className="text-ink-soft">Registriert</dt><dd>{formatDateTime(u.createdAt)}</dd>
@@ -46,7 +46,7 @@ export default async function AdminCustomer({ params }: { params: Promise<{ id: 
         </Panel>
         <Panel title="Adressen" className="xl:col-span-2">
           {addressRows.length === 0 ? <p className="text-small text-muted">Keine gespeicherten Adressen.</p> : (
-            <ul className="grid gap-4 sm:grid-cols-2">
+            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {addressRows.map((a) => (
                 <li key={a.id} className="text-small leading-relaxed">
                   {a.isDefaultShipping && <span className="mb-1 block text-caption text-muted">Standard-Lieferadresse</span>}

@@ -3,7 +3,7 @@ import Image from "next/image";
 /** Zweispaltiges Auth-Layout: Formular links, ruhiges Flakon-Motiv rechts (ab Desktop). */
 export function AuthShell({ title, intro, children, aside }: { title: string; intro?: React.ReactNode; children: React.ReactNode; aside?: React.ReactNode }) {
   return (
-    <div className="container-page grid gap-12 pt-12 pb-24 lg:grid-cols-12 lg:gap-6 lg:pt-16">
+    <div className="container-page grid grid-cols-1 gap-12 pt-12 pb-24 lg:grid-cols-12 lg:gap-6 lg:pt-16">
       <div className="max-w-md lg:col-span-5">
         <h1 className="font-display text-h1">{title}</h1>
         {intro && <div className="mt-4 text-body text-ink-soft">{intro}</div>}

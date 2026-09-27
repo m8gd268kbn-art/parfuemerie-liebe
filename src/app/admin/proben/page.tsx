@@ -12,7 +12,7 @@ type Sample = typeof samples.$inferSelect;
 
 function SampleFields({ s, productOptions }: { s?: Sample; productOptions: { value: string; label: string }[] }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <AField name="brandName" label="Marke" required defaultValue={s?.brandName} />
       <AField name="name" label="Duft" required defaultValue={s?.name} />
       <AField name="sizeLabel" label="Inhalt" required defaultValue={s?.sizeLabel ?? "1,5 ml"} />

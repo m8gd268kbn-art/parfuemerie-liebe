@@ -107,7 +107,7 @@ export function RegisterForm() {
         });
       }}
     >
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field label="Vorname" error={errors.firstName}>
           {({ id, describedBy, invalid }) => <Input id={id} name="firstName" autoComplete="given-name" required aria-describedby={describedBy} invalid={invalid} />}
         </Field>

@@ -6,7 +6,7 @@ import { ReviewForm } from "./review-form";
 /** Nur echte, moderierte Bewertungen. Ohne Bewertungen: ehrlicher leerer Zustand. */
 export function Reviews({ productId, productName, reviews, avg }: { productId: string; productName: string; reviews: ReviewDTO[]; avg: number | null }) {
   return (
-    <section aria-labelledby="reviews-title" id="bewertungen" className="grid gap-10 lg:grid-cols-12 lg:gap-6">
+    <section aria-labelledby="reviews-title" id="bewertungen" className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-6">
       <div className="lg:col-span-4">
         <h2 id="reviews-title" className="font-display text-h2">
           Bewertungen

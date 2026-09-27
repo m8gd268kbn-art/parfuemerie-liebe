@@ -139,16 +139,26 @@ export function BuyBox({ product, info }: { product: ProductDetailDTO; info: Buy
       <div className="flex flex-col gap-3">
         <p className={cn("text-small", stock.tone)} aria-live="polite">
           {stock.text}
-          {variant.stock > 0 && info.deliveryTime && <span className="text-ink-soft"> Lieferung in {info.deliveryTime}.</span>}
+          {variant.stock > 0 && info.deliveryTime && <span className="text-ink-soft"> Lieferzeit: {info.deliveryTime}.</span>}
         </p>
-        <div ref={buttonRef} className="flex gap-2">
-          {variant.stock > 1 && (
-            <QuantityStepper value={qty} max={Math.min(variant.stock, 10)} onChange={(n) => setQty(Math.max(1, n))} label="Menge" />
-          )}
-          <Button size="lg" className="flex-1" onClick={add} loading={state === "adding"} loadingLabel="Wird hinzugefügt" disabled={variant.stock <= 0}>
-            {label}
-          </Button>
-          <WishButton productId={product.id} name={product.name} size="lg" className="h-14 w-14" />
+        {/* Container-Query: In schmalen Spalten (Tablet) steht der Knopf in eigener Zeile, nie abgeschnitten. */}
+        <div ref={buttonRef} className="@container">
+          <div className="flex flex-wrap gap-2">
+            {variant.stock > 1 && (
+              <QuantityStepper value={qty} max={Math.min(variant.stock, 10)} onChange={(n) => setQty(Math.max(1, n))} label="Menge" />
+            )}
+            <Button
+              size="lg"
+              className="order-last w-full px-4! @[22rem]:order-none @[22rem]:w-auto @[22rem]:flex-1 @[28rem]:px-8!"
+              onClick={add}
+              loading={state === "adding"}
+              loadingLabel="Wird hinzugefügt"
+              disabled={variant.stock <= 0}
+            >
+              {label}
+            </Button>
+            <WishButton productId={product.id} name={product.name} size="lg" className="ml-auto h-14 w-14 shrink-0 @[22rem]:ml-0" />
+          </div>
         </div>
       </div>
 
@@ -191,7 +201,7 @@ export function BuyBox({ product, info }: { product: ProductDetailDTO; info: Buy
       <div
         aria-hidden={!showSticky}
         className={cn(
-          "fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-[6px] transition-transform duration-300 ease-out md:hidden",
+          "fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300 ease-out md:hidden",
           showSticky ? "translate-y-0" : "translate-y-full",
         )}
       >

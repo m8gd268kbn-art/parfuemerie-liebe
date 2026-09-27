@@ -10,7 +10,7 @@ export function OrderList({ orders }: { orders: Awaited<ReturnType<typeof custom
     <ul className="divide-y divide-line border-y border-line">
       {orders.map(({ order, items }) => (
         <li key={order.id}>
-          <Link href={`/konto/bestellungen/${order.number}`} className="group grid gap-4 py-5 sm:grid-cols-[1fr_auto] sm:items-center">
+          <Link href={`/konto/bestellungen/${order.number}`} className="group grid grid-cols-1 gap-4 py-5 sm:grid-cols-[1fr_auto] sm:items-center">
             <div className="flex items-center gap-4">
               <div className="flex -space-x-3">
                 {items.slice(0, 3).map((i) => (

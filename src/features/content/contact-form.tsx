@@ -23,7 +23,7 @@ export function ContactForm({ enabled }: { enabled: boolean }) {
         });
       }}
     >
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field label="Name" error={errors.name}>{({ id, describedBy, invalid }) => <Input id={id} name="name" autoComplete="name" required aria-describedby={describedBy} invalid={invalid} />}</Field>
         <Field label="E-Mail-Adresse" error={errors.email}>{({ id, describedBy, invalid }) => <Input id={id} name="email" type="email" autoComplete="email" required aria-describedby={describedBy} invalid={invalid} />}</Field>
       </div>

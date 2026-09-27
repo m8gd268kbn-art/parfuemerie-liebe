@@ -18,7 +18,7 @@ export function BrandDirectory({ brands }: { brands: BrandDTO[] }) {
   const groups = useMemo(() => Map.groupBy(filtered, (b) => letterOf(b.name)), [filtered]);
   return (
     <div>
-      <div className="sticky top-[var(--header-height)] z-20 -mx-[var(--gutter)] border-b border-line bg-paper/95 px-[var(--gutter)] py-4 backdrop-blur-[6px]">
+      <div className="sticky top-[var(--header-height)] z-20 -mx-[var(--gutter)] border-b border-line bg-paper px-[var(--gutter)] py-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <label className="relative block md:w-72">
             <span className="sr-only">Marke suchen</span>
@@ -47,9 +47,9 @@ export function BrandDirectory({ brands }: { brands: BrandDTO[] }) {
       ) : (
         <div className="divide-y divide-line">
           {LETTERS.filter((l) => groups.has(l)).map((l) => (
-            <section key={l} id={`marken-${l}`} aria-labelledby={`h-${l}`} className="grid scroll-mt-40 gap-4 py-8 md:grid-cols-[6rem_1fr]">
+            <section key={l} id={`marken-${l}`} aria-labelledby={`h-${l}`} className="grid grid-cols-1 scroll-mt-40 gap-4 py-8 md:grid-cols-[6rem_1fr]">
               <h2 id={`h-${l}`} className="font-display text-h2 text-muted">{l}</h2>
-              <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
                 {groups.get(l)!.map((b) => (
                   <li key={b.id}>
                     <Link href={`/marken/${b.slug}`} className="group flex items-baseline gap-3 py-1">

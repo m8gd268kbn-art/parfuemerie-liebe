@@ -33,7 +33,7 @@ export default async function AdminNewsletter({ searchParams }: { searchParams: 
       description="Double-Opt-in: Nur bestätigte Adressen dürfen Werbung erhalten. Der Export enthält ausschließlich bestätigte Adressen."
       actions={<ButtonLink href="/admin/newsletter/export" size="sm" variant="secondary" prefetch={false}>CSV exportieren</ButtonLink>}
     >
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Stat label="Bestätigt" value={n("confirmed")} />
         <Stat label="Unbestätigt" value={n("pending")} hint="Bestätigungslink noch nicht geklickt" />
         <Stat label="Abgemeldet" value={n("unsubscribed")} />

@@ -1,6 +1,6 @@
 # Fortschritt & Übergabe – Online-Shop Parfümerie Liebe
 
-> Stand: 26.09.2026, Arbeit auf Wunsch des Auftraggebers unterbrochen.
+> Stand: 27.09.2026, Master-Prompt technisch umgesetzt; offen sind nur Geschäftsdaten und Inhalte des Inhabers.
 > Nächste Session: diese Datei zuerst lesen und beim Abschnitt „Nächster Schritt“ weitermachen.
 > Auftrag: der „MASTER PROMPT – PARFÜMERIE LIEBE HANNOVER“ (107 Punkte) aus der ersten Session.
 
@@ -42,8 +42,16 @@ Fertig: kompletter Admin (`src/app/admin/*`): Dashboard, Bestellungen (Status, T
 Tests: Vitest 26 Unit-Tests (`npm test`), E2E Kauf + Admin-Statuswechsel + Preisänderung grün (`npm run build && npm run start`, dann `BASE_URL=http://localhost:3000 npx playwright test`). Für lokalen Produktions-Build mit Testzahlung steht `ALLOW_TEST_PAYMENTS=true` in `.env.local` (nie live).
 Hinweis Shell: `pkill -f "next start"` beendet die eigene Shell; stattdessen `pkill -f "[n]ext start"`.
 
+## Stand 27.09. (Session 3, Abschluss)
+
+- `/design-system` (intern, noindex, in Produktion nur für Admins).
+- Audits: Impeccable detect (statisch 0 Befunde; gerendert Desktop+Mobil: Befunde geprüft, echte behoben: 10-px-Labels auf 11 px, dekorative Unschärfe entfernt; Fehlalarme: Stretched-Link als „Occlusion“, Akkordeon-Überschriften als „Heading-Rhythm“, Hover-Bild mit opacity 0, Mona Sans als gewählte UI-Schrift). Finish-Review in-thread (degraded): Disposition fix → nach Fixes ship. Emil-Motion-Audit ohne Befund (ease-out, Schließen schneller als Öffnen, kein transition-all, Hover nur bei feinem Zeiger, reduced motion). Taste-Pre-Flight: doppelte CTA-Absicht auf der Startseite entfernt, keine Gedankenstriche, kein h-screen, keine Scroll-Listener.
+- Responsive: mobiles Überlaufen der Produktseite (Grid ohne minmax) systemisch mit `grid-cols-1` behoben, Duftwelten-Zähler, Kaufknopf per Container Query (Tablet), Service-Leiste je Breite, Platzhalter-Chips umbrechend.
+- Unbenutzte Pakete entfernt (React Hook Form, Radix Dropdown/Popover/VisuallyHidden), eigenes Favicon, Wartungs-Endpunkt `/api/cron/maintenance` + `vercel.json`, Seed leert den Next-Datencache.
+- Doku: `README.md`, `DESIGN.md` + `.impeccable/design.json`, `docs/MEDIA.md`.
+- Checks: typecheck, lint (0 Warnungen), 26 Unit-Tests, Build, 2 E2E-Tests grün.
+
 ## Nächster Schritt (hier weitermachen)
 
-1. `/design-system` (noindex).
-2. Audits: Impeccable detect + Finish-Review (degraded, in-thread), Emil-Motion-Audit, Taste-Pre-Flight, Polish-Pass (mobil/tablet/desktop).
-3. Doku: DESIGN.md + `.impeccable/design.json`, README (Setup, Env, Stripe/Supabase, offene Punkte), docs/MEDIA.md.
+Technisch nichts Offenes aus dem Master-Prompt. Offen sind Inhalte, die nur der Inhaber liefern kann (Checkliste „Vor dem Livegang“ in README.md): Geschäftsdaten, geprüfte Rechtstexte, echtes Sortiment und Fotos, Stripe-Konto und Zahlarten, Domain/Absender, Deployment auf Supabase/Vercel.
+Mögliche Ausbauten: Österreich/Schweiz als Versandzonen, Mehrsprachigkeit, Rechnungs-PDF, Lagerbuchungen/Warenwirtschaft.

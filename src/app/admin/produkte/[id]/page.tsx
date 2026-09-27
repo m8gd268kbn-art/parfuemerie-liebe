@@ -17,7 +17,7 @@ type Variant = typeof productVariants.$inferSelect;
 
 function VariantFields({ v }: { v?: Variant }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <AField name="sizeMl" label="Inhalt in ml" type="number" inputMode="numeric" required defaultValue={v?.sizeMl} />
       <AField name="displaySize" label="Anzeige" defaultValue={v?.displaySize} placeholder="z. B. 3 × 10 ml" />
       <AField name="sku" label="Artikelnummer" required defaultValue={v?.sku} />
@@ -109,7 +109,7 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
         <div className="flex flex-col gap-8">
           {images.length === 0 && <p className="text-small text-muted">Noch keine Bilder. Ohne Bild zeigt der Shop einen neutralen Platzhalter.</p>}
           {images.length > 0 && (
-            <ul className="grid gap-6 lg:grid-cols-2">
+            <ul className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               {images.map((img) => (
                 <li key={img.id} className="grid grid-cols-[6rem_1fr] gap-4">
                   <Image src={img.url} alt={img.alt} width={96} height={120} className="h-30 w-24 bg-porcelain object-cover" />
@@ -132,7 +132,7 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
           <div className="border-t border-line pt-6">
             <h3 className="mb-4 text-small font-semibold">Bild hochladen</h3>
             <AdminForm action={uploadImageAction.bind(null, id)} submitLabel="Hochladen">
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="image-file" className="text-caption font-medium">Datei</label>
                   <input id="image-file" name="file" type="file" required accept="image/jpeg,image/png,image/webp,image/avif" className="text-small file:mr-3 file:h-9 file:cursor-pointer file:rounded-sm file:border file:border-line-strong file:bg-white file:px-3 file:text-small" />

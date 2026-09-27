@@ -27,7 +27,7 @@ export default async function StorePage() {
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <div className="container-page pt-8">
         <Breadcrumbs items={crumbs} />
-        <header className="mt-8 grid gap-10 md:mt-10 md:grid-cols-12 md:gap-6">
+        <header className="mt-8 grid grid-cols-1 gap-10 md:mt-10 md:grid-cols-12 md:gap-6">
           <div className="flex flex-col justify-end gap-5 md:col-span-5">
             <h1 className="font-display text-display">Parfümerie Liebe</h1>
             <p className="text-body-lg text-ink-soft">
@@ -46,7 +46,7 @@ export default async function StorePage() {
         </header>
       </div>
 
-      <section aria-labelledby="history-title" className="container-page section-space grid gap-8 md:grid-cols-12 md:gap-6">
+      <section aria-labelledby="history-title" className="container-page section-space grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-6">
         <h2 id="history-title" className="font-display text-h2 md:col-span-4">Geschichte</h2>
         <div className="text-body-lg text-ink-soft md:col-span-7 md:col-start-6">
           {s.history ? <p className="whitespace-pre-line">{s.history}</p> : <Placeholder>Geschichte der Parfümerie Liebe (Gründung, Inhaberin/Inhaber, Team)</Placeholder>}
@@ -54,7 +54,7 @@ export default async function StorePage() {
       </section>
 
       <section id="beratung" aria-labelledby="advice-title" className="scroll-mt-28 bg-porcelain">
-        <div className="container-page section-space grid gap-10 md:grid-cols-12 md:gap-6">
+        <div className="container-page section-space grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-6">
           <div className="md:col-span-5">
             <h2 id="advice-title" className="font-display text-h1">Beratung</h2>
             <p className="mt-4 text-body-lg text-ink-soft">Ein Duft entfaltet sich auf der Haut. In der Parfümerie nehmen wir uns Zeit, gemeinsam mit Ihnen zu testen, bis er passt.</p>
@@ -76,7 +76,7 @@ export default async function StorePage() {
         </div>
       </section>
 
-      <section aria-labelledby="visit-title" className="container-page section-space grid gap-10 md:grid-cols-12 md:gap-6">
+      <section aria-labelledby="visit-title" className="container-page section-space grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-6">
         <div className="md:col-span-5">
           <h2 id="visit-title" className="font-display text-h2">Besuchen Sie uns</h2>
           <p className="mt-3 text-body text-ink-soft">{s.directions || "Anfahrt, Parkmöglichkeiten und Haltestellen folgen."}</p>

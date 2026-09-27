@@ -10,7 +10,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
     <div className="container-page pt-10 pb-24 md:pt-14">
       <p className="text-small text-ink-soft">Kundenkonto</p>
       <h1 className="mt-2 font-display text-h1">Guten Tag, {user.firstName}.</h1>
-      <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-6">
+      <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-6">
         <aside className="lg:col-span-3">
           <AccountNav />
         </aside>

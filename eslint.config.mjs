@@ -18,6 +18,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored Design-Skills (Drittanbieter-Code) und Testartefakte
+    ".claude/**",
+    "test-results/**",
+    "playwright-report/**",
   ]),
 ]);
 

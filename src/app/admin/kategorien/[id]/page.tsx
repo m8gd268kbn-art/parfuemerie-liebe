@@ -24,7 +24,7 @@ export default async function EditCategory({ params }: { params: Promise<{ id: s
     >
       <Panel>
         <AdminForm action={saveCategoryAction.bind(null, c?.id ?? null)} submitLabel={c ? "Änderungen speichern" : "Kategorie anlegen"}>
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <AField name="name" label="Name" required defaultValue={c?.name} />
             {c?.system ? (
               <p className="self-end pb-2 text-small text-ink-soft">URL /{c.slug} (Systemkategorie, fest)</p>
@@ -63,7 +63,7 @@ export default async function EditCategory({ params }: { params: Promise<{ id: s
               </div>
             </fieldset>
           )}
-          <div className="grid gap-5 border-t border-line pt-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 border-t border-line pt-6 md:grid-cols-2">
             <AFile name="hero" label="Titelbild" current={c?.heroImageUrl} removeName="removeHero" />
             <div />
             <AField name="seoTitle" label="SEO-Titel" defaultValue={c?.seoTitle} />
